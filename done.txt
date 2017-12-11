@@ -1,0 +1,3 @@
+Arrays:
+Count rotations divisible by 8
+Rotate a Matrix by 180 degree
