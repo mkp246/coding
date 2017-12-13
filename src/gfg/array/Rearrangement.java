@@ -1,6 +1,7 @@
 package gfg.array;
 
 import java.util.Arrays;
+import java.util.Hashtable;
 
 import static gfg.array.Simple.printMethodSeparator;
 import static gfg.array.Simple.printMethodName;
@@ -66,6 +67,34 @@ public class Rearrangement {
         int array11[] = {5, 8, 1, 4, 2, 9, 3, 7, 6};
         smallestLargestPairedOrder(array11);
         System.out.println(Arrays.toString(array11));
+        printMethodSeparator();
+        printMethodName("isPossibleDistinctAdjacentElementsArray");
+        int[] array12 = {7, 1, 1, 7};
+        isPossibleDistinctAdjacentElementsArray(array12);
+        printMethodSeparator();
+        printMethodName("maxSumConsecutiveDifferencesCircularArray");
+        int[] array13 = {1, 2, 8, 4};
+        System.out.println(maxSumConsecutiveDifferencesCircularArray(array13));
+        printMethodSeparator();
+        printMethodName("largestSmallestPairedOrderConstantExtraSpace");
+        int arr14[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        largestSmallestPairedOrderConstantExtraSpace(arr14);
+        System.out.println(Arrays.toString(arr14));
+        printMethodSeparator();
+        printMethodName("threeWayPartition");
+        int arr15[] = {1, 14, 5, 20, 4, 2, 54, 20, 87, 98, 3, 1, 32};
+        threeWayPartition(arr15, 10, 20);
+        System.out.println(Arrays.toString(arr15));
+        printMethodSeparator();
+        printMethodName("segregatePositiveAndNegative");
+        int arr16[] = {1, -1, -3, -2, 7, 5, 11, 6};
+        segregatePositiveAndNegative(arr16);
+        System.out.println(Arrays.toString(arr16));
+        printMethodSeparator();
+        printMethodName("alternatePositiveaAndNegativeUsingPartition");
+        int arr17[] = {-1, 2, -3, 4, 5, 6, -7, 8, 9};
+        alternatePositiveaAndNegativeUsingPartition(arr17);
+        System.out.println(Arrays.toString(arr17));
         printMethodSeparator();
     }
 
@@ -281,5 +310,97 @@ public class Rearrangement {
             tempArray[current] = array[forward];
         }
         System.arraycopy(tempArray, 0, array, 0, array.length);
+    }
+
+    public static void isPossibleDistinctAdjacentElementsArray(int[] array) {
+        Hashtable<Integer, Integer> count = new Hashtable<>();
+        for (int value : array) {
+            if (count.containsKey(value)) {
+                count.put(value, count.get(value) + 1);
+            } else {
+                count.put(value, 1);
+            }
+        }
+        int maxOccurance = 0;
+        for (int val : count.values()) {
+            maxOccurance = (maxOccurance < val) ? val : maxOccurance;
+        }
+        boolean isPossible = maxOccurance < (array.length + 1) / 2;
+        System.out.println(isPossible);
+    }
+
+    public static int maxSumConsecutiveDifferencesCircularArray(int[] array) {
+        Arrays.sort(array);
+        int sum = 0;
+        for (int i = 0; i < array.length / 2; i++) {
+            sum += 2 * array[array.length - i - 1];
+            sum -= 2 * array[i];
+        }
+        return sum;
+    }
+
+    /**
+     * @param array
+     */
+    public static void largestSmallestPairedOrderConstantExtraSpace(int[] array) {
+        int size = array.length;
+        int max = array[size - 1] + 1;
+        int minIdx = 0, maxIdx = size - 1;
+        for (int i = 0; i < size; i++) {
+            if (i % 2 == 0) {
+                array[i] = (array[maxIdx--] % max) * max + array[i];
+            } else {
+                array[i] = (array[minIdx++] % max) * max + array[i];
+            }
+        }
+        for (int i = 0; i < size; i++) {
+            array[i] = array[i] / max;
+        }
+    }
+
+    public static void threeWayPartition(int[] array, int lowVal, int highVal) {
+        int left = 0, right = array.length - 1;
+        for (int i = 0; i < array.length; i++) {
+            if (i == right) break;
+            if (array[i] < lowVal) {
+                blockSwap(array, i, left++, 1);
+            } else if (array[i] > highVal) {
+                blockSwap(array, i--, right--, 1);
+            }
+        }
+    }
+
+    public static void segregatePositiveAndNegative(int[] array) {
+        int[] temp = Arrays.copyOf(array, array.length);
+        int cursor = 0;
+        for (int i = 0; i < temp.length; i++) {
+            if (temp[i] > 0) {
+                array[cursor++] = temp[i];
+            }
+        }
+        for (int i = 0; i < temp.length; i++) {
+            if (temp[i] < 0) {
+                array[cursor++] = temp[i];
+            }
+        }
+    }
+
+    /**
+     * using quick sort partition
+     * time O(n)
+     * space O(1)
+     */
+    public static void alternatePositiveaAndNegativeUsingPartition(int[] array) {
+        int left = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < 0) {
+                blockSwap(array, i, left++, 1);
+            }
+        }
+        int posStart = left;
+        for (int i = 0; i <= posStart; i += 2) {
+            blockSwap(array, i, left++, 1);
+            posStart++;
+        }
     }
 }
