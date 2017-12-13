@@ -57,6 +57,16 @@ public class Rearrangement {
         positiveEvenNegativeOddPositions(array9);
         System.out.println(Arrays.toString(array9));
         printMethodSeparator();
+        printMethodName("negativeAtStartNoOrdering");
+        int array10[] = {-1, 2, -3, 4, 5, 6, -7, 8, 9};
+        negativeAtStartNoOrdering(array10);
+        System.out.println((Arrays.toString(array10)));
+        printMethodSeparator();
+        printMethodName("smallestLargestPairedOrder");
+        int array11[] = {5, 8, 1, 4, 2, 9, 3, 7, 6};
+        smallestLargestPairedOrder(array11);
+        System.out.println(Arrays.toString(array11));
+        printMethodSeparator();
     }
 
     public static void arrangeOddAndEven(int[] array) {
@@ -249,6 +259,27 @@ public class Rearrangement {
     }
 
     public static void negativeAtStartNoOrdering(int[] array) {
+        int positiveIndex = 0;
+        for (int currentIndex = 0; currentIndex < array.length; currentIndex++) {
+            if (array[currentIndex] < 0) {
+                blockSwap(array, positiveIndex++, currentIndex, 1);
+            }
+        }
+    }
 
+    public static void smallestLargestPairedOrder(int[] array) {
+        Arrays.sort(array);
+        int forward = 0;
+        int backward = array.length - 1;
+        int current = 0;
+        int[] tempArray = new int[array.length];
+        while (backward > forward) {
+            tempArray[current++] = array[forward++];
+            tempArray[current++] = array[backward--];
+        }
+        if (backward == forward) {
+            tempArray[current] = array[forward];
+        }
+        System.arraycopy(tempArray, 0, array, 0, array.length);
     }
 }
