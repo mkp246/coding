@@ -1,3 +1,16 @@
 Arrays:
 Count rotations divisible by 8
 Rotate a Matrix by 180 degree
+Print left rotation of array in O(n) time and O(1) space
+Block swap algorithm for array rotation //didn't work 
+search-an-element-in-a-sorted-and-pivoted-array
+Even numbers at even index and odd numbers at odd index //hoare's partition/Lumuto not done
+Rearrange positive and negative numbers using inbuilt sort function modified merge sort
+Rearrange positive and negative numbers with constant extra space
+Shuffle 2n integers in format {a1, b1, a2, b2, a3, b3, ……, an, bn} without using extra space //size=2^k done
+shuffle-array-a1-b1-a2-b2-a3-b3-bn-without-using-extra-space //not done //alt-algo-done recursive dest lookup pre-mature termination bcaz of loop issue
+rearrangeBinaryStringAlternateXYOccurrences
+Sort an array in wave form //using sort, using w/o sort
+rearrange-array-even-index-elements-smaller-odd-index-elements-greater
+positive-elements-even-negative-odd-positions/  //hoare's partition of quickSort not done
+move-negative-numbers-beginning-positive-end-constant-extra-space/ //no ordering required
