@@ -1,7 +1,6 @@
 package gfg.array;
 
 import java.util.Arrays;
-import java.util.regex.Pattern;
 
 public class Simple {
     public static void main(String[] args) {
@@ -35,6 +34,11 @@ public class Simple {
         printMethodName("pivotedBinarySearch");
         int arr4[] = {5, 6, 7, 8, 9, 10, 1, 2, 3};
         int result = pivotedBinarySearch(arr4, 3);
+        System.out.println(result);
+        printMethodSeparator();
+        printMethodName("maxValueOfIndexMultipliedValuesOnlyByRotation");
+        int arr5[] = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        result = maxValueOfIndexMultipliedValuesOnlyByRotation(arr5);
         System.out.println(result);
         printMethodSeparator();
     }
@@ -213,5 +217,20 @@ public class Simple {
 
     public static void printMethodName(String name) {
         System.out.println("=====" + name + "=====");
+    }
+
+    public static int maxValueOfIndexMultipliedValuesOnlyByRotation(int[] array) {
+        int size = array.length;
+        int arraySum = 0, elementSum = 0;
+        for (int i = 0; i < size; i++) {
+            arraySum += i * array[i];
+            elementSum += array[i];
+        }
+        int maxArraySum = arraySum;
+        for (int i = 1; i < size; i++) {
+            arraySum = arraySum + size * array[i - 1] - elementSum;
+            if (arraySum > maxArraySum) maxArraySum = arraySum;
+        }
+        return maxArraySum;
     }
 }

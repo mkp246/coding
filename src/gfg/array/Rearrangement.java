@@ -1,7 +1,6 @@
 package gfg.array;
 
-import java.util.Arrays;
-import java.util.Hashtable;
+import java.util.*;
 
 import static gfg.array.Simple.printMethodSeparator;
 import static gfg.array.Simple.printMethodName;
@@ -95,6 +94,68 @@ public class Rearrangement {
         int arr17[] = {-1, 2, -3, 4, 5, 6, -7, 8, 9};
         alternatePositiveaAndNegativeUsingPartition(arr17);
         System.out.println(Arrays.toString(arr17));
+        printMethodSeparator();
+        printMethodName("sortByAbsoluteDifference");
+        int arr18[] = {10, 5, 3, 9, 2};
+        sortByAbsoluteDifference(arr18, 7);
+        System.out.println(Arrays.toString(arr18));
+        printMethodSeparator();
+        printMethodName("reverseArray");
+        int arr19[] = {1, 2, 3, 4, 5, 6};
+        reverseArray(arr19);
+        System.out.println(Arrays.toString(arr19));
+        printMethodSeparator();
+        printMethodName("find3Numbers");
+        int arr20[] = {12, 11, 10, 5, 6, 2, 30};
+        find3Numbers(arr20);
+        printMethodSeparator();
+        printMethodName("largestSubWithEq0And1");
+        int arr21[] = {1, 0, 0, 1, 0, 1, 1};
+        System.out.println(largestSubWithEq0And1(arr21));
+        printMethodSeparator();
+        printMethodName("nextGreatest");
+        int arr22[] = {16, 17, 4, 3, 5, 2};
+        nextGreatest(arr22);
+        System.out.println(Arrays.toString(arr22));
+        printMethodSeparator();
+        printMethodName("shuffleFisherYates");
+        int arr23[] = {1, 2, 3, 4, 5, 6, 7, 8};
+        shuffleFisherYates(arr23);
+        System.out.println(Arrays.toString(arr23));
+        printMethodName("biggestNumber");
+        List<String> arr24 = Arrays.asList("54", "546", "548", "60");
+        biggestNumber(arr24);
+        arr24 = Arrays.asList("7", "776", "7", "7");
+        biggestNumber(arr24);
+        arr24 = Arrays.asList("1", "34", "3", "98", "9", "76", "45", "4");
+        biggestNumber(arr24);
+        printMethodSeparator();
+        printMethodSeparator();
+        printMethodName("rearrangeUntil");
+        int arr25[] = {1, 3, 0, 2};
+        rearrangeUntil(arr25);
+        System.out.println(Arrays.toString(arr25));
+        int[] arr26 = {2, 0, 1, 4, 5, 3};
+        rearrangeUntil(arr26);
+        System.out.println(Arrays.toString(arr26));
+        printMethodSeparator();
+        printMethodName("replaceByMultOfPrevAndNext");
+        int[] arr27 = {2, 3, 4, 5, 6};
+        replaceByMultOfPrevAndNext(arr27);
+        System.out.println(Arrays.toString(arr27));
+        printMethodSeparator();
+        printMethodName("reorderAccToGivenIndex");
+        int arr28[] = {50, 40, 70, 60, 90};
+        int idx28[] = {3, 0, 4, 1, 2};
+        reorderAccToGivenIndex(arr28, idx28);
+        System.out.println(Arrays.toString(arr28));
+        System.out.println(Arrays.toString(idx28));
+        printMethodSeparator();
+        printMethodName("minSwapUntil");
+        int arr29[] = {0, 3, 5, 6, 4, 1, 2};
+        int pairs29[] = {0, 3, 6, 1, 5, 4, 2};
+        int minSwaps = minSwaps(arr29, pairs29);
+        System.out.println(minSwaps);
         printMethodSeparator();
     }
 
@@ -402,5 +463,228 @@ public class Rearrangement {
             blockSwap(array, i, left++, 1);
             posStart++;
         }
+    }
+
+    public static void sortByAbsoluteDifference(int[] array, int base) {
+        HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
+        int diff;
+        for (int val : array) {
+            diff = Math.abs(val - base);
+            if (map.containsKey(diff)) {
+                map.get(diff).add(val);
+            } else {
+                map.put(diff, new ArrayList<Integer>() {{
+                    add(val);
+                }});
+            }
+        }
+        int pos = 0;
+        ArrayList<Integer> list = null;
+        for (ArrayList<Integer> val : map.values()) {
+            for (int i = 0; i < val.size(); i++)
+                array[pos++] = val.get(i);
+        }
+    }
+
+    public static void reverseArray(int[] array) {
+        for (int i = 0, j = array.length - 1; i < j; i++, j--) {
+            blockSwap(array, i, j, 1);
+        }
+    }
+
+    public static void find3Numbers(int[] array) {
+        int[] smaller = new int[array.length];
+        int[] larger = new int[array.length];
+
+        int min = array[0];
+        int minIdx = 0;
+        smaller[0] = -1;
+        for (int i = 1; i < array.length; i++) {
+            if (min < array[i]) {
+                smaller[i] = minIdx;
+            } else {
+                smaller[i] = -1;
+            }
+            if (array[i] < min) {
+                min = array[i];
+                minIdx = i;
+            }
+        }
+        int max = array[array.length - 1];
+        int maxIdx = array.length - 1;
+        larger[array.length - 1] = -1;
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (array[i] < max) {
+                larger[i] = maxIdx;
+            } else {
+                larger[i] = -1;
+            }
+            if (array[i] > max) {
+                max = array[i];
+                maxIdx = i;
+            }
+        }
+        for (int i = 0; i < array.length; i++) {
+            if (smaller[i] != -1 && larger[i] != -1) {
+                System.out.println(array[smaller[i]] + " " + array[i] + " " + array[larger[i]]);
+                return;
+            }
+            System.out.println("no such triplet found");
+        }
+    }
+
+    public static int largestSubWithEq0And1(int[] array) {
+        int currentSum = 0, maxLen = -1;
+        int ms = -1, me = -1;
+        HashMap<Integer, Integer> startLocation = new HashMap<>();
+        for (int i = 0; i < array.length; i++) {
+            currentSum += array[i] == 0 ? -1 : +1;
+            if (startLocation.containsKey(currentSum)) {
+                if (i - startLocation.get(currentSum) > maxLen) {
+                    maxLen = i - startLocation.get(currentSum);
+                    ms = startLocation.get(currentSum);
+                    me = i;
+                }
+            } else {
+                startLocation.put(currentSum, i);
+            }
+        }
+        if (ms * me != 1) System.out.println(ms + 1 + " to " + me);
+        return maxLen;
+    }
+
+    public static void nextGreatest(int[] array) {
+        int max = array[array.length - 1];
+        int temp;
+        array[array.length - 1] = -1;
+        for (int i = array.length - 2; i >= 0; i--) {
+            temp = max;
+            if (max < array[i]) max = array[i];
+            array[i] = temp;
+        }
+    }
+
+    public static void shuffleFisherYates(int[] array) {
+        Random random = new Random();
+        int dest;
+        for (int i = 0; i < array.length; i++) {
+            dest = i + (int) (random.nextDouble() * (array.length - i));
+            blockSwap(array, i, dest, 1);
+        }
+    }
+
+    public static void biggestNumber(List<String> array) {
+        Collections.sort(array, (o1, o2) -> (o2 + o1).compareTo(o1 + o2));
+        for (String num : array) {
+            System.out.print(num);
+        }
+        System.out.println();
+    }
+
+    /**
+     * process cycles also<br>
+     * follow modulo simple approach<br>
+     * this is not working
+     * <p>
+     * * @param array
+     */
+    public static void rearrangeUntil(int[] array) {
+        //increment by 1 to make all positive
+        //in end we will remove -1 to restore
+        for (int i = 0; i < array.length; i++) {
+            array[i]++;
+        }
+        //process all cycles
+        for (int i = 0; i < array.length && array[i] > 0; i++) {
+            int tempIndex = array[i] - 1, tempData = array[tempIndex] - 1;
+            array[tempIndex] = -(1 + i);
+            int data;
+            while (tempIndex != i) {
+                data = array[tempData] - 1;
+                array[tempData] = -(tempIndex + 1);
+                tempIndex = tempData;
+                tempData = data;
+            }
+        }
+        for (int i = 0; i < array.length; i++) {
+            array[i] = -array[i] - 1;
+        }
+    }
+
+    public static void replaceByMultOfPrevAndNext(int[] array) {
+        int temp = array[0];
+        array[0] = array[0] * array[1];
+        int tmp;
+        for (int i = 1; i < array.length - 1; i++) {
+            tmp = array[i];
+            array[i] = array[i + 1] * temp;
+            temp = tmp;
+        }
+        array[array.length - 1] *= temp;
+    }
+
+    public static void reorderAccToGivenIndex(int[] array, int[] index) {
+        int oldTragetElem;
+        int oldTargetIdx;
+        for (int i = 0; i < array.length; i++) {
+            while (index[i] != i) {
+                oldTargetIdx = index[index[i]];
+                oldTragetElem = array[index[i]];
+                array[index[i]] = array[i];
+                index[index[i]] = index[i];
+
+                index[i] = oldTargetIdx;
+                array[i] = oldTragetElem;
+            }
+        }
+    }
+
+    private static int minSwapUntil(int[] array, int[] pairs, int i) {
+        if (i >= array.length) {
+            return 0;
+        }
+        //paired already
+        if (pairs[array[i]] == array[i + 1]) {
+            return minSwapUntil(array, pairs, i + 2);
+        }
+
+        int firstsPair = pairs[array[i]];
+        int secondsPair = pairs[array[i + 1]];
+        int firstsPairIdx = index[firstsPair];
+        int secondsPairIdx = index[secondsPair];
+        //fix pair and call recursively
+        blockSwap(array, i + 1, firstsPairIdx, 1);
+        blockSwap(index, i + 1, firstsPairIdx, 1);
+        int firstRet = minSwapUntil(array, pairs, i + 2);
+        //undo changes from first block
+        // and apply second blocks changes
+        blockSwap(array, i + 1, firstsPairIdx, 1);
+        blockSwap(index, i + 1, firstsPairIdx, 1);
+        blockSwap(array, i, secondsPairIdx, 1);
+        blockSwap(index, i, secondsPairIdx, 1);
+        int secondRet = minSwapUntil(array, pairs, i + 2);
+        //undo second change also
+        blockSwap(array, i, secondsPairIdx, 1);
+        blockSwap(index, i, secondsPairIdx, 1);
+        return 1 + Math.min(firstRet, secondRet);
+    }
+
+    /**
+     * if (a, b) is pair than we have assigned elements
+     * in array such that pairs[a] = b and pairs[b] = a
+     * arrays are 1 start based not zero based to simplify
+     *
+     * @param array
+     * @param pairs
+     * @return
+     */
+    private static int index[];
+
+    public static int minSwaps(int[] array, int[] pairs) {
+        index = new int[array.length + 1];
+        for (int i = 1; i < array.length; i++) {
+            index[array[i]] = i;
+        }
+        return minSwapUntil(array, pairs, 1);
     }
 }
