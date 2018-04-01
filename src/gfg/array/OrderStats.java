@@ -41,6 +41,12 @@ public class OrderStats {
         int[] arr6 = {1, 7, 4, 8, -1, 5, 2, 1};
         System.out.println(maxDiffkLength(arr6, 3));
         printMethodSeparator();
+        printMethodName("nextHigherNumberWithSameNumberBitSet");
+        System.out.println(nextHigherNumberWithSameNumberBitSet(5));
+        printMethodSeparator();
+        printMethodName("mthSmallestNumberWithKbitsSet");
+        System.out.println(mthSmallestNumberWithKbitsSet(6, 4));
+        printMethodSeparator();
     }
 
     public static int findLargest(int[] array) {
@@ -163,4 +169,20 @@ public class OrderStats {
     }
 
 
+    public static int nextHigherNumberWithSameNumberBitSet(int number) {
+        int rightOne = number & -number;
+        int nextHigherOneBit = number + rightOne;
+        int rightOnesPattern = number ^ nextHigherOneBit;
+        rightOnesPattern /= rightOne;
+        rightOnesPattern >>= 2;
+        return nextHigherOneBit | rightOnesPattern;
+    }
+
+    public static int mthSmallestNumberWithKbitsSet(int m, int k) {
+        int smallest = (1 << k) - 1;
+        for (int i = 1; i < m; i++) {
+            smallest = nextHigherNumberWithSameNumberBitSet(smallest);
+        }
+        return smallest;
+    }
 }

@@ -50,3 +50,5 @@ program-for-mean-and-median-of-an-unsorted-array/ //sort and do
 minimum-product-k-integers-array-positive-integers/  //use heap str and pop only k elems
 k-th-largest-sum-contiguous-subarray/  // use heap min ds
 /maximum-difference-group-k-elements-rest-array/
+m-th-smallest-number-k-number-set-bits/
+order-statistic-tree-using-fenwick-tree-bit/
