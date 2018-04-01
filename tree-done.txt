@@ -1,3 +1,0 @@
-segment-tree-set-1-sum-of-given-range/ //segment tree
-binary-indexed-tree-or-fenwick-tree-2/ //bits
-order-statistic-tree-using-fenwick-tree-bit/
