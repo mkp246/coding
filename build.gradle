@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: "jacoco"
 
 group = 'com.manoj'
 version = '1.0.0-SNAPSHOT'
@@ -12,6 +13,18 @@ wrapper {
     gradleVersion = '4.8.1'
 }
 
+test {
+    testLogging {
+        events "STARTED", "FAILED", "SKIPPED"
+        exceptionFormat "full"
+    }
+}
+
+jacocoTestReport {
+    reports {
+        html.enabled true
+    }
+}
 repositories {
     mavenCentral()
 }
