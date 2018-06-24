@@ -40,5 +40,9 @@ jobs:
 
       # run build and tests!
       - run: gradle test jacocoTestReport
-      - store_test_results:
+      - store_artifacts:
           path: build/reports/tests/test
+            destination: tr
+      - store_artifacts:
+          path: build/reports/jacoco/test/html
+            destination: cr
