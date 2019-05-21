@@ -15,8 +15,8 @@ wrapper {
 
 test {
     testLogging {
-        events "STARTED", "FAILED", "SKIPPED"
-        exceptionFormat "full"
+        events "STARTED", "FAILED", "SKIPPED", "PASSED"
+        exceptionFormat "FULL"
     }
 }
 
