@@ -38,4 +38,21 @@ public class ArrayRotation {
             }
         }
     }
+
+    public static void reverseArray(int[] array, int start, int end) {
+        int temp;
+        while (start < end) {
+            temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    public static void rotateUsingReversal(int[] array, int rotateBy) {
+        reverseArray(array, 0, rotateBy - 1);
+        reverseArray(array, rotateBy, array.length - 1);
+        reverseArray(array, 0, array.length - 1);
+    }
 }
