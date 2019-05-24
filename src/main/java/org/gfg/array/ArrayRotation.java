@@ -55,4 +55,36 @@ public class ArrayRotation {
         reverseArray(array, rotateBy, array.length - 1);
         reverseArray(array, 0, array.length - 1);
     }
+
+    static void swap(int[] array, int fi, int si, int length) {
+        int temp;
+        for (int i = 0; i < length; i++) {
+            temp = array[fi];
+            array[fi] = array[si];
+            array[si] = temp;
+            fi++;
+            si++;
+        }
+    }
+
+    public static void rotateUsingBlockSwap(int[] array, int start, int end, int rotateBy) {
+        int blockLength = end - start + 1;
+        if (rotateBy == 0 || rotateBy == blockLength) return;
+
+        //to rotate is half of array
+        if (blockLength == 2 * rotateBy) {
+            swap(array, start, start + rotateBy, rotateBy);
+            return;
+        }
+
+        //A is shorter
+        if (blockLength > 2 * rotateBy) {
+            swap(array, start, end - rotateBy + 1, rotateBy);
+            rotateUsingBlockSwap(array, start, end - rotateBy, rotateBy);
+        } else {
+            //B is shorter
+            swap(array, start, start + rotateBy, blockLength - rotateBy);
+            rotateUsingBlockSwap(array, start + blockLength - rotateBy, end, 2 * rotateBy - blockLength);
+        }
+    }
 }

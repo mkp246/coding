@@ -2,6 +2,8 @@ package org.gfg.array;
 
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
+import com.mkp.TODO;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -67,6 +69,37 @@ public class ArrayRotationTest {
 
         array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
         ArrayRotation.rotateUsingReversal(array, 4);
+        assertArrayEquals(new int[]{5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4}, array);
+    }
+
+    @Test
+    public void testSwap() {
+        int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
+        ArrayRotation.swap(array, 1, 5, 2);
+        assertArrayEquals(new int[]{1, 6, 7, 4, 5, 2, 3}, array);
+    }
+
+
+    @Test
+    @GFGMethod(date = "24-05-19", variant = "using block swap recursive", url = "/block-swap-algorithm-for-array-rotation")
+    public void testRotateUsingBlockSwap() {
+        int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
+        ArrayRotation.rotateUsingBlockSwap(array, 0, array.length - 1, 3);
+        assertArrayEquals(new int[]{4, 5, 6, 7, 1, 2, 3}, array);
+
+        array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+        ArrayRotation.rotateUsingBlockSwap(array, 0, array.length - 1, 4);
+        assertArrayEquals(new int[]{5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4}, array);
+    }
+
+    @Ignore
+    @Test()
+    @TODO
+    @GFGMethod(date = "24-05-19", variant = "using block swap iterative", url = "/block-swap-algorithm-for-array-rotation")
+    public void testRotateUsingBlockSwapIterative() {
+        int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
+        assertArrayEquals(new int[]{4, 5, 6, 7, 1, 2, 3}, array);
+        array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
         assertArrayEquals(new int[]{5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4}, array);
     }
 }
