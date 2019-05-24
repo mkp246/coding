@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 public @interface GFGMethod {
     String date();
 
-    String variant();
+    String algo();
 
     String url() default "";
 

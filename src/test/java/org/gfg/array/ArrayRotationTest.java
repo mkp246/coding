@@ -8,11 +8,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 
-@GFG(date = "21-05-2019", algo = "array rotation", url = "/array-rotation", impls = ArrayRotation.class)
+@GFG(date = "21-05-2019", topic = "array rotation", url = "/array-rotation", impls = ArrayRotation.class)
 public class ArrayRotationTest {
 
     @Test
-    @GFGMethod(date = "21-05-19", variant = "using temp array")
+    @GFGMethod(date = "21-05-19", algo = "using temp array")
     public void testRotateUsingTempArray() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
         ArrayRotation.rotateUsingTempArray(array, 2);
@@ -20,7 +20,7 @@ public class ArrayRotationTest {
     }
 
     @Test
-    @GFGMethod(date = "23-05-2019", variant = "rotate by one")
+    @GFGMethod(date = "23-05-2019", algo = "rotate by one")
     public void testRotateByOne() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
         ArrayRotation.rotateByOne(array);
@@ -30,7 +30,7 @@ public class ArrayRotationTest {
     }
 
     @Test
-    @GFGMethod(date = "24-05-19", variant = "using rotate by one")
+    @GFGMethod(date = "24-05-19", algo = "using rotate by one")
     public void testRotateUsingRotateByOne() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
         ArrayRotation.rotateUsingRotateByOne(array, 3);
@@ -38,7 +38,7 @@ public class ArrayRotationTest {
     }
 
     @Test
-    @GFGMethod(date = "24-05-19", variant = "using juggling")
+    @GFGMethod(date = "24-05-19", algo = "using juggling")
     public void testRotateUsingJuggling() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
         ArrayRotation.rotateUsingJuggling(array, 3);
@@ -61,7 +61,7 @@ public class ArrayRotationTest {
     }
 
     @Test
-    @GFGMethod(date = "24-05-19", variant = "using reversal", url = "/program-for-array-rotation-continued-reversal-algorithm")
+    @GFGMethod(date = "24-05-19", algo = "using reversal", url = "/program-for-array-rotation-continued-reversal-algorithm")
     public void testRotateUsingReversal() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
         ArrayRotation.rotateUsingReversal(array, 3);
@@ -81,7 +81,7 @@ public class ArrayRotationTest {
 
 
     @Test
-    @GFGMethod(date = "24-05-19", variant = "using block swap recursive", url = "/block-swap-algorithm-for-array-rotation")
+    @GFGMethod(date = "24-05-19", algo = "using block swap recursive", url = "/block-swap-algorithm-for-array-rotation")
     public void testRotateUsingBlockSwap() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
         ArrayRotation.rotateUsingBlockSwap(array, 0, array.length - 1, 3);
@@ -95,7 +95,7 @@ public class ArrayRotationTest {
     @Ignore
     @Test()
     @TODO
-    @GFGMethod(date = "24-05-19", variant = "using block swap iterative", url = "/block-swap-algorithm-for-array-rotation")
+    @GFGMethod(date = "24-05-19", algo = "using block swap iterative", url = "/block-swap-algorithm-for-array-rotation")
     public void testRotateUsingBlockSwapIterative() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
         assertArrayEquals(new int[]{4, 5, 6, 7, 1, 2, 3}, array);
