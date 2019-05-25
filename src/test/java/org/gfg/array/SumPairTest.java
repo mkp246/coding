@@ -5,6 +5,8 @@ import com.mkp.GFGMethod;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 @GFG(date = "25-05-2019", topic = "array sum pair", url = "/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum", impls = SumPair.class)
 public class SumPairTest {
 
@@ -52,5 +54,26 @@ public class SumPairTest {
 
         result = SumPair.hasSortedAndRotatedArrayTwoCandidates(array, 12);
         Assert.assertFalse(result);
+    }
+
+    @Test
+    @GFGMethod(date = "25-05-2019", algo = "sorted rotated array sum pair count using pivot")
+    public void testCountSortedAndRotatedArrayPairsWithSum() {
+        int[] array = {11, 15, 6, 7, 9, 10};
+        int result = SumPair.countSortedAndRotatedArrayPairsWithSum(array, 16);
+        Assert.assertEquals(2, result);
+    }
+
+    @Test
+    @GFGMethod(date = "25-05-2019", algo = "two unsorted array sum pairs using hashing", tComp = "nlog(n)", url = "/given-two-unsorted-arrays-find-pairs-whose-sum-x")
+    public void testGetTwoUnsortedArraysSumPairsUsingHashing() {
+        int[] array1 = {1, 0, -4, 7, 6, 4};
+        int[] array2 = {0, 2, 4, -3, 2, 1};
+        ArrayList<int[]> result = SumPair.getTwoUnsortedArraysSumPairsUsingHashing(array1, array2, 8);
+        Assert.assertEquals(4, result.size());
+        Assert.assertArrayEquals(new int[]{6, 2}, result.get(0));
+        Assert.assertArrayEquals(new int[]{4, 4}, result.get(1));
+        Assert.assertArrayEquals(new int[]{6, 2}, result.get(2));
+        Assert.assertArrayEquals(new int[]{7, 1}, result.get(3));
     }
 }

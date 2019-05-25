@@ -2,7 +2,6 @@ package org.gfg.array;
 
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
-import com.mkp.TODO;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -92,9 +91,8 @@ public class ArrayRotationTest {
         assertArrayEquals(new int[]{5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4}, array);
     }
 
-    @Ignore
+    @Ignore("TODO")
     @Test()
-    @TODO
     @GFGMethod(date = "24-05-19", algo = "using block swap iterative", url = "/block-swap-algorithm-for-array-rotation")
     public void testRotateUsingBlockSwapIterative() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
