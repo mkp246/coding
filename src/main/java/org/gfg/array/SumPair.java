@@ -1,6 +1,7 @@
 package org.gfg.array;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class SumPair {
     public static boolean hasUnsortedArrayTwoCandidatesUsingSorting(int[] array, int sum) {
@@ -18,5 +19,17 @@ public class SumPair {
             }
         }
         return false; // No pair found
+    }
+
+    public static int[] getUnsortedArraySumPairUsingHashing(int[] array, int sum) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int element : array) {
+            if (set.contains(sum - element)) {
+                return new int[]{sum - element, element};
+            } else {
+                set.add(element);
+            }
+        }
+        return null;
     }
 }

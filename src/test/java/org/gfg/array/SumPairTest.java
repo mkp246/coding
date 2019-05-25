@@ -26,6 +26,18 @@ public class SumPairTest {
 
         result = SumPair.hasUnsortedArrayTwoCandidatesUsingSorting(array, 100);
         Assert.assertFalse(result);
+    }
 
+    @Test
+    public void testGetUnsortedArraySumPairUsingHashing() {
+        int[] array = {1, 4, 45, 6, 10, 8};
+        int[] pair = SumPair.getUnsortedArraySumPairUsingHashing(array, 16);
+        Assert.assertArrayEquals(new int[]{6, 10}, pair);
+        
+        pair = SumPair.getUnsortedArraySumPairUsingHashing(array, 18);
+        Assert.assertArrayEquals(new int[]{10, 8}, pair);
+
+        pair = SumPair.getUnsortedArraySumPairUsingHashing(array, 17);
+        Assert.assertNull(pair);
     }
 }
