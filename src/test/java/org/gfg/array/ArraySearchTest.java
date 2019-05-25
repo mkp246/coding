@@ -1,5 +1,6 @@
 package org.gfg.array;
 
+import com.mkp.ALT;
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
 import org.junit.Test;
@@ -48,6 +49,7 @@ public class ArraySearchTest {
     }
 
     @Test
+    @ALT(url = "/find-minimum-element-in-a-sorted-and-rotated-array")
     @GFGMethod(date = "25-05-2019", algo = "find pivot using binary search in sorted and rotated array")
     public void testFindPivot() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};

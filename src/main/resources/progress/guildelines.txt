@@ -1,0 +1,7 @@
+Solve problems in this order
+YES    directly referred problem, algorithm used here
+YES    related problems
+NO     recommended problems
+
+Similar Problems
+    put @ALT on existing test

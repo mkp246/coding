@@ -32,4 +32,22 @@ public class SumPair {
         }
         return null;
     }
+
+    public static boolean hasSortedAndRotatedArrayTwoCandidates(int[] array, int sum) {
+        int pivot = ArraySearch.findPivot(array, 0, array.length - 1);
+        int lower = pivot;
+        int higher = pivot - 1;
+        int tempSum;
+        while (lower != higher) {
+            tempSum = array[lower] + array[higher];
+            if (tempSum == sum) {
+                return true;
+            } else if (tempSum < sum) {
+                lower = (lower + 1) % array.length;
+            } else {
+                higher = (higher - 1 + array.length) % array.length;
+            }
+        }
+        return false;
+    }
 }
