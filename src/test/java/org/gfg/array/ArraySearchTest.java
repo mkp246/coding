@@ -69,5 +69,55 @@ public class ArraySearchTest {
         array = new int[]{15, 24, 100, 2, 3, 4, 5, 6, 7, 9};
         pivot = ArraySearch.findPivot(array, 0, array.length - 1);
         assertEquals(3, pivot);
+
+        array = new int[]{9, 15, 24, 100, 2, 3, 4, 5, 6, 7};
+        pivot = ArraySearch.findPivot(array, 0, array.length - 1);
+        assertEquals(4, pivot);
+    }
+
+    @Test
+    @GFGMethod(date = "25-05-2019", algo = "search in sorted and rotated array using pivot and binary search ")
+    public void testFindInSortedAndRotatedArray() {
+        int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
+
+        int pivot = ArraySearch.findInSortedAndRotatedArray(array, 0);
+        assertEquals(-1, pivot);
+
+        pivot = ArraySearch.findInSortedAndRotatedArray(array, 5);
+        assertEquals(4, pivot);
+
+        pivot = ArraySearch.findInSortedAndRotatedArray(array, 7);
+        assertEquals(6, pivot);
+
+        pivot = ArraySearch.findInSortedAndRotatedArray(array, 100);
+        assertEquals(-1, pivot);
+
+        array = new int[]{4, 5, 6, 7, 1, 2, 3};
+
+        pivot = ArraySearch.findInSortedAndRotatedArray(array, 1);
+        assertEquals(4, pivot);
+
+        pivot = ArraySearch.findInSortedAndRotatedArray(array, 6);
+        assertEquals(2, pivot);
+
+        pivot = ArraySearch.findInSortedAndRotatedArray(array, 3);
+        assertEquals(6, pivot);
+
+        pivot = ArraySearch.findInSortedAndRotatedArray(array, -10);
+        assertEquals(-1, pivot);
+
+        pivot = ArraySearch.findInSortedAndRotatedArray(array, 200);
+        assertEquals(-1, pivot);
+
+        array = new int[]{9, 15, 24, 100, 2, 3, 4, 5, 6, 7};
+        pivot = ArraySearch.findInSortedAndRotatedArray(array, 2);
+        assertEquals(4, pivot);
+
+        pivot = ArraySearch.findInSortedAndRotatedArray(array, 6);
+        assertEquals(8, pivot);
+
+        pivot = ArraySearch.findInSortedAndRotatedArray(array, 24);
+        assertEquals(2, pivot);
+
     }
 }
