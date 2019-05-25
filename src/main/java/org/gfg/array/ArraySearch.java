@@ -16,4 +16,16 @@ public class ArraySearch {
             return binarySearch(array, midIndex + 1, endIndex, key);
         }
     }
+
+    public static int findPivot(int[] array, int startIndex, int endIndex) {
+        if (startIndex > endIndex) return -1;
+        int midIndex = (startIndex + endIndex) / 2;
+        if (array[midIndex] > array[midIndex + 1]) {
+            return midIndex + 1;
+        } else if (array[midIndex] < array[endIndex]) {
+            return findPivot(array, startIndex, midIndex - 1);
+        } else {
+            return findPivot(array, midIndex + 1, endIndex);
+        }
+    }
 }
