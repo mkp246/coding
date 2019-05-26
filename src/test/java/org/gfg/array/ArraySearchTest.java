@@ -50,6 +50,7 @@ public class ArraySearchTest {
 
     @Test
     @ALT(url = "/find-minimum-element-in-a-sorted-and-rotated-array")
+    @ALT(url = "/find-rotation-count-rotated-sorted-array/")
     @GFGMethod(date = "25-05-2019", algo = "find pivot using binary search in sorted and rotated array")
     public void testFindPivot() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};

@@ -87,4 +87,24 @@ public class ArrayRotation {
             rotateUsingBlockSwap(array, start + blockLength - rotateBy, end, 2 * rotateBy - blockLength);
         }
     }
+
+    public static void rightRotateUsingReversal(int[] array, int rotateBy) {
+        reverseArray(array, 0, array.length - 1);
+        reverseArray(array, 0, rotateBy - 1);
+        reverseArray(array, rotateBy, array.length - 1);
+    }
+
+    public static int maxHammingAmongRotation(int[] array) {
+        int maxHamming = 0;
+        int tempHamming;
+        for (int i = 1; i < array.length; i++) {
+            tempHamming = 0;
+            for (int j = i, k = 0; j < i + array.length; j++, k++) {
+                if (array[j % array.length] != array[k]) tempHamming++;
+            }
+            if (tempHamming > maxHamming) maxHamming = tempHamming;
+            if (maxHamming == array.length) break; //cant be higher than array length
+        }
+        return maxHamming;
+    }
 }
