@@ -107,4 +107,29 @@ public class ArrayRotation {
         }
         return maxHamming;
     }
+
+    /**
+     * idea is to start from end as we are looking in final array.<br/>
+     * and keep track of index from where that index was replaced with just before the that rotation <br/>
+     * do till the the first ranges and we know which initial index(in original array) <br/>
+     * would finally reach our desired index in the end
+     */
+    public static int getElementAtIndexAfterRangeRightRotations(int[] array, int[][] ranges, int index) {
+        int[] range;
+        for (int i = ranges.length - 1; i >= 0; i--) {
+            range = ranges[i];
+            if (isInRange(range[0], range[1], index)) {
+                if (index == range[0]) {
+                    index = range[1];
+                } else {
+                    index--;
+                }
+            }
+        }
+        return array[index];
+    }
+
+    private static boolean isInRange(int lower, int upper, int toCheck) {
+        return lower <= toCheck && toCheck <= upper;
+    }
 }

@@ -2,6 +2,7 @@ package org.gfg.array;
 
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -136,5 +137,15 @@ public class ArrayRotationTest {
         array = new int[]{1, 1, 1, 1, 2, 2, 2};
         result = ArrayRotation.maxHammingAmongRotation(array);
         assertEquals(6, result);
+    }
+
+    @Test
+    @GFGMethod(date = "27-05-2019", algo = "keep track of index where current index would come from just before each rotation", url = "/find-element-given-index-number-rotations/")
+    public void testGetElementAtIndexAfterRangeRightRotations() {
+        int[] array = {1, 2, 3, 4, 5};
+        int[][] ranges = {{0, 2}, {0, 3}};
+        int index = 1;
+        int result = ArrayRotation.getElementAtIndexAfterRangeRightRotations(array, ranges, index);
+        Assert.assertEquals(3, result);
     }
 }
