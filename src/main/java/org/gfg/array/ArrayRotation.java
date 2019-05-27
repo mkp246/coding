@@ -132,4 +132,32 @@ public class ArrayRotation {
     private static boolean isInRange(int lower, int upper, int toCheck) {
         return lower <= toCheck && toCheck <= upper;
     }
+
+    /**
+     * keep track of strictly up and down, ignore equality
+     * both of them can't me greater than 1 at same time
+     * takes care of ascending/descending both
+     */
+    public static boolean isPossibleToSortByRotation(int[] array) {
+        int downCount = 0, upCount = 0;
+        int tempDiff;
+
+        for (int i = 1; i < array.length && (downCount <= 1 || upCount <= 1); i++) {
+            tempDiff = array[i - 1] - array[i];
+            if (tempDiff > 0) {
+                downCount++;
+            } else if (tempDiff < 0) {
+                upCount++;
+            }
+        }
+        
+        tempDiff = array[array.length - 1] - array[0];
+        if (tempDiff > 0) {
+            downCount++;
+        } else if (tempDiff < 0) {
+            upCount++;
+        }
+
+        return (upCount <= 1 || downCount <= 1);
+    }
 }

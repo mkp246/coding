@@ -12,6 +12,8 @@ import java.lang.annotation.Target;
 public @interface GFGMethod {
     String date();
 
+    String desc() default "";
+
     String algo();
 
     String url() default "";

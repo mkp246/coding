@@ -150,4 +150,20 @@ public class ArrayRotationTest {
         int result = ArrayRotation.getElementAtIndexAfterRangeRightRotations(array, ranges, index);
         Assert.assertEquals(3, result);
     }
+
+    @Test
+    @GFGMethod(date = "27-05-2019", desc = "check if possible to sort array by rotation", algo = "keeping track of strict up/down", url = "/check-if-it-is-possible-to-sort-the-array-after-rotating-it/")
+    public void testIsPossibleToSortByRotation() {
+        boolean result = ArrayRotation.isPossibleToSortByRotation(new int[]{2, 3, 1, 2});
+        Assert.assertTrue(result);
+
+        result = ArrayRotation.isPossibleToSortByRotation(new int[]{1, 2, 3, 2});
+        Assert.assertFalse(result);
+
+        result = ArrayRotation.isPossibleToSortByRotation(new int[]{6, 8, 1, 2, 5});
+        Assert.assertTrue(result);
+
+        result = ArrayRotation.isPossibleToSortByRotation(new int[]{5, 2, 1, 8, 6});
+        Assert.assertTrue(result);
+    }
 }
