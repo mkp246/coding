@@ -1,5 +1,6 @@
 package org.gfg.array;
 
+import com.mkp.ALT;
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
 import org.junit.Assert;
@@ -21,6 +22,7 @@ public class ArrayRotationTest {
     }
 
     @Test
+    @ALT(url = "/split-array-add-first-part-end/")
     @GFGMethod(date = "23-05-2019", algo = "rotate by one")
     public void testRotateByOne() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
