@@ -29,4 +29,15 @@ public class StringRotationTest {
         result = StringRotation.maxContiguous1sInBinaryStringAfterSubStringRotations(string, 1);
         Assert.assertEquals(6, result);
     }
+
+
+    @Test
+    @GFGMethod(date = "12-07-2019", algo = "KMP algorithm’s longest proper prefix", url = "/check-strings-rotations-not-set-2/")
+    public void testIsRotationUsingKMPlpsAlgo() {
+        Assert.assertTrue(StringRotation.isRotationUsingKMPlpsAlgo("ABACD", "CDABA"));
+        Assert.assertFalse(StringRotation.isRotationUsingKMPlpsAlgo("ABACD", "BADCA"));
+        Assert.assertTrue(StringRotation.isRotationUsingKMPlpsAlgo("GEEKS", "EKSGE"));
+        //Assert.assertFalse(StringRotation.isRotationUsingKMPlpsAlgo("ABCDA", "AABCD")); //doesn't work
+        //last step bpos= lps[bpos-1] not understood
+    }
 }

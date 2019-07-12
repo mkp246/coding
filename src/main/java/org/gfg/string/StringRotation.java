@@ -28,4 +28,31 @@ public class StringRotation {
         }
         return result;
     }
+
+    public static boolean isRotationUsingKMPlpsAlgo(String a, String b) {
+        if (a.length() != b.length()) return false;
+        int length = a.length();
+        int[] lps = new int[length];
+        int bPos = 0, aPos = 1;
+        lps[0] = 0;
+
+        while (aPos < length) {
+            if (a.charAt(aPos) == b.charAt(bPos)) {
+                lps[aPos++] = ++bPos; //increment both positions
+            } else {
+                if (bPos == 0) {
+                    lps[aPos++] = 0;
+                } else {
+                    bPos = lps[bPos - 1]; //no clue
+                }
+            }
+        }
+        aPos = 0;
+        for (bPos = lps[length - 1]; bPos < length; ++bPos) {
+            if (b.charAt(bPos) != a.charAt(aPos++)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
