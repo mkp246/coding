@@ -1,10 +1,12 @@
 package org.gfg.array;
 
+import com.mkp.ALT;
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
 import org.junit.Assert;
 import org.junit.Test;
 
+@ALT(url = "/amazon-interview-experience/")
 @GFG(date = "11-07-2019", topic = "occurance of element in array", url = "/elements-that-occurred-only-once-in-the-array/", impls = Occurance.class)
 public class OccuranceTest {
 

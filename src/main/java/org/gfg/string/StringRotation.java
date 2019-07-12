@@ -1,4 +1,4 @@
-package org.gfg;
+package org.gfg.string;
 
 import java.util.ArrayList;
 import java.util.Comparator;

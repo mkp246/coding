@@ -1,4 +1,4 @@
-package org.gfg;
+package org.gfg.string;
 
 import com.mkp.GFG;
 import com.mkp.GFGMethod;

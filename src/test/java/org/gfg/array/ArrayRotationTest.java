@@ -64,6 +64,7 @@ public class ArrayRotationTest {
     }
 
     @Test
+    @ALT(url = "/split-the-array-and-add-the-first-part-to-the-end-set-2/")
     @GFGMethod(date = "24-05-19", algo = "using reversal", url = "/program-for-array-rotation-continued-reversal-algorithm")
     public void testRotateUsingReversal() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7};
