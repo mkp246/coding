@@ -32,7 +32,7 @@ public class StringRotationTest {
 
 
     @Test
-    @GFGMethod(date = "12-07-2019", algo = "KMP algorithm’s longest proper prefix", url = "/check-strings-rotations-not-set-2/")
+    @GFGMethod(date = "12-07-2019", algo = "KMP algorithm’s longest proper prefix(lps)", url = "/check-strings-rotations-not-set-2/")
     public void testIsRotationUsingKMPlpsAlgo() {
         Assert.assertTrue(StringRotation.isRotationUsingKMPlpsAlgo("ABACD", "CDABA"));
         Assert.assertFalse(StringRotation.isRotationUsingKMPlpsAlgo("ABACD", "BADCA"));
