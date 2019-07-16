@@ -136,9 +136,17 @@ public class ArrayRearrangeTest {
         array = new int[]{2, 7, 9, 5, 8, 7, 4};
         swaps = ArrayRearrange.minSwapToBringTogether(array, 7);
         Assert.assertEquals(2, swaps);
-        
+
         array = new int[]{2, 7, 9, 5, 8, 7, 4};
         swaps = ArrayRearrange.minSwapToBringTogether(array, 8);
         Assert.assertEquals(1, swaps);
+    }
+
+    @Test
+    @GFGMethod(date = "16-07-2019", algo = "using inbuilt sorting", url = "/rearrange-positive-negative-numbers-using-inbuilt-sort-function/")
+    public void testRearrangeAlternateNegativePositiveUsingInbuiltSort() {
+        Integer[] array = {12, 11, -13, -5, 6, -7, 5, -3, -6};
+        ArrayRearrange.rearrangeAlternatePositiveNegativeUsingInbuiltSort(array);
+        Assert.assertArrayEquals(new Integer[]{-13, -5, -7, -3, -6, 12, 11, 6, 5}, array);
     }
 }

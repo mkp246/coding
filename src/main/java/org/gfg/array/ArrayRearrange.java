@@ -176,11 +176,21 @@ public class ArrayRearrange {
         for (int start = 0, end = count; end < array.length; start++, end++) {
             if (array[start] > lessThanOrEqual) bad--;
             if (array[end] > lessThanOrEqual) bad++;
-            
+
             if (bad < minSwaps) {
                 minSwaps = bad;
             }
         }
         return minSwaps;
+    }
+
+    public static void rearrangeAlternatePositiveNegativeUsingInbuiltSort(Integer[] array) {
+        Arrays.sort(array, (o1, o2) -> {
+            if (o1 <= 0 && o2 > 0) {
+                return -1;
+            } else {
+                return +1;
+            }
+        });
     }
 }
