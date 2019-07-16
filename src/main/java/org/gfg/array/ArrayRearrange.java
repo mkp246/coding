@@ -103,4 +103,51 @@ public class ArrayRearrange {
     public static void swapWithNext(int[] array, int src) {
         swapIndex(array, src, src + 1);
     }
+
+    public static void rearrangeAlternatePositiveNegative(int[] array) {
+        //segregate negative at start using QuickSort partition 
+        int negativesUptoIndex = -1;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < 0) {
+                swapIndex(array, i, ++negativesUptoIndex);
+            }
+        }
+        //swap alternate negatives with positives
+        int pos = negativesUptoIndex + 1;
+        int neg = 0;
+        while (neg < pos && pos < array.length && array[neg] < 0) {
+            swapIndex(array, neg, pos);
+            neg += 2;
+            pos++;
+        }
+    }
+
+    public static void rearrangeAlternateNegativePositiveUsingSubarrayRightRotate(int[] array) {
+        int outOfOrder = -1;
+        for (int index = 0; index < array.length; index++) {
+            if (outOfOrder >= 0) {
+                if ((array[index] >= 0 && array[outOfOrder] < 0) || array[index] < 0 && array[outOfOrder] >= 0) {
+                    rotateRight(array, outOfOrder, index);
+                    if (index - outOfOrder > 2) {
+                        outOfOrder += 2;
+                    } else {
+                        outOfOrder = -1;
+                    }
+                }
+            }
+            if (outOfOrder == -1) {
+                if ((array[index] >= 0 && index % 2 == 0) || (array[index] < 0 && index % 2 == 1)) {
+                    outOfOrder = index;
+                }
+            }
+        }
+    }
+
+    private static void rotateRight(int[] array, int start, int end) {
+        int temp = array[end];
+        for (int i = end; i > start; i--) {
+            array[i] = array[i - 1];
+        }
+        array[start] = temp;
+    }
 }

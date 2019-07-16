@@ -80,4 +80,25 @@ public class ArrayRearrangeTest {
         ArrayRearrange.rearrangeArrayInIncreasingDecreasingOrderBySwappingAdjacentElement(array);
         Assert.assertArrayEquals(new int[]{1, 2, 1, 5, 4, 8, 6, 8}, array);
     }
+
+
+    @Test
+    @GFGMethod(date = "16-07-2019", algo = "quick sort partition segregate and replace alternate negative(order not preserved)", url = "/rearrange-positive-and-negative-numbers-publish/")
+    public void testRearrangeAlternatePositiveNegative() {
+        int[] array = {-1, 2, -3, 4, 5, 6, -7, 8, 9};
+        ArrayRearrange.rearrangeAlternatePositiveNegative(array);
+        Assert.assertArrayEquals(new int[]{4, -3, 5, -1, 6, -7, 2, 8, 9}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "16-07-2019", algo = "find out of order element and right rotate subarray till next opposite sign element(preserve order)", url = "/rearrange-array-alternating-positive-negative-items-o1-extra-space/")
+    public void testRearrangeAlternateNegativePositiveUsingSubarrayRightRotate() {
+        int[] array = {1, 2, 3, -4, -1, 4};
+        ArrayRearrange.rearrangeAlternateNegativePositiveUsingSubarrayRightRotate(array);
+        Assert.assertArrayEquals(new int[]{-4, 1, -1, 2, 3, 4}, array);
+
+        array = new int[]{-5, -2, 5, 2, 4, 7, 1, 8, 0, -8};
+        ArrayRearrange.rearrangeAlternateNegativePositiveUsingSubarrayRightRotate(array);
+        Assert.assertArrayEquals(new int[]{-5, 5, -2, 2, -8, 4, 7, 1, 8, 0}, array);
+    }
 }
