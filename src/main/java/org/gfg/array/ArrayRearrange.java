@@ -150,4 +150,37 @@ public class ArrayRearrange {
         }
         array[start] = temp;
     }
+
+    public static void moveAllZerosToEnd(int[] array) {
+        int count = -1;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > 0) {
+                array[++count] = array[i];
+            }
+        }
+        for (int i = count + 1; i < array.length; i++) {
+            array[i] = 0;
+        }
+    }
+
+    public static int minSwapToBringTogether(int[] array, int lessThanOrEqual) {
+        int count = 0;
+        for (int element : array) {
+            if (element <= lessThanOrEqual) count++;
+        }
+        int bad = 0;
+        for (int i = 0; i < count; i++) {
+            if (array[i] > lessThanOrEqual) bad++;
+        }
+        int minSwaps = bad;
+        for (int start = 0, end = count; end < array.length; start++, end++) {
+            if (array[start] > lessThanOrEqual) bad--;
+            if (array[end] > lessThanOrEqual) bad++;
+            
+            if (bad < minSwaps) {
+                minSwaps = bad;
+            }
+        }
+        return minSwaps;
+    }
 }

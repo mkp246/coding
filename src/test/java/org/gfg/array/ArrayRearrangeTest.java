@@ -1,6 +1,7 @@
 package org.gfg.array;
 
 
+import com.mkp.ALT;
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
 import org.junit.Assert;
@@ -100,5 +101,44 @@ public class ArrayRearrangeTest {
         array = new int[]{-5, -2, 5, 2, 4, 7, 1, 8, 0, -8};
         ArrayRearrange.rearrangeAlternateNegativePositiveUsingSubarrayRightRotate(array);
         Assert.assertArrayEquals(new int[]{-5, 5, -2, 2, -8, 4, 7, 1, 8, 0}, array);
+    }
+
+    @Test
+    @ALT(url = "/move-zeroes-end-array-set-2-using-single-traversal/", desc = "swapping element")
+    @GFGMethod(date = "16-07-2019", algo = "move all zeros to end", url = "/move-zeroes-end-array/")
+    public void testMoveAllZerosToEnd() {
+        int[] array = {1, 2, 0, 4, 3, 0, 5, 0};
+        ArrayRearrange.moveAllZerosToEnd(array);
+        Assert.assertArrayEquals(new int[]{1, 2, 4, 3, 5, 0, 0, 0}, array);
+
+
+        array = new int[]{1, 2, 0, 0, 0, 3, 6};
+        ArrayRearrange.moveAllZerosToEnd(array);
+        Assert.assertArrayEquals(new int[]{1, 2, 3, 6, 0, 0, 0}, array);
+
+        array = new int[]{1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9};
+        ArrayRearrange.moveAllZerosToEnd(array);
+        Assert.assertArrayEquals(new int[]{1, 9, 8, 4, 2, 7, 6, 9, 0, 0, 0, 0}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "16-07-2019", algo = "using 2 pointer and sliding window", url = "/minimum-swaps-required-bring-elements-less-equal-k-together/")
+    public void testMinSwapToBringTogether() {
+        int[] array = {2, 1, 5, 6, 3};
+        int swaps = ArrayRearrange.minSwapToBringTogether(array, 3);
+        Assert.assertEquals(1, swaps);
+
+
+        array = new int[]{2, 7, 9, 5, 8, 7, 4};
+        swaps = ArrayRearrange.minSwapToBringTogether(array, 5);
+        Assert.assertEquals(2, swaps);
+
+        array = new int[]{2, 7, 9, 5, 8, 7, 4};
+        swaps = ArrayRearrange.minSwapToBringTogether(array, 7);
+        Assert.assertEquals(2, swaps);
+        
+        array = new int[]{2, 7, 9, 5, 8, 7, 4};
+        swaps = ArrayRearrange.minSwapToBringTogether(array, 8);
+        Assert.assertEquals(1, swaps);
     }
 }
