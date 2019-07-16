@@ -1,5 +1,6 @@
 package org.gfg.array;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class ArrayRearrange {
@@ -60,5 +61,46 @@ public class ArrayRearrange {
             start++;
             end--;
         }
+    }
+
+    public static void rearrangeArrayInIncreasingDecreasingOrderUsingSorting(int[] array) {
+        int[] temp = new int[array.length];
+        int oddPos = array.length / 2;
+        int evenPos = array.length - oddPos;
+
+        System.arraycopy(array, 0, temp, 0, array.length);
+        Arrays.sort(temp);
+        //copying even part in order will also work instead of reverse order
+        for (int i = 0; i < evenPos; i++) {
+            array[2 * i] = temp[evenPos - 1 - i];
+        }
+
+        for (int i = 0; i < oddPos; i++) {
+            array[2 * i + 1] = temp[i + evenPos];
+        }
+    }
+
+    public static void rearrangeArrayInIncreasingDecreasingOrderBySwappingAdjacentElement(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            if (i % 2 == 0) { //even position, next element should increase
+                if (array[i] > array[i + 1]) {
+                    swapWithNext(array, i);
+                }
+            } else {
+                if (array[i] < array[i + 1]) {
+                    swapWithNext(array, i);
+                }
+            }
+        }
+    }
+
+    public static void swapIndex(int[] array, int src, int dest) {
+        int temp = array[src];
+        array[src] = array[dest];
+        array[dest] = temp;
+    }
+
+    public static void swapWithNext(int[] array, int src) {
+        swapIndex(array, src, src + 1);
     }
 }

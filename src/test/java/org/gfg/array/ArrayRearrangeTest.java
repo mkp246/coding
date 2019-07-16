@@ -56,4 +56,28 @@ public class ArrayRearrangeTest {
         ArrayRearrange.reverseArray(array, 0, array.length - 1);
         Assert.assertArrayEquals(new int[]{2, 1, 5, 4}, array);
     }
+
+    @Test
+    @GFGMethod(date = "16-07-2019", algo = "rearrange array in increasing decreasing order by sorting", url = "/rearrange-array-arri-arrj-even-arri/")
+    public void testRearrangeArrayInIncreasingDecreasingOrderBySorting() {
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        ArrayRearrange.rearrangeArrayInIncreasingDecreasingOrderUsingSorting(array);
+        Assert.assertArrayEquals(new int[]{4, 5, 3, 6, 2, 7, 1}, array);
+
+        array = new int[]{1, 2, 1, 4, 5, 6, 8, 8};
+        ArrayRearrange.rearrangeArrayInIncreasingDecreasingOrderUsingSorting(array);
+        Assert.assertArrayEquals(new int[]{4, 5, 2, 6, 1, 8, 1, 8}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "16-07-2019", algo = "rearrange array in increasing decreasing order by swapping with next", url = "/rearrange-array-arri-arrj-even-arri/")
+    public void testRearrangeArrayInIncreasingDecreasingOrderBySwappingAdjacentElement() {
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        ArrayRearrange.rearrangeArrayInIncreasingDecreasingOrderBySwappingAdjacentElement(array);
+        Assert.assertArrayEquals(new int[]{1, 3, 2, 5, 4, 7, 6}, array);
+
+        array = new int[]{1, 2, 1, 4, 5, 6, 8, 8};
+        ArrayRearrange.rearrangeArrayInIncreasingDecreasingOrderBySwappingAdjacentElement(array);
+        Assert.assertArrayEquals(new int[]{1, 2, 1, 5, 4, 8, 6, 8}, array);
+    }
 }
