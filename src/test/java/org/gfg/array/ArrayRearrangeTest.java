@@ -59,6 +59,7 @@ public class ArrayRearrangeTest {
     }
 
     @Test
+    @ALT(url = "/rearrange-array-such-that-even-positioned-are-greater-than-odd/")
     @GFGMethod(date = "16-07-2019", algo = "rearrange array in increasing decreasing order by sorting", url = "/rearrange-array-arri-arrj-even-arri/")
     public void testRearrangeArrayInIncreasingDecreasingOrderBySorting() {
         int[] array = {1, 2, 3, 4, 5, 6, 7};
@@ -148,5 +149,17 @@ public class ArrayRearrangeTest {
         Integer[] array = {12, 11, -13, -5, 6, -7, 5, -3, -6};
         ArrayRearrange.rearrangeAlternatePositiveNegativeUsingInbuiltSort(array);
         Assert.assertArrayEquals(new Integer[]{-13, -5, -7, -3, -6, 12, 11, 6, 5}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "17-07-2019", algo = "rearrange smallest, largest, 2nd smallest, 2nd largest", url = "/rearrange-array-order-smallest-largest-2nd-smallest-2nd-largest/")
+    public void testRearrangeMinMax() {
+        int[] array = {5, 8, 1, 4, 2, 9, 3, 7, 6};
+        int[] result = ArrayRearrange.rearrangeMinMax(array);
+        Assert.assertArrayEquals(new int[]{1, 9, 2, 8, 3, 7, 4, 6, 5}, result);
+
+        array = new int[]{1, 2, 3, 4};
+        result = ArrayRearrange.rearrangeMinMax(array);
+        Assert.assertArrayEquals(new int[]{1, 4, 2, 3}, result);
     }
 }

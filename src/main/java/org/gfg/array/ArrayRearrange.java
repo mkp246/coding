@@ -193,4 +193,18 @@ public class ArrayRearrange {
             }
         });
     }
+
+    public static int[] rearrangeMinMax(int[] array) {
+        Arrays.sort(array);
+        int[] temp = new int[array.length];
+        int i, j;
+        for (i = 0, j = array.length - 1; i < j; i++, j--) {
+            temp[2 * i] = array[i];
+            temp[2 * i + 1] = array[j];
+        }
+        if (i == j) {
+            temp[2 * i] = array[i];
+        }
+        return temp;
+    }
 }
