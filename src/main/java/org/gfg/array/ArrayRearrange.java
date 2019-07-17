@@ -283,4 +283,15 @@ public class ArrayRearrange {
             array[i]--;
         }
     }
+
+    public static void rearrangeArrIJBecomesArrJIUsingQuotientAndReminder(int[] array) {
+        int targetIndex;
+        for (int i = 0; i < array.length; i++) {
+            targetIndex = array[i] % array.length;
+            array[targetIndex] += i * array.length;
+        }
+        for (int i = 0; i < array.length; i++) {
+            array[i] /= array.length;
+        }
+    }
 }

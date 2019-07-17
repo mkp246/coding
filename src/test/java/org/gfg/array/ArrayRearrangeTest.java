@@ -270,4 +270,27 @@ public class ArrayRearrangeTest {
         ArrayRearrange.rearrangeArrIJBecomesArrJIUsingSwapForMultiCycle(array);
         Assert.assertArrayEquals(new int[]{3, 2, 1, 0}, array);
     }
+
+    @Test
+    @GFGMethod(date = "17-07-2019",
+            algo = "using quotient and reminder to store new and old value respectively",
+            desc = "Rearrange array such that if arr[i] is j then arr[j] becomes i ",
+            url = "/rearrange-array-arrj-becomes-arri-j/")
+    public void testRearrangeArrIJBecomesArrJIUsingQuotientAndReminder() {
+        int[] array = {1, 3, 0, 2};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingQuotientAndReminder(array);
+        Assert.assertArrayEquals(new int[]{2, 0, 3, 1}, array);
+
+        array = new int[]{2, 0, 1, 4, 5, 3};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingQuotientAndReminder(array);
+        Assert.assertArrayEquals(new int[]{1, 2, 0, 5, 3, 4}, array);
+
+        array = new int[]{0, 1, 2, 3};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingQuotientAndReminder(array);
+        Assert.assertArrayEquals(new int[]{0, 1, 2, 3}, array);
+
+        array = new int[]{3, 2, 1, 0};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingQuotientAndReminder(array);
+        Assert.assertArrayEquals(new int[]{3, 2, 1, 0}, array);
+    }
 }
