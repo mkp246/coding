@@ -152,6 +152,7 @@ public class ArrayRearrangeTest {
     }
 
     @Test
+    @ALT(url = "/rearrange-array-maximum-minimum-form/")
     @GFGMethod(date = "17-07-2019", algo = "rearrange smallest, largest, 2nd smallest, 2nd largest", url = "/rearrange-array-order-smallest-largest-2nd-smallest-2nd-largest/")
     public void testRearrangeMinMax() {
         int[] array = {5, 8, 1, 4, 2, 9, 3, 7, 6};
