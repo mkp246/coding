@@ -162,4 +162,44 @@ public class ArrayRearrangeTest {
         result = ArrayRearrange.rearrangeMinMax(array);
         Assert.assertArrayEquals(new int[]{1, 4, 2, 3}, result);
     }
+
+    @Test
+    @GFGMethod(date = "17-07-2019", algo = "double first element if next non zero consecutive is same and push zeros to end", url = "/double-first-element-move-zero-end/")
+    public void testDoubleFirstElementAndPushZerosToEnd() {
+        int[] array = {2, 2, 0, 4, 0, 8};
+        ArrayRearrange.doubleFirstElementAndPushZerosToEnd(array);
+        Assert.assertArrayEquals(new int[]{4, 4, 8, 0, 0, 0}, array);
+
+        array = new int[]{0, 2, 2, 2, 0, 6, 6, 0, 0, 8};
+        ArrayRearrange.doubleFirstElementAndPushZerosToEnd(array);
+        Assert.assertArrayEquals(new int[]{4, 2, 12, 8, 0, 0, 0, 0, 0, 0}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "17-07-2019", algo = "Reorder an array according to given indexes using temp array", url = "/reorder-a-array-according-to-given-indexes/")
+    public void testReorderAccordingToGivenIndexUsingTempArray() {
+        int[] array = {10, 11, 12};
+        int[] index = {1, 0, 2};
+        ArrayRearrange.reorderAccordingToGivenIndexUsingTempArray(array, index);
+        Assert.assertArrayEquals(new int[]{11, 10, 12}, array);
+
+        array = new int[]{50, 40, 70, 60, 90};
+        index = new int[]{3, 0, 4, 1, 2};
+        ArrayRearrange.reorderAccordingToGivenIndexUsingTempArray(array, index);
+        Assert.assertArrayEquals(new int[]{40, 60, 90, 50, 70}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "17-07-2019", algo = "Reorder an array according to given indexes using swapping", url = "/reorder-a-array-according-to-given-indexes/")
+    public void testReorderAccordingToGivenIndexUsingSwapping() {
+        int[] array = {10, 11, 12};
+        int[] index = {1, 0, 2};
+        ArrayRearrange.reorderAccordingToGivenIndexUsingSwapping(array, index);
+        Assert.assertArrayEquals(new int[]{11, 10, 12}, array);
+
+        array = new int[]{50, 40, 70, 60, 90};
+        index = new int[]{3, 0, 4, 1, 2};
+        ArrayRearrange.reorderAccordingToGivenIndexUsingSwapping(array, index);
+        Assert.assertArrayEquals(new int[]{40, 60, 90, 50, 70}, array);
+    }
 }

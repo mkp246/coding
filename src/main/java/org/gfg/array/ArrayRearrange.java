@@ -207,4 +207,34 @@ public class ArrayRearrange {
         }
         return temp;
     }
+
+    public static void doubleFirstElementAndPushZerosToEnd(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] != 0 && (array[i] == array[i + 1])) {
+                array[i] *= 2;
+                array[i + 1] = 0;
+                i++;// as next element is set to zero, no need to check again  
+            }
+        }
+        moveAllZerosToEnd(array);
+    }
+
+    public static void reorderAccordingToGivenIndexUsingTempArray(int[] array, int[] index) {
+        int[] temp = new int[array.length];
+        for (int i = 0; i < index.length; i++) {
+            temp[index[i]] = array[i];
+        }
+        System.arraycopy(temp, 0, array, 0, array.length);
+    }
+
+    public static void reorderAccordingToGivenIndexUsingSwapping(int[] array, int[] index) {
+        for (int i = 0; i < index.length; ) {
+            if (index[i] == i) {
+                i++;
+            } else {
+                swapIndex(array, index[i], i);
+                swapIndex(index, index[i], i);
+            }
+        }
+    }
 }

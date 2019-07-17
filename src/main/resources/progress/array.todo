@@ -6,5 +6,6 @@ https://www.geeksforgeeks.org/generating-numbers-that-are-divisor-of-their-right
 ======
 ===https://www.geeksforgeeks.org/array-data-structure/array-rearrangement/===
 https://www.geeksforgeeks.org/rearrange-positive-negative-numbers-using-inbuilt-sort-function/  (using merging)
+https://www.geeksforgeeks.org/reorder-a-array-according-to-given-indexes/  (using heap sort on index by modifying swap function to swap elem of array along with index)
 
 ===
