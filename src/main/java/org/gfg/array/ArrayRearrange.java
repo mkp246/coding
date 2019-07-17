@@ -237,4 +237,50 @@ public class ArrayRearrange {
             }
         }
     }
+
+    public static void rearrangeArrIJBecomesArrJIUsingTempArray(int[] array) {
+        int[] temp = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            temp[array[i]] = i;
+        }
+        System.arraycopy(temp, 0, array, 0, array.length);
+    }
+
+
+    public static void rearrangeArrIJBecomesArrJIUsingSwapForSingleCycle(int[] array) {
+        int index = 0, value = array[0];
+        int tempValue;
+        while (value != 0) {
+            tempValue = array[value];
+            array[value] = index;
+
+            index = value;
+            value = tempValue;
+        }
+        array[0] = index;
+    }
+
+    public static void rearrangeArrIJBecomesArrJIUsingSwapForMultiCycle(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i]++;
+        }
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > 0) {
+                int index = i, value = array[i] - 1;
+                int tempValue;
+                while (value != i) {
+                    tempValue = array[value] - 1;
+                    array[value] = -(index + 1);
+
+                    index = value;
+                    value = tempValue;
+                }
+                array[i] = -(index + 1);
+            }
+        }
+        for (int i = 0; i < array.length; i++) {
+            array[i] *= -1;
+            array[i]--;
+        }
+    }
 }

@@ -202,4 +202,72 @@ public class ArrayRearrangeTest {
         ArrayRearrange.reorderAccordingToGivenIndexUsingSwapping(array, index);
         Assert.assertArrayEquals(new int[]{40, 60, 90, 50, 70}, array);
     }
+
+    @Test
+    @GFGMethod(date = "17-07-2019", algo = "using temp array", desc = "Rearrange array such that if arr[i] is j then arr[j] becomes i ", url = "/rearrange-array-arrj-becomes-arri-j/")
+    public void testRearrangeArrIJBecomesArrJIUsingTempArray() {
+        int[] array = {1, 3, 0, 2};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingTempArray(array);
+        Assert.assertArrayEquals(new int[]{2, 0, 3, 1}, array);
+
+        array = new int[]{2, 0, 1, 4, 5, 3};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingTempArray(array);
+        Assert.assertArrayEquals(new int[]{1, 2, 0, 5, 3, 4}, array);
+
+        array = new int[]{0, 1, 2, 3};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingTempArray(array);
+        Assert.assertArrayEquals(new int[]{0, 1, 2, 3}, array);
+
+        array = new int[]{3, 2, 1, 0};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingTempArray(array);
+        Assert.assertArrayEquals(new int[]{3, 2, 1, 0}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "17-07-2019", algo = "(single cycle only) store target permutation before replacing and apply on target till reach start", desc = "Rearrange array such that if arr[i] is j then arr[j] becomes i ", url = "/rearrange-array-arrj-becomes-arri-j/")
+    public void testRearrangeArrIJBecomesArrJIUsingSwapForSingleCycle() {
+        int[] array = {1, 3, 0, 2};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingSwapForSingleCycle(array);
+        Assert.assertArrayEquals(new int[]{2, 0, 3, 1}, array);
+
+        array = new int[]{2, 0, 1, 4, 5, 3};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingSwapForSingleCycle(array);
+        try {
+            Assert.assertArrayEquals(new int[]{1, 2, 0, 5, 3, 4}, array);
+            Assert.fail("should not work for multi cycle be equal");
+        } catch (AssertionError e) {
+            Assert.assertTrue(true);
+        }
+
+        array = new int[]{0, 1, 2, 3};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingSwapForSingleCycle(array);
+        Assert.assertArrayEquals(new int[]{0, 1, 2, 3}, array);
+
+        array = new int[]{3, 2, 1, 0};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingSwapForSingleCycle(array);
+        Assert.assertArrayEquals(new int[]{3, 2, 1, 0}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "17-07-2019",
+            algo = "(multi cycle)(add +1 to all as 0=-0)(invert sign of modified element) apply single loop logic, then skips all modified and apply again",
+            desc = "Rearrange array such that if arr[i] is j then arr[j] becomes i ",
+            url = "/rearrange-array-arrj-becomes-arri-j/")
+    public void testRearrangeArrIJBecomesArrJIUsingSwapForMultiCycle() {
+        int[] array = {1, 3, 0, 2};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingSwapForMultiCycle(array);
+        Assert.assertArrayEquals(new int[]{2, 0, 3, 1}, array);
+
+        array = new int[]{2, 0, 1, 4, 5, 3};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingSwapForMultiCycle(array);
+        Assert.assertArrayEquals(new int[]{1, 2, 0, 5, 3, 4}, array);
+
+        array = new int[]{0, 1, 2, 3};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingSwapForMultiCycle(array);
+        Assert.assertArrayEquals(new int[]{0, 1, 2, 3}, array);
+
+        array = new int[]{3, 2, 1, 0};
+        ArrayRearrange.rearrangeArrIJBecomesArrJIUsingSwapForMultiCycle(array);
+        Assert.assertArrayEquals(new int[]{3, 2, 1, 0}, array);
+    }
 }
