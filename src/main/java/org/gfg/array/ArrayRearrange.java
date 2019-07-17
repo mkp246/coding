@@ -318,4 +318,11 @@ public class ArrayRearrange {
             }
         }
     }
+
+    public static void sortArrayInWaveForm(int[] array) {
+        Arrays.sort(array);
+        for (int i = 0; i < array.length - 1; i += 2) {
+            swapIndex(array, i, i + 1);
+        }
+    }
 }

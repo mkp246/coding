@@ -72,6 +72,7 @@ public class ArrayRearrangeTest {
     }
 
     @Test
+    @ALT(url = "rearrange-array-even-index-elements-smaller-odd-index-elements-greater/")
     @GFGMethod(date = "16-07-2019", algo = "rearrange array in increasing decreasing order by swapping with next", url = "/rearrange-array-arri-arrj-even-arri/")
     public void testRearrangeArrayInIncreasingDecreasingOrderBySwappingAdjacentElement() {
         int[] array = {1, 2, 3, 4, 5, 6, 7};
@@ -325,5 +326,29 @@ public class ArrayRearrangeTest {
         array = new int[]{-1, 2, -3, 4, 5, 6, -7, 8, 9};
         ArrayRearrange.moveAllNegativeToStartPositiveToEnd(array);
         Assert.assertArrayEquals(new int[]{-1, -3, -7, 4, 5, 6, 2, 8, 9}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "18-07-2019", algo = "sort asc then swap with adjacent", desc = "dec inc order", url = "/sort-array-wave-form-2/")
+    public void testSortArrayInWaveForm() {
+        int[] array = {10, 5, 6, 3, 2, 20, 100, 80};
+        ArrayRearrange.sortArrayInWaveForm(array);
+        Assert.assertArrayEquals(new int[]{3, 2, 6, 5, 20, 10, 100, 80}, array);
+
+        array = new int[]{20, 10, 8, 6, 4, 2};
+        ArrayRearrange.sortArrayInWaveForm(array);
+        Assert.assertArrayEquals(new int[]{4, 2, 8, 6, 20, 10}, array);
+
+        array = new int[]{2, 4, 6, 8, 10, 20};
+        ArrayRearrange.sortArrayInWaveForm(array);
+        Assert.assertArrayEquals(new int[]{4, 2, 8, 6, 20, 10}, array);
+
+        array = new int[]{3, 6, 5, 10, 7, 20};
+        ArrayRearrange.sortArrayInWaveForm(array);
+        Assert.assertArrayEquals(new int[]{5, 3, 7, 6, 20, 10}, array);
+
+        array = new int[]{10, 90, 49, 2, 1, 5, 23};
+        ArrayRearrange.sortArrayInWaveForm(array);
+        Assert.assertArrayEquals(new int[]{2, 1, 10, 5, 49, 23, 90}, array);
     }
 }
