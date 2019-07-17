@@ -294,4 +294,19 @@ public class ArrayRearrange {
             array[i] /= array.length;
         }
     }
+
+    public static void rearrangeMaxMinUsingQuotientAndReminder(int[] array) {
+        int maxElement = array[array.length - 1] + 1;
+        int i, j;
+        for (i = 0, j = array.length - 1; i < j; i++, j--) {
+            array[2 * i] += (array[j] % maxElement) * maxElement;
+            array[2 * i + 1] += (array[i] % maxElement) * maxElement;
+        }
+        if (i == j) {
+            array[2 * i] += (array[j] % maxElement) * maxElement;
+        }
+        for (i = 0; i < array.length; i++) {
+            array[i] /= maxElement;
+        }
+    }
 }

@@ -294,4 +294,23 @@ public class ArrayRearrangeTest {
         ArrayRearrange.rearrangeArrIJBecomesArrJIUsingQuotientAndReminder(array);
         Assert.assertArrayEquals(new int[]{3, 2, 1, 0}, array);
     }
+
+    @Test
+    @GFGMethod(date = "17-07-2019",
+            algo = "using quotient and reminder to store new and old value respectively",
+            desc = "max, min, 2nd max, 2nd min ... sorted array",
+            url = "/rearrange-array-maximum-minimum-form-set-2-o1-extra-space/")
+    public void testRearrangeMaxMinUsingQuotientAndReminder() {
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        ArrayRearrange.rearrangeMaxMinUsingQuotientAndReminder(array);
+        Assert.assertArrayEquals(new int[]{7, 1, 6, 2, 5, 3, 4}, array);
+
+        array = new int[]{1, 2, 3, 4, 5, 6};
+        ArrayRearrange.rearrangeMaxMinUsingQuotientAndReminder(array);
+        Assert.assertArrayEquals(new int[]{6, 1, 5, 2, 4, 3}, array);
+
+        array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        ArrayRearrange.rearrangeMaxMinUsingQuotientAndReminder(array);
+        Assert.assertArrayEquals(new int[]{9, 1, 8, 2, 7, 3, 6, 4, 5}, array);
+    }
 }
