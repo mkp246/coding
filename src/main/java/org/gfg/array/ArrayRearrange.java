@@ -309,4 +309,13 @@ public class ArrayRearrange {
             array[i] /= maxElement;
         }
     }
+
+    public static void moveAllNegativeToStartPositiveToEnd(int[] array) {
+        int negPos = -1;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < 0) {
+                swapIndex(array, i, ++negPos);
+            }
+        }
+    }
 }

@@ -313,4 +313,17 @@ public class ArrayRearrangeTest {
         ArrayRearrange.rearrangeMaxMinUsingQuotientAndReminder(array);
         Assert.assertArrayEquals(new int[]{9, 1, 8, 2, 7, 3, 6, 4, 5}, array);
     }
+
+    @Test
+    @GFGMethod(date = "17-07-2019", algo = "quick sort partition", desc = "move all neg to start, pos to end, order not matter",
+            url = "/move-negative-numbers-beginning-positive-end-constant-extra-space/")
+    public void testMoveAllNegativeToStartPositiveToEnd() {
+        int[] array = new int[]{-12, 11, -13, -5, 6, -7, 5, -3, -6};
+        ArrayRearrange.moveAllNegativeToStartPositiveToEnd(array);
+        Assert.assertArrayEquals(new int[]{-12, -13, -5, -7, -3, -6, 5, 6, 11}, array);
+
+        array = new int[]{-1, 2, -3, 4, 5, 6, -7, 8, 9};
+        ArrayRearrange.moveAllNegativeToStartPositiveToEnd(array);
+        Assert.assertArrayEquals(new int[]{-1, -3, -7, 4, 5, 6, 2, 8, 9}, array);
+    }
 }
