@@ -371,4 +371,13 @@ public class ArrayRearrangeTest {
         ArrayRearrange.rearrangePosAtEvenNegAtOddUsingSwapWithNextDefective(array);
         Assert.assertArrayEquals(new int[]{1, -3, 5, -3, 6, 6, 7, -4, 9, 10}, array);
     }
+
+    @Test
+    @GFGMethod(date = "18-07-2019", algo = "keep track of prev element", desc = "replace elem with mult of prev and next, for start/end prev/next is same as element",
+            url = "/replace-every-array-element-by-multiplication-of-previous-and-next/")
+    public void testReplaceWithMultOfPreviousAndNext() {
+        int[] array = {2, 3, 4, 5, 6};
+        ArrayRearrange.replaceWithMultOfPreviousAndNext(array);
+        Assert.assertArrayEquals(new int[]{6, 8, 15, 24, 30}, array);
+    }
 }

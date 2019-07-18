@@ -364,4 +364,15 @@ public class ArrayRearrange {
             }
         }
     }
+
+    public static void replaceWithMultOfPreviousAndNext(int[] array) {
+        int prev = array[0], temPrev;
+        array[0] *= array[1];
+        for (int i = 1; i < array.length - 1; i++) {
+            temPrev = array[i];
+            array[i] = prev * array[i + 1];
+            prev = temPrev;
+        }
+        array[array.length - 1] *= prev;
+    }
 }
