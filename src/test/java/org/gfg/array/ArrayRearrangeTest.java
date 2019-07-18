@@ -316,7 +316,8 @@ public class ArrayRearrangeTest {
     }
 
     @Test
-    @GFGMethod(date = "17-07-2019", algo = "quick sort partition", desc = "move all neg to start, pos to end, order not matter",
+    @ALT(desc = "quick sort lumuto partition", url = "/segregate-even-and-odd-numbers/")
+    @GFGMethod(date = "17-07-2019", algo = "quick sort partition(Lumuto partition)", desc = "move all neg to start, pos to end, order not matter",
             url = "/move-negative-numbers-beginning-positive-end-constant-extra-space/")
     public void testMoveAllNegativeToStartPositiveToEnd() {
         int[] array = new int[]{-12, 11, -13, -5, 6, -7, 5, -3, -6};
@@ -387,5 +388,32 @@ public class ArrayRearrangeTest {
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8};
         ArrayRearrange.shuffleArrayUsingFisherYatesAlgorithm(array);
         Assert.assertEquals(8, array.length);
+    }
+
+    @Test
+    @ALT(desc = "dutch national flag problem", url = "http://www.csse.monash.edu.au/~lloyd/tildeAlgDS/Sort/Flag/")
+    @GFGMethod(date = "18-07-2019", algo = "keep index at start, end, (find -ve at start, pos at end, swap)till start<end",
+            url = "/segregate-even-and-odd-numbers/")
+    public void testSegregateEvenAndOdd() {
+        int[] array = {12, 34, 45, 9, 8, 90, 3};
+        ArrayRearrange.segregateEvenAndOdd(array);
+        Assert.assertArrayEquals(new int[]{12, 34, 90, 8, 9, 45, 3}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "18-07-2019", algo = "keep index at start, end, traverse array if even put ar start, if odd put at end",
+            url = "/segregate-even-odd-set-2/")
+    public void testSegregateEvenAndOddUsingTempArray() {
+        int[] array = {12, 34, 45, 9, 8, 90, 3};
+        ArrayRearrange.segregateEvenAndOddUsingTempArray(array);
+        Assert.assertArrayEquals(new int[]{12, 34, 8, 90, 3, 9, 45}, array);
+
+        array = new int[]{1, 9, 5, 3, 2, 6, 7, 11};
+        ArrayRearrange.segregateEvenAndOddUsingTempArray(array);
+        Assert.assertArrayEquals(new int[]{2, 6, 11, 7, 3, 5, 9, 1}, array);
+
+        array = new int[]{1, 3, 2, 4, 7, 6, 9, 10};
+        ArrayRearrange.segregateEvenAndOddUsingTempArray(array);
+        Assert.assertArrayEquals(new int[]{2, 4, 6, 10, 9, 7, 3, 1}, array);
     }
 }

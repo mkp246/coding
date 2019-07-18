@@ -383,4 +383,34 @@ public class ArrayRearrange {
             swapIndex(array, i, random.nextInt(i + 1));
         }
     }
+
+    public static void segregateEvenAndOdd(int[] array) {
+        int left = 0, right = array.length - 1;
+        while (left < right) {
+            while (left < right && array[left] % 2 == 0) {
+                left++;
+            }
+            while (left < right && array[right] % 2 == 1) {
+                right--;
+            }
+            if (left < right) {
+                swapIndex(array, left, right);
+                left++;
+                right--;
+            }
+        }
+    }
+
+    public static void segregateEvenAndOddUsingTempArray(int[] array) {
+        int[] temp = new int[array.length];
+        int start = 0, end = array.length - 1;
+        for (int element : array) {
+            if (element % 2 == 0) {
+                temp[start++] = element;
+            } else {
+                temp[end--] = element;
+            }
+        }
+        System.arraycopy(temp, 0, array, 0, array.length);
+    }
 }
