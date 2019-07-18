@@ -380,4 +380,12 @@ public class ArrayRearrangeTest {
         ArrayRearrange.replaceWithMultOfPreviousAndNext(array);
         Assert.assertArrayEquals(new int[]{6, 8, 15, 24, 30}, array);
     }
+
+    @Test
+    @GFGMethod(date = "18-07-2019", algo = "fisher yates shuffling", url = "/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/")
+    public void testShuffleArrayUsingFisherYatesAlgorithm() {
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8};
+        ArrayRearrange.shuffleArrayUsingFisherYatesAlgorithm(array);
+        Assert.assertEquals(8, array.length);
+    }
 }

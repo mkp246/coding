@@ -2,6 +2,7 @@ package org.gfg.array;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Random;
 
 public class ArrayRearrange {
 
@@ -374,5 +375,12 @@ public class ArrayRearrange {
             prev = temPrev;
         }
         array[array.length - 1] *= prev;
+    }
+
+    public static void shuffleArrayUsingFisherYatesAlgorithm(int[] array) {
+        Random random = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            swapIndex(array, i, random.nextInt(i + 1));
+        }
     }
 }
