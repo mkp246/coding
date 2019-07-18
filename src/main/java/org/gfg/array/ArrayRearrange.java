@@ -325,4 +325,43 @@ public class ArrayRearrange {
             swapIndex(array, i, i + 1);
         }
     }
+
+    public static void rearrangePosAtEvenNegAtOdd(int[] array) {
+        int evenPos = 0, oddPos = 1;
+        while (evenPos < array.length && oddPos < array.length) {
+            while (evenPos < array.length && array[evenPos] >= 0) {
+                evenPos += 2;
+            }
+            if (evenPos < array.length) {
+                while (oddPos < array.length && array[oddPos] < 0) {
+                    oddPos += 2;
+                }
+                if (oddPos < array.length) {
+                    swapIndex(array, evenPos, oddPos);
+                    evenPos += 2;
+                    oddPos += 2;
+                }
+            }
+        }
+    }
+
+    public static void rearrangePosAtEvenNegAtOddUsingSwapWithNextDefective(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (i % 2 == 1 && array[i] >= 0) {
+                for (int j = i + 1; j < array.length; j++) {
+                    if (j % 2 == 0 && array[j] < 0) {
+                        swapIndex(array, i, j);
+                        break;
+                    }
+                }
+            } else if (i % 2 == 0 && array[i] < 0) {
+                for (int j = i + 1; j < array.length; j++) {
+                    if (j % 2 == 1 && array[j] >= 0) {
+                        swapIndex(array, i, j);
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }

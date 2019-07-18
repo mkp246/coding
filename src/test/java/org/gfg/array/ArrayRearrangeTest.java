@@ -351,4 +351,24 @@ public class ArrayRearrangeTest {
         ArrayRearrange.sortArrayInWaveForm(array);
         Assert.assertArrayEquals(new int[]{2, 1, 10, 5, 49, 23, 90}, array);
     }
+
+    @Test
+    @GFGMethod(date = "18-07-2019", algo = "Hoare's partitionQuick Sort(2 pointer at even and odd)", desc = "pos at even, neg at odd, if unequal leave untouched", url = "/positive-elements-at-even-and-negative-at-odd-positions-relative-order-not-maintained/")
+    public void testRearrangePosAtEvenNegAtOdd() {
+        int[] array = {1, -3, 5, 6, -3, 6, 7, -4, 9, 10};
+        ArrayRearrange.rearrangePosAtEvenNegAtOdd(array);
+        Assert.assertArrayEquals(new int[]{1, -3, 5, -3, 6, 6, 7, -4, 9, 10}, array);
+
+        array = new int[]{-1, 3, -5, 6, 3, 6, -7, -4, -9, 10};
+        ArrayRearrange.rearrangePosAtEvenNegAtOdd(array);
+        Assert.assertArrayEquals(new int[]{3, -1, 6, -5, 3, -7, 6, -4, 10, -9}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "18-07-2019", algo = "find defective and replace with next defective other sign)", desc = "pos at even, neg at odd, if unequal leave untouched", url = "/positive-elements-at-even-and-negative-at-odd-positions-relative-order-not-maintained/")
+    public void testRearrangePosAtEvenNegAtOddUsingSwapWithNextDefective() {
+        int[] array = {1, -3, 5, 6, -3, 6, 7, -4, 9, 10};
+        ArrayRearrange.rearrangePosAtEvenNegAtOddUsingSwapWithNextDefective(array);
+        Assert.assertArrayEquals(new int[]{1, -3, 5, -3, 6, 6, 7, -4, 9, 10}, array);
+    }
 }
