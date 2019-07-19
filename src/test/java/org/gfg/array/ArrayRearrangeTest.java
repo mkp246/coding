@@ -391,6 +391,7 @@ public class ArrayRearrangeTest {
     }
 
     @Test
+    @ALT(desc = "segregate zeros and ones method 2", url = "/segregate-0s-and-1s-in-an-array-by-traversing-array-once/")
     @ALT(desc = "dutch national flag problem", url = "http://www.csse.monash.edu.au/~lloyd/tildeAlgDS/Sort/Flag/")
     @GFGMethod(date = "18-07-2019", algo = "keep index at start, end, (find -ve at start, pos at end, swap)till start<end",
             url = "/segregate-even-and-odd-numbers/")
@@ -415,5 +416,76 @@ public class ArrayRearrangeTest {
         array = new int[]{1, 3, 2, 4, 7, 6, 9, 10};
         ArrayRearrange.segregateEvenAndOddUsingTempArray(array);
         Assert.assertArrayEquals(new int[]{2, 4, 6, 10, 9, 7, 3, 1}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "19-07-2019", algo = "count zeros, put that much zero in start and one at remaining", url = "/segregate-0s-and-1s-in-an-array-by-traversing-array-once/")
+    public void testSegregateZeroAndOneByCounting() {
+        int[] array = {0, 1, 0, 1, 0, 0, 1, 1, 1, 0};
+        ArrayRearrange.segregateZeroAndOneByCounting(array);
+        Assert.assertArrayEquals(new int[]{0, 0, 0, 0, 0, 1, 1, 1, 1, 1}, array);
+
+        array = new int[]{0, 1, 0, 1, 1, 1};
+        ArrayRearrange.segregateZeroAndOneByCounting(array);
+        Assert.assertArrayEquals(new int[]{0, 0, 1, 1, 1, 1}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "19-07-2019", algo = "find LIS and LDS, return max of sum(LIS[i] + LDS[i]-1)", desc = "LBS longest bitonic subsequence", url = "/longest-bitonic-subsequence-dp-15/")
+    public void testLongestBitonicSubsequence() {
+        int[] array = {1, 11, 2, 10, 4, 5, 2, 1};
+        int result = ArrayRearrange.longestBitonicSubsequence(array);
+        Assert.assertEquals(6, result);
+
+        array = new int[]{12, 11, 40, 5, 3, 1};
+        result = ArrayRearrange.longestBitonicSubsequence(array);
+        Assert.assertEquals(5, result);
+
+        array = new int[]{80, 60, 30, 40, 20, 10};
+        result = ArrayRearrange.longestBitonicSubsequence(array);
+        Assert.assertEquals(5, result);
+
+        array = new int[]{0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
+        result = ArrayRearrange.longestBitonicSubsequence(array);
+        Assert.assertEquals(7, result);
+
+    }
+
+    @Test
+    @GFGMethod(date = "19-07-2019", algo = "two aux array, keep track of lower/higher than current index to left and right resp", desc = "find a sorted subsequence of size 3 in linear time", url = "/find-a-sorted-subsequence-of-size-3-in-linear-time/")
+    public void testFind3Numbers() {
+        int[] array = {12, 11, 10, 5, 6, 2, 30};
+        int[] result = ArrayRearrange.find3Numbers(array);
+        Assert.assertArrayEquals(new int[]{5, 6, 30}, result);
+
+        array = new int[]{1, 2, 3, 4};
+        result = ArrayRearrange.find3Numbers(array);
+        Assert.assertArrayEquals(new int[]{1, 2, 4}, result);
+
+        array = new int[]{4, 3, 2, 1};
+        result = ArrayRearrange.find3Numbers(array);
+        Assert.assertNull(result);
+    }
+
+    @Test
+    @GFGMethod(date = "19-07-2019",
+            algo = "create cumulative sum array treat 0 as -1, make hash of first occurance of values in sum, traverse sum if present is sum calc diff, else put, update max len/start/end",
+            desc = "Largest subarray with equal number of 0s and 1s", url = "/largest-subarray-with-equal-number-of-0s-and-1s/")
+    public void testFindLargestSubarrayWithEqualZeroAndOnes() {
+        int[] array = {1, 0, 1, 1, 1, 0, 0};
+        int[] result = ArrayRearrange.findLargestSubarrayWithEqualZeroAndOnes(array);
+        Assert.assertArrayEquals(new int[]{1, 6}, result);
+
+        array = new int[]{1, 1, 1, 1};
+        result = ArrayRearrange.findLargestSubarrayWithEqualZeroAndOnes(array);
+        Assert.assertNull(result);
+
+        array = new int[]{0, 0, 1, 1, 0};
+        result = ArrayRearrange.findLargestSubarrayWithEqualZeroAndOnes(array);
+        Assert.assertArrayEquals(new int[]{0, 3}, result); // or 0 to 3
+
+        array = new int[]{1, 0, 0, 1, 0, 1, 1};
+        result = ArrayRearrange.findLargestSubarrayWithEqualZeroAndOnes(array);
+        Assert.assertArrayEquals(new int[]{0, 5}, result);
     }
 }

@@ -1,6 +1,7 @@
 package org.gfg.array;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -412,5 +413,113 @@ public class ArrayRearrange {
             }
         }
         System.arraycopy(temp, 0, array, 0, array.length);
+    }
+
+    public static void segregateZeroAndOneByCounting(int[] array) {
+        int zeroCount = 0;
+        for (int element : array) {
+            if (element == 0) zeroCount++;
+        }
+        for (int i = 0; i < zeroCount; i++) {
+            array[i] = 0;
+        }
+        for (int i = zeroCount; i < array.length; i++) {
+            array[i] = 1;
+        }
+    }
+
+    @SuppressWarnings("Duplicates")
+    public static int longestBitonicSubsequence(int[] array) {
+        int[] lis = new int[array.length];
+        int[] lds = new int[array.length];
+        Arrays.fill(lis, 1);
+        Arrays.fill(lds, 1);
+
+        for (int i = 1; i < array.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (array[j] < array[i] && lis[j] + 1 > lis[i]) {
+                    lis[i] = lis[j] + 1;
+                }
+            }
+        }
+
+        for (int i = array.length - 2; i >= 0; i--) {
+            for (int j = array.length - 1; j > i; j--) {
+                if (array[i] > array[j] && lds[j] + 1 > lds[i]) {
+                    lds[i] = lds[j] + 1;
+                }
+            }
+        }
+
+        int lbs = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (lis[i] + lds[i] > lbs) lbs = lis[i] + lds[i];
+        }
+        return lbs - 1;
+    }
+
+    public static int[] find3Numbers(int[] array) {
+        int[] smaller = new int[array.length];
+        int[] larger = new int[array.length];
+
+        int minIdx = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[minIdx] >= array[i]) {
+                smaller[i] = -1;
+                minIdx = i;
+            } else {
+                smaller[i] = minIdx;
+            }
+        }
+
+        int maxIdx = array.length - 1;
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (array[i] >= array[maxIdx]) {
+                larger[i] = -1;
+                maxIdx = i;
+            } else {
+                larger[i] = maxIdx;
+            }
+        }
+        int[] result = null;
+        for (int i = 0; i < array.length; i++) {
+            if (smaller[i] != -1 && larger[i] != -1) {
+                result = new int[3];
+                result[0] = array[smaller[i]];
+                result[1] = array[i];
+                result[2] = array[larger[i]];
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static int[] findLargestSubarrayWithEqualZeroAndOnes(int[] array) {
+        array[0] = array[0] == 0 ? -1 : 1;
+        for (int i = 1; i < array.length; i++) {
+            array[i] = array[i - 1] + (array[i] == 0 ? -1 : 1);
+        }
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, -1);
+        int maxLength = 0, maxStart = 0, maxEnd = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (map.containsKey(array[i])) {
+                if (i - map.get(array[i]) > maxLength) {
+                    maxStart = map.get(array[i]);
+                    maxEnd = i;
+                    maxLength = i - map.get(array[i]);
+                }
+            } else {
+                map.put(array[i], i);
+            }
+        }
+        int[] result = null;
+        if (maxLength > 0) {
+            result = new int[2];
+            result[0] = maxStart + 1;
+            result[1] = maxEnd;
+        }
+        return result;
     }
 }
