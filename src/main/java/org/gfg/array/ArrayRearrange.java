@@ -522,4 +522,53 @@ public class ArrayRearrange {
         }
         return result;
     }
+
+    /**
+     * Kadane’s algorithm
+     *
+     * @param array
+     * @return [startOfSubarray endOfSubarray, maxSum]
+     */
+    public static int[] findLargestSumContinuousSubarray(int[] array) {
+        int maxSoFar = 0, maxEndingHere = 0;
+        int start = 0, end = 0;
+        for (int i = 0; i < array.length; i++) {
+            maxEndingHere += array[i]; //in case of all negative(init mSF=mEH=a[0]) take max of maxEndingHere, maxEndingHere+array[i]
+            if (maxEndingHere < 0) {
+                maxEndingHere = 0;
+                start = i + 1;
+            } else if (maxEndingHere > maxSoFar) {
+                maxSoFar = maxEndingHere;
+                end = i;
+            }
+        }
+        return new int[]{start, end, maxSoFar};
+    }
+
+    public static int findLargestProductContinuousSubarray(int[] array) {
+        int maxEndingHere = 1, minEndingHere = 1, maxSoFar = 1;
+        int flag = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > 0) {
+                maxEndingHere *= array[i];
+                minEndingHere = Math.min(minEndingHere * array[i], 1);// update only if negative
+                flag = 1;
+            } else if (array[i] == 0) {
+                maxEndingHere = 1;
+                minEndingHere = 1;
+            } else {
+                int temp = maxEndingHere;
+                maxEndingHere = Math.max(minEndingHere * array[i], 1);
+                minEndingHere = temp * array[i];
+            }
+            if (maxEndingHere > maxSoFar) {
+                maxSoFar = maxEndingHere;
+            }
+        }
+        if (flag == 0 && maxSoFar == 1) {
+            return 0;
+        } else {
+            return maxSoFar;
+        }
+    }
 }

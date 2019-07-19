@@ -488,4 +488,33 @@ public class ArrayRearrangeTest {
         result = ArrayRearrange.findLargestSubarrayWithEqualZeroAndOnes(array);
         Assert.assertArrayEquals(new int[]{0, 5}, result);
     }
+
+    @Test
+    @GFGMethod(date = "19-07-2019", algo = "Kadane’s algorithm", desc = "Largest sum continuous subarray", url = "/largest-sum-contiguous-subarray/")
+    public void testFindLargestSumContinuousSubarray() {
+        int[] array = {-2, -3, 4, -1, -2, 1, 5, -3};
+        int[] result = ArrayRearrange.findLargestSumContinuousSubarray(array);
+        Assert.assertEquals(new int[]{2, 6, 7}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "19-07-2019", algo = "Kadane’s algorithm modified", desc = "Largest product continuous subarray", url = "/maximum-product-subarray/")
+    public void testFindLargestProductContinuousSubarray() {
+        int[] array = {6, -3, -10, 0, 2};
+        int result = ArrayRearrange.findLargestProductContinuousSubarray(array);
+        Assert.assertEquals(180, result);
+
+
+        array = new int[]{-1, -3, -10, 0, 60};
+        result = ArrayRearrange.findLargestProductContinuousSubarray(array);
+        Assert.assertEquals(60, result);
+
+        array = new int[]{-2, -3, 0, -2, -40};
+        result = ArrayRearrange.findLargestProductContinuousSubarray(array);
+        Assert.assertEquals(80, result);
+
+        array = new int[]{1, -2, -3, 0, 7, -8, -2};
+        result = ArrayRearrange.findLargestProductContinuousSubarray(array);
+        Assert.assertEquals(112, result);
+    }
 }
