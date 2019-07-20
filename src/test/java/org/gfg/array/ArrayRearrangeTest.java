@@ -494,7 +494,7 @@ public class ArrayRearrangeTest {
     public void testFindLargestSumContinuousSubarray() {
         int[] array = {-2, -3, 4, -1, -2, 1, 5, -3};
         int[] result = ArrayRearrange.findLargestSumContinuousSubarray(array);
-        Assert.assertEquals(new int[]{2, 6, 7}, result);
+        Assert.assertArrayEquals(new int[]{2, 6, 7}, result);
     }
 
     @Test
