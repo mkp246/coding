@@ -571,4 +571,131 @@ public class ArrayRearrange {
             return maxSoFar;
         }
     }
+
+    public static void replaceWithLargestOnRight(int[] array) {
+        int max = array[array.length - 1];
+        int tmpMax;
+        array[array.length - 1] = -1;
+        for (int i = array.length - 2; i >= 0; i--) {
+            if (array[i] >= max) {
+                tmpMax = max;
+                max = array[i];
+                array[i] = tmpMax;
+            } else {
+                array[i] = max;
+            }
+        }
+    }
+
+    public static int maxCircularSum(int[] array) {
+        int kadane = findLargestSumContinuousSubarray(array)[2];
+        int arraySum = 0;
+        for (int i = 0; i < array.length; i++) {
+            arraySum += array[i];
+            array[i] *= -1;
+        }
+        int wrapKadane = arraySum + findLargestSumContinuousSubarray(array)[2];
+
+        return Math.max(kadane, wrapKadane);
+    }
+
+    @SuppressWarnings("Duplicates")
+    public static int LISByDPTabulation(int[] array) {
+        int[] lis = new int[array.length];
+        Arrays.fill(lis, 1);
+        for (int i = 1; i < array.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (array[j] < array[i] && lis[j] + 1 > lis[i]) {
+                    lis[i] = lis[j] + 1;
+                }
+            }
+        }
+        int result = 0;
+        for (int element : lis) {
+            if (element > result) {
+                result = element;
+            }
+        }
+        return result;
+    }
+
+    public static int LISInNLogN(int[] array) {
+        int[] tailTable = new int[array.length];
+        int len; //points to empty slot
+
+        tailTable[0] = array[0];
+        len = 1;
+
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < tailTable[0]) { //smallest, create new entry
+                tailTable[0] = array[i];
+            } else if (array[i] > tailTable[len - 1]) {
+                tailTable[len++] = array[i];
+            } else {
+                tailTable[ceilIndex(tailTable, -1, len - 1, array[i])] = array[i];
+            }
+        }
+        return len;
+    }
+
+    private static int ceilIndex(int[] array, int left, int right, int key) {
+        int middle;
+        while (left + 1 < right) {
+            middle = left + (right - left) / 2;
+            if (array[middle] >= key) {
+                right = middle;
+            } else {
+                left = middle;
+            }
+        }
+        return right;
+    }
+
+    /**
+     * same as above but gives sub sequence instead of length
+     *
+     * @param array
+     * @return
+     */
+    public static int[] LISInNLogNSequence(int[] array) {
+        int[] tailIndicies = new int[array.length];
+        int[] prevIndicies = new int[array.length];
+
+        int len; //points to empty slot
+        Arrays.fill(tailIndicies, 0);
+        Arrays.fill(prevIndicies, -1);
+
+        len = 1;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < array[tailIndicies[0]]) { //smallest, create new entry
+                tailIndicies[0] = i;
+            } else if (array[i] > array[tailIndicies[len - 1]]) {
+                prevIndicies[i] = tailIndicies[len - 1];
+                tailIndicies[len++] = i;
+            } else {
+                int pos = ceilIndex(array, tailIndicies, -1, len - 1, array[i]);
+                prevIndicies[i] = tailIndicies[pos - 1];
+                tailIndicies[pos] = i;
+            }
+        }
+        int[] result = new int[len];
+        int resultPos = len - 1;
+        for (int i = tailIndicies[len - 1]; i >= 0; i = prevIndicies[i]) {
+            result[resultPos--] = array[i];
+        }
+        return result;
+    }
+
+    private static int ceilIndex(int[] array, int[] tailIndicies, int left, int right, int key) {
+        int middle;
+        while (left + 1 < right) {
+            middle = left + (right - left) / 2;
+            if (array[tailIndicies[middle]] >= key) {
+                right = middle;
+            } else {
+                left = middle;
+            }
+        }
+        return right;
+    }
 }

@@ -517,4 +517,102 @@ public class ArrayRearrangeTest {
         result = ArrayRearrange.findLargestProductContinuousSubarray(array);
         Assert.assertEquals(112, result);
     }
+
+    @Test
+    @GFGMethod(date = "20-07-2019", algo = "start from right, keep track of max", url = "/replace-every-element-with-the-greatest-on-right-side/")
+    public void testReplaceWithLargestOnRight() {
+        int[] array = {16, 17, 4, 3, 5, 2};
+        ArrayRearrange.replaceWithLargestOnRight(array);
+        Assert.assertArrayEquals(new int[]{17, 5, 5, 5, 2, -1}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "20-07-2019",
+            algo = "kadane's algo, run for array, invert sign of all element, run again and add to array sum, return max of both",
+            url = "/maximum-contiguous-circular-sum/")
+    public void testMaxCircularSum() {
+        int[] array = {8, -8, 9, -9, 10, -11, 12};
+        int result = ArrayRearrange.maxCircularSum(array);
+        Assert.assertEquals(22, result);
+
+        array = new int[]{10, -3, -4, 7, 6, 5, -4, -1};
+        result = ArrayRearrange.maxCircularSum(array);
+        Assert.assertEquals(23, result);
+
+        array = new int[]{-1, 40, -14, 7, 6, 5, -4, -1};
+        result = ArrayRearrange.maxCircularSum(array);
+        Assert.assertEquals(52, result);
+
+        array = new int[]{11, 10, -20, 5, -3, -5, 8, -13, 10};
+        result = ArrayRearrange.maxCircularSum(array);
+        Assert.assertEquals(31, result);
+    }
+
+    @Test
+    @GFGMethod(date = "20-07-2019",
+            algo = "create lis array, init all 1, for array @i look for longest in lis before i that will be proper after adding array@i",
+            url = "/longest-increasing-subsequence-dp-3/")
+    public void testLISByDPTabulation() {
+        int[] array = {10, 22, 9, 33, 21, 50, 41, 60, 80};
+        int result = ArrayRearrange.LISByDPTabulation(array);
+        Assert.assertEquals(6, result);
+
+        array = new int[]{3, 10, 2, 1, 20};
+        result = ArrayRearrange.LISByDPTabulation(array);
+        Assert.assertEquals(3, result);
+
+        array = new int[]{3, 2};
+        result = ArrayRearrange.LISByDPTabulation(array);
+        Assert.assertEquals(1, result);
+
+        array = new int[]{50, 3, 10, 7, 40, 80};
+        result = ArrayRearrange.LISByDPTabulation(array);
+        Assert.assertEquals(4, result);
+
+        array = new int[]{10, 22, 9, 33, 21, 50, 41, 60};
+        result = ArrayRearrange.LISByDPTabulation(array);
+        Assert.assertEquals(5, result);
+    }
+
+    @Test
+    @GFGMethod(date = "20-07-2019", algo = "by maintaining active lists",
+            url = "/longest-monotonically-increasing-subsequence-size-n-log-n/")
+    public void testLISInNLogN() {
+        int[] array = {0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
+        int result = ArrayRearrange.LISInNLogN(array);
+        Assert.assertEquals(6, result);
+
+        array = new int[]{2, 5, 3, 7, 11, 8, 10, 13, 6};
+        result = ArrayRearrange.LISInNLogN(array);
+        Assert.assertEquals(6, result);
+
+        array = new int[]{10, 22, 9, 33, 21, 50, 41, 60, 80};
+        result = ArrayRearrange.LISInNLogN(array);
+        Assert.assertEquals(6, result);
+
+        array = new int[]{3, 10, 2, 1, 20};
+        result = ArrayRearrange.LISInNLogN(array);
+        Assert.assertEquals(3, result);
+
+        array = new int[]{3, 2};
+        result = ArrayRearrange.LISInNLogN(array);
+        Assert.assertEquals(1, result);
+
+        array = new int[]{50, 3, 10, 7, 40, 80};
+        result = ArrayRearrange.LISInNLogN(array);
+        Assert.assertEquals(4, result);
+
+        array = new int[]{10, 22, 9, 33, 21, 50, 41, 60};
+        result = ArrayRearrange.LISInNLogN(array);
+        Assert.assertEquals(5, result);
+    }
+
+    @Test
+    @GFGMethod(date = "20-07-2019", algo = "by maintaining active lists, and prev indicies",
+            url = "/construction-of-longest-monotonically-increasing-subsequence-n-log-n/")
+    public void testLISInNLogNSequence() {
+        int[] array = new int[]{2, 5, 3, 7, 11, 8, 10, 13, 6};
+        int[] result = ArrayRearrange.LISInNLogNSequence(array);
+        Assert.assertArrayEquals(new int[]{2, 3, 7, 8, 10, 13}, result);
+    }
 }
