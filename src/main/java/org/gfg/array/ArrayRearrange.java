@@ -698,4 +698,15 @@ public class ArrayRearrange {
         }
         return right;
     }
+
+    public static int maxSumConsecutiveDifferenceCircularArray(int[] array) {
+        Arrays.sort(array);
+        int halfLen = array.length / 2;
+        int sum = 0;
+        for (int i = 0; i < halfLen; i++) { //in case of odd length, middle element is added and removed once 
+            sum -= 2 * array[i];
+            sum += 2 * array[array.length - 1 - i];
+        }
+        return sum;
+    }
 }

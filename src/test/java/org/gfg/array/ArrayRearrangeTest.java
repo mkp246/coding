@@ -615,4 +615,17 @@ public class ArrayRearrangeTest {
         int[] result = ArrayRearrange.LISInNLogNSequence(array);
         Assert.assertArrayEquals(new int[]{2, 3, 7, 8, 10, 13}, result);
     }
+
+    @Test
+    @GFGMethod(date = "21-07-2019", algo = "arrange in min,max,2nd min, 2nd max.. (eg. bring max diff element together",
+            url = "/maximize-sum-consecutive-differences-circular-array/")
+    public void testMaxSumConsecutiveDifferenceCircularArray() {
+        int[] array = new int[]{4, 2, 1, 8};
+        int result = ArrayRearrange.maxSumConsecutiveDifferenceCircularArray(array);
+        Assert.assertEquals(18, result);
+
+        array = new int[]{10, 12, 15};
+        result = ArrayRearrange.maxSumConsecutiveDifferenceCircularArray(array);
+        Assert.assertEquals(10, result);
+    }
 }
