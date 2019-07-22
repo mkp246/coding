@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Stack;
 
@@ -861,5 +862,17 @@ public class ArrayRearrange {
         System.arraycopy(array, 0, result, 0, pos);
 
         return result;
+    }
+
+    public static boolean isPossibleDistinctAdjacentBySwappingAdjacent(int[] array) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int element : array) {
+            map.put(element, 1 + map.getOrDefault(element, 0));
+        }
+        int maxFrequency = 0;
+        for (Integer frequency : map.values()) {
+            if (frequency > maxFrequency) maxFrequency = frequency;
+        }
+        return maxFrequency <= (array.length + 1) / 2;
     }
 }

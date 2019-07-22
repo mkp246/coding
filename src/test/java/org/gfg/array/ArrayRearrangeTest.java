@@ -759,4 +759,17 @@ public class ArrayRearrangeTest {
         result = ArrayRearrange.replaceTwoConsecutiveEqualsWithOneGreater(array);
         Assert.assertArrayEquals(output, result);
     }
+
+    @Test
+    @GFGMethod(date = "23-07-2019", algo = "max occurring element should be less or equal to half of total",
+            url = "/distinct-adjacent-elements-array/")
+    public void testIsPossibleDistinctAdjacentBySwappingAdjacent() {
+        int[] array = {1, 1, 2};
+        boolean result = ArrayRearrange.isPossibleDistinctAdjacentBySwappingAdjacent(array);
+        Assert.assertTrue(result);
+
+        array = new int[]{7, 7, 7, 7};
+        result = ArrayRearrange.isPossibleDistinctAdjacentBySwappingAdjacent(array);
+        Assert.assertFalse(result);
+    }
 }
