@@ -9,5 +9,5 @@ https://www.geeksforgeeks.org/rearrange-positive-negative-numbers-using-inbuilt-
 https://www.geeksforgeeks.org/reorder-a-array-according-to-given-indexes/  (using heap sort on index by modifying swap function to swap elem of array along with index)
 https://www.geeksforgeeks.org/sort-elements-by-frequency/
 https://www.geeksforgeeks.org/sort-elements-by-frequency-set-2/
-
+https://www.geeksforgeeks.org/sort-array-according-order-defined-another-array/ (method 2 SBT)
 ===

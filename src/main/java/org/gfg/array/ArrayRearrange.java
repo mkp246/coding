@@ -709,4 +709,50 @@ public class ArrayRearrange {
         }
         return sum;
     }
+
+    public static void sortAccordingToOrderDefined(int[] array, int[] order) {
+        int[] temp = new int[array.length];
+        boolean[] visited = new boolean[array.length];
+
+        System.arraycopy(array, 0, temp, 0, array.length);
+        Arrays.fill(visited, false);
+        Arrays.sort(temp);
+
+        int first, arrayIndex = 0, firstValue;
+
+        for (int i = 0; i < order.length; i++) {
+            first = getFirst(temp, order[i]);
+            if (first != -1) {
+                firstValue = temp[first];
+                while (first < temp.length && temp[first] == firstValue) {
+                    array[arrayIndex++] = firstValue;
+                    visited[first] = true;
+                    first++;
+                }
+            }
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            if (!visited[i]) {
+                array[arrayIndex++] = temp[i];
+            }
+        }
+    }
+
+    public static int getFirst(int[] array, int key) {
+        int low = 0, high = array.length - 1;
+        int mid;
+
+        while (low <= high) {
+            mid = low + (high - low) / 2;
+            if (array[mid] == key && (mid == 0 || array[mid - 1] < array[mid])) {
+                return mid;
+            } else if (array[mid] >= key) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
 }

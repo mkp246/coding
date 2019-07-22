@@ -628,4 +628,15 @@ public class ArrayRearrangeTest {
         result = ArrayRearrange.maxSumConsecutiveDifferenceCircularArray(array);
         Assert.assertEquals(10, result);
     }
+
+    @Test
+    @GFGMethod(date = "21-07-2019", algo = "(method 1)copy to temp, sort, find(binary) in sorted value from order, copy back to array, mark visited, copy all unvisited to array",
+            desc = "Sort an array according to the order defined by another array",
+            url = "/sort-array-according-order-defined-another-array/")
+    public void testSortAccordingToOrderDefined() {
+        int[] array = {2, 1, 2, 5, 7, 1, 9, 3, 6, 8, 8};
+        int[] order = {2, 1, 8, 3};
+        ArrayRearrange.sortAccordingToOrderDefined(array, order);
+        Assert.assertArrayEquals(new int[]{2, 2, 1, 1, 8, 8, 3, 5, 6, 7, 9}, array);
+    }
 }
