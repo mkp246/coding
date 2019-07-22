@@ -846,4 +846,20 @@ public class ArrayRearrange {
         }
         return Integer.parseInt(result);
     }
+
+    public static int[] replaceTwoConsecutiveEqualsWithOneGreater(int[] array) {
+        int pos = 0;
+        for (int i = 0; i < array.length; i++) {
+            array[pos++] = array[i];
+            while (pos > 1 && array[pos - 2] == array[pos - 1]) {
+                pos--;
+                array[pos - 1] += 1;
+            }
+        }
+
+        int[] result = new int[pos];
+        System.arraycopy(array, 0, result, 0, pos);
+
+        return result;
+    }
 }

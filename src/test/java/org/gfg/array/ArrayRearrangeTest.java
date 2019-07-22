@@ -738,6 +738,25 @@ public class ArrayRearrangeTest {
         number = 321654798;
         result = ArrayRearrange.fromMinimumNumberFromDISequenceUsingStack(sequence);
         Assert.assertEquals(number, result);
+    }
 
+    @Test
+    @GFGMethod(date = "22-07-2019", algo = "increment at perv_prev if prev == prev_prev, move empty slot pointer to prev",
+            url = "/replace-two-consecutive-equal-values-one-greater/")
+    public void testReplaceTwoConsecutiveEqualsWithOneGreater() {
+        int[] array = {5, 2, 1, 1, 2, 2};
+        int[] output = {5, 4};
+        int[] result = ArrayRearrange.replaceTwoConsecutiveEqualsWithOneGreater(array);
+        Assert.assertArrayEquals(output, result);
+
+        array = new int[]{6, 4, 3, 4, 3, 3, 5};
+        output = new int[]{6, 4, 3, 6};
+        result = ArrayRearrange.replaceTwoConsecutiveEqualsWithOneGreater(array);
+        Assert.assertArrayEquals(output, result);
+
+        array = new int[]{4, 5, 11, 2, 5, 7, 2};
+        output = new int[]{4, 5, 11, 2, 5, 7, 2};
+        result = ArrayRearrange.replaceTwoConsecutiveEqualsWithOneGreater(array);
+        Assert.assertArrayEquals(output, result);
     }
 }
