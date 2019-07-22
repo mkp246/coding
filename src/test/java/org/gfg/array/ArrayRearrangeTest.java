@@ -74,6 +74,7 @@ public class ArrayRearrangeTest {
     }
 
     @Test
+    @ALT(url = "/convert-array-into-zig-zag-fashion/")
     @ALT(url = "rearrange-array-even-index-elements-smaller-odd-index-elements-greater/")
     @GFGMethod(date = "16-07-2019", algo = "rearrange array in increasing decreasing order by swapping with next", url = "/rearrange-array-arri-arrj-even-arri/")
     public void testRearrangeArrayInIncreasingDecreasingOrderBySwappingAdjacentElement() {
