@@ -755,4 +755,33 @@ public class ArrayRearrange {
         }
         return -1;
     }
+
+    /**
+     * longest ones subarray after replacing single zero with one
+     *
+     * @param array
+     * @return [index, length of longest ones after replacing 0 at index]
+     */
+    public static int[] longestContinuousOnesAfterReplacingSingleZeroInBinaryString(int[] array) {
+        int prevZero = -1, prevPrevZero = -1, maxSoFarPrev = -1;
+        int maxSoFar = 0, tempLength;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == 0) {
+                tempLength = i - prevPrevZero - 1;
+                if (tempLength > maxSoFar) {
+                    maxSoFar = tempLength;
+                    maxSoFarPrev = prevZero;
+                }
+                prevPrevZero = prevZero;
+                prevZero = i;
+            }
+        }
+        tempLength = array.length - prevPrevZero - 1;
+        if (tempLength > maxSoFar) {
+            maxSoFar = tempLength;
+            maxSoFarPrev = prevZero;
+        }
+        return new int[]{maxSoFarPrev, maxSoFar};
+    }
 }

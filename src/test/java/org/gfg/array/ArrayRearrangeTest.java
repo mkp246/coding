@@ -639,4 +639,17 @@ public class ArrayRearrangeTest {
         ArrayRearrange.sortAccordingToOrderDefined(array, order);
         Assert.assertArrayEquals(new int[]{2, 2, 1, 1, 8, 8, 3, 5, 6, 7, 9}, array);
     }
+
+    @Test
+    @GFGMethod(date = "21-07-2019", algo = "", url = "/find-index-0-replaced-1-get-longest-continuous-sequence-1s-binary-array/")
+    public void testLongestContinuousOnesAfterReplacingSingleZeroInBinaryString() {
+        int[] array = {1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1};
+        int[] result = ArrayRearrange.longestContinuousOnesAfterReplacingSingleZeroInBinaryString(array);
+        Assert.assertArrayEquals(new int[]{9, 7}, result);
+
+        array = new int[]{1, 1, 1, 1, 0};
+        result = ArrayRearrange.longestContinuousOnesAfterReplacingSingleZeroInBinaryString(array);
+        Assert.assertArrayEquals(new int[]{4, 5}, result);
+
+    }
 }
