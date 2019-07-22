@@ -7,6 +7,8 @@ import com.mkp.GFGMethod;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
 @GFG(date = "16-07-2019", topic = "array rearrangement", url = "")
 public class ArrayRearrangeTest {
 
@@ -667,5 +669,32 @@ public class ArrayRearrangeTest {
         array = new int[]{1, 14, 5, 20, 4, 2, 54, 20, 87, 98, 3, 1, 32};
         ArrayRearrange.threeWayPartitionAroundRange(array, 10, 20);
         Assert.assertArrayEquals(new int[]{1, 5, 4, 2, 1, 3, 14, 20, 20, 98, 87, 32, 54}, array);
+    }
+
+    @Test
+    @GFGMethod(date = "22-07-2019", algo = "using recursion", url = "/generate-all-possible-sorted-arrays-from-alternate-elements-of-two-given-arrays/")
+    public void testGenerateAllPossibleSortedArrayFromAlternateElement() {
+        class Validator {
+            void validate(List<int[]> result) {
+                Assert.assertEquals(7, result.size());
+                Assert.assertArrayEquals(new int[]{10, 20}, result.get(0));
+                Assert.assertArrayEquals(new int[]{10, 20, 25, 30}, result.get(1));
+                Assert.assertArrayEquals(new int[]{10, 30}, result.get(2));
+                Assert.assertArrayEquals(new int[]{15, 20}, result.get(3));
+                Assert.assertArrayEquals(new int[]{15, 20, 25, 30}, result.get(4));
+                Assert.assertArrayEquals(new int[]{15, 30}, result.get(5));
+                Assert.assertArrayEquals(new int[]{25, 30}, result.get(6));
+            }
+        }
+        Validator validator = new Validator();
+        int[] a = {10, 15, 25};
+        int[] b = {1, 5, 20, 30};
+        List<int[]> result = ArrayRearrange.generateAllPossibleSortedArrayFromAlternateElement(a, b);
+        validator.validate(result);
+
+        a = new int[]{10, 15, 25};
+        b = new int[]{5, 20, 30};
+        result = ArrayRearrange.generateAllPossibleSortedArrayFromAlternateElement(a, b);
+        validator.validate(result);
     }
 }

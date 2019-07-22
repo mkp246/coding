@@ -1,8 +1,10 @@
 package org.gfg.array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 
 public class ArrayRearrange {
@@ -795,6 +797,37 @@ public class ArrayRearrange {
                 swapIndex(array, i, end--);
             } else {
                 i++;
+            }
+        }
+    }
+
+    public static List<int[]> generateAllPossibleSortedArrayFromAlternateElement(int[] a, int[] b) {
+        List<int[]> result = new ArrayList<>();
+        int[] c = new int[a.length + b.length];
+        int aPos = 0, bPos = 0, cPos = 0;
+        generateAllPossibleSortedArrayFromAlternateElementUntil(a, aPos, b, bPos, c, cPos, true, result);
+        return result;
+    }
+
+    private static void generateAllPossibleSortedArrayFromAlternateElementUntil(int[] a, int aPos, int[] b, int bPos, int[] c, int cPos, boolean takeFromA, List<int[]> result) {
+        if (takeFromA) {
+            if (cPos != 0) {//append to result, current c till cPos 
+                int[] temp = new int[cPos];
+                System.arraycopy(c, 0, temp, 0, temp.length);
+                result.add(temp);
+            }
+            for (int i = aPos; i < a.length; i++) {
+                if (cPos == 0 || c[cPos - 1] < a[i]) {
+                    c[cPos] = a[i];
+                    generateAllPossibleSortedArrayFromAlternateElementUntil(a, i + 1, b, bPos, c, cPos + 1, false, result);
+                }
+            }
+        } else {
+            for (int i = bPos; i < b.length; i++) {
+                if (c[cPos - 1] < b[i]) {
+                    c[cPos] = b[i];
+                    generateAllPossibleSortedArrayFromAlternateElementUntil(a, aPos, b, i + 1, c, cPos + 1, true, result);
+                }
             }
         }
     }
