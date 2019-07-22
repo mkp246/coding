@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Stack;
 
 public class ArrayRearrange {
 
@@ -830,5 +831,19 @@ public class ArrayRearrange {
                 }
             }
         }
+    }
+
+    public static int fromMinimumNumberFromDISequenceUsingStack(String sequence) {
+        Stack<Integer> stack = new Stack<>();
+        String result = "";
+        for (int i = 0; i <= sequence.length(); i++) {
+            stack.push(i + 1);
+            if (i == sequence.length() || sequence.charAt(i) == 'I') {
+                while (!stack.isEmpty()) {
+                    result += stack.pop();
+                }
+            }
+        }
+        return Integer.parseInt(result);
     }
 }

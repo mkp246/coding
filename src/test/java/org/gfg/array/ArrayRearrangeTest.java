@@ -698,4 +698,46 @@ public class ArrayRearrangeTest {
         result = ArrayRearrange.generateAllPossibleSortedArrayFromAlternateElement(a, b);
         validator.validate(result);
     }
+
+    @Test
+    @GFGMethod(date = "22-07-2019", algo = "(method 3) i[0, len] push i, if char is 'I' or i = len, empty stack to o/p",
+            desc = "Form minimum number from given sequence of D and I only",
+            url = "/form-minimum-number-from-given-sequence/")
+    public void testFromMinimumNumberFromDISequenceUsingStack() {
+        String sequence = "D";
+        int number = 21;
+        int result = ArrayRearrange.fromMinimumNumberFromDISequenceUsingStack(sequence);
+        Assert.assertEquals(number, result);
+
+        sequence = "I";
+        number = 12;
+        result = ArrayRearrange.fromMinimumNumberFromDISequenceUsingStack(sequence);
+        Assert.assertEquals(number, result);
+
+        sequence = "DD";
+        number = 321;
+        result = ArrayRearrange.fromMinimumNumberFromDISequenceUsingStack(sequence);
+        Assert.assertEquals(number, result);
+
+        sequence = "II";
+        number = 123;
+        result = ArrayRearrange.fromMinimumNumberFromDISequenceUsingStack(sequence);
+        Assert.assertEquals(number, result);
+
+        sequence = "DIDI";
+        number = 21435;
+        result = ArrayRearrange.fromMinimumNumberFromDISequenceUsingStack(sequence);
+        Assert.assertEquals(number, result);
+
+        sequence = "IIDDD";
+        number = 126543;
+        result = ArrayRearrange.fromMinimumNumberFromDISequenceUsingStack(sequence);
+        Assert.assertEquals(number, result);
+
+        sequence = "DDIDDIID";
+        number = 321654798;
+        result = ArrayRearrange.fromMinimumNumberFromDISequenceUsingStack(sequence);
+        Assert.assertEquals(number, result);
+
+    }
 }
