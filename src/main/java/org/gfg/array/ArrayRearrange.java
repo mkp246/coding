@@ -784,4 +784,18 @@ public class ArrayRearrange {
         }
         return new int[]{maxSoFarPrev, maxSoFar};
     }
+
+    public static void threeWayPartitionAroundRange(int[] array, int low, int high) {
+        int start = 0, end = array.length - 1;
+        for (int i = 0; i <= end; ) {
+            if (array[i] < low) {
+                swapIndex(array, i, start++);
+                i++;
+            } else if (array[i] > high) {
+                swapIndex(array, i, end--);
+            } else {
+                i++;
+            }
+        }
+    }
 }

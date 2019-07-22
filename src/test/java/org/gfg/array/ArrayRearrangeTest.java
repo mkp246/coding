@@ -641,7 +641,7 @@ public class ArrayRearrangeTest {
     }
 
     @Test
-    @GFGMethod(date = "21-07-2019", algo = "", url = "/find-index-0-replaced-1-get-longest-continuous-sequence-1s-binary-array/")
+    @GFGMethod(date = "22-07-2019", algo = "", url = "/find-index-0-replaced-1-get-longest-continuous-sequence-1s-binary-array/")
     public void testLongestContinuousOnesAfterReplacingSingleZeroInBinaryString() {
         int[] array = {1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1};
         int[] result = ArrayRearrange.longestContinuousOnesAfterReplacingSingleZeroInBinaryString(array);
@@ -651,5 +651,21 @@ public class ArrayRearrangeTest {
         result = ArrayRearrange.longestContinuousOnesAfterReplacingSingleZeroInBinaryString(array);
         Assert.assertArrayEquals(new int[]{4, 5}, result);
 
+    }
+
+    @Test
+    @GFGMethod(date = "22-07-2019", algo = "dutch national flag based quick-sort", url = "/three-way-partitioning-of-an-array-around-a-given-range/")
+    public void testThreeWayPartitionAroundRange() {
+        int[] array = {1, 14, 5, 20, 4, 2, 54, 20, 87, 98, 3, 1, 32};
+        ArrayRearrange.threeWayPartitionAroundRange(array, 14, 20);
+        Assert.assertArrayEquals(new int[]{1, 5, 4, 2, 1, 3, 14, 20, 20, 98, 87, 32, 54}, array);
+
+        array = new int[]{1, 14, 5, 20, 4, 2, 54, 20, 87, 98, 3, 1, 32};
+        ArrayRearrange.threeWayPartitionAroundRange(array, 20, 20);
+        Assert.assertArrayEquals(new int[]{1, 14, 5, 4, 2, 1, 3, 20, 20, 98, 87, 32, 54}, array);
+
+        array = new int[]{1, 14, 5, 20, 4, 2, 54, 20, 87, 98, 3, 1, 32};
+        ArrayRearrange.threeWayPartitionAroundRange(array, 10, 20);
+        Assert.assertArrayEquals(new int[]{1, 5, 4, 2, 1, 3, 14, 20, 20, 98, 87, 32, 54}, array);
     }
 }
