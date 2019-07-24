@@ -1,5 +1,6 @@
 package org.gfg.array;
 
+import com.mkp.ALT;
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
 import org.junit.Test;
@@ -21,6 +22,7 @@ public class OrderStatisticsTest {
     }
 
     @Test
+    @ALT(desc = "partition around random element instead of last", url = "/kth-smallestlargest-element-unsorted-array-set-2-expected-linear-time-2/")
     @GFGMethod(date = "24-07-2019", algo = "(method 4)quick sort partition around last element", url = "kth-smallestlargest-element-unsorted-array/", tComp = "avg O(n), worst O(n^2)")
     public void testGetKthSmallestNumberUsingPartition() {
         int[] array = {12, 3, 5, 7, 4, 19, 26};
