@@ -22,6 +22,7 @@ public class OrderStatisticsTest {
     }
 
     @Test
+    @ALT(desc = "partition around median of median of 5 size blocks of n/5 at each step", url = "/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/")
     @ALT(desc = "partition around random element instead of last", url = "/kth-smallestlargest-element-unsorted-array-set-2-expected-linear-time-2/")
     @GFGMethod(date = "24-07-2019", algo = "(method 4)quick sort partition around last element", url = "kth-smallestlargest-element-unsorted-array/", tComp = "avg O(n), worst O(n^2)")
     public void testGetKthSmallestNumberUsingPartition() {
