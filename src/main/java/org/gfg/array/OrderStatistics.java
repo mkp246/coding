@@ -106,4 +106,13 @@ public class OrderStatistics {
         }
         return new double[]{mean, median};
     }
+
+    public static int getMinProductOfKInteger(int[] array, int k) {
+        Arrays.sort(array);
+        int result = 1;
+        for (int i = 0; i < k; i++) {
+            result *= array[i];
+        }
+        return result;
+    }
 }

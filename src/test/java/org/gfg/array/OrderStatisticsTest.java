@@ -124,4 +124,16 @@ public class OrderStatisticsTest {
         }
         assertArrayEquals(new double[]{5, 7.5, 10}, result, 0);
     }
+
+    @Test
+    @GFGMethod(date = "25-07-2019", algo = "sort and multiply smallest k integers", url = "/minimum-product-k-integers-array-positive-integers/")
+    public void testGetMinProductOfKInteger() {
+        int[] array = {198, 76, 544, 123, 154, 675};
+        int result = OrderStatistics.getMinProductOfKInteger(array, 2);
+        assertEquals(9348, result);
+
+        array = new int[]{11, 8, 5, 7, 5, 100};
+        result = OrderStatistics.getMinProductOfKInteger(array, 4);
+        assertEquals(1400, result);
+    }
 }
