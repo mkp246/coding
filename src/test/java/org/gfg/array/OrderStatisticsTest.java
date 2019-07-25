@@ -86,4 +86,42 @@ public class OrderStatisticsTest {
         result = OrderStatistics.findElementHavingAtLeastTwoGreaterByFindingSecondMaximum(array);
         assertArrayEquals(new int[]{2, -6, 1}, result);
     }
+
+    @Test
+    @GFGMethod(date = "25-07-2019", algo = "sorting", url = "/program-for-mean-and-median-of-an-unsorted-array/")
+    public void testGetMeanAndMedian() {
+        int[] array = {1, 3, 4, 2, 6, 5, 8, 7};
+        double[] result = OrderStatistics.getMeanAndMedian(array);
+        assertArrayEquals(new double[]{4.5, 4.5}, result, 0);
+
+        array = new int[]{4, 4, 4, 4, 4};
+        result = OrderStatistics.getMeanAndMedian(array);
+        assertArrayEquals(new double[]{4, 4}, result, 0);
+
+        array = new int[]{1, 3, 4, 2, 7, 5, 8, 6};
+        result = OrderStatistics.getMeanAndMedian(array);
+        assertArrayEquals(new double[]{4.5, 4.5}, result, 0);
+    }
+
+    @Test
+    @GFGMethod(date = "25-07-2019", algo = "maintain 2 heap one has smaller(max heap), one has larger(min heap) than median",
+            url = "/median-of-stream-of-running-integers-using-stl/", impls = RunningMedian.class)
+    public void testGetMedianOfRunningStream() {
+        int[] array = {5, 15, 10, 20, 3};
+        RunningMedian runningMedian = new RunningMedian();
+        double[] result = new double[array.length];
+        for (int i = 0; i < array.length; i++) {
+            result[i] = runningMedian.addAndGetMedian(array[i]);
+        }
+        assertArrayEquals(new double[]{5, 10, 10, 12.5, 10}, result, 0);
+
+        array = new int[]{5, 10, 15};
+        runningMedian = new RunningMedian();
+        result = new double[array.length];
+
+        for (int i = 0; i < array.length; i++) {
+            result[i] = runningMedian.addAndGetMedian(array[i]);
+        }
+        assertArrayEquals(new double[]{5, 7.5, 10}, result, 0);
+    }
 }

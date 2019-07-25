@@ -90,4 +90,20 @@ public class OrderStatistics {
         }
         return result;
     }
+
+    public static double[] getMeanAndMedian(int[] array) {
+        Arrays.sort(array);
+        double sum = 0;
+        for (int element : array) {
+            sum += element;
+        }
+        double mean = sum / array.length;
+        double median;
+        if (array.length % 2 == 0) {
+            median = (array[array.length / 2] + array[array.length / 2 - 1]) / (double) 2;
+        } else {
+            median = array[array.length / 2];
+        }
+        return new double[]{mean, median};
+    }
 }
