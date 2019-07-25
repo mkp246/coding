@@ -60,4 +60,34 @@ public class OrderStatistics {
         }
         return new int[]{first, second, third};
     }
+
+    public static int[] findElementHavingAtLeastTwoGreaterBySorting(int[] array) {
+        Arrays.sort(array);
+        int[] result = new int[array.length - 2];
+        System.arraycopy(array, 0, result, 0, result.length);
+        return result;
+    }
+
+    public static int[] findElementHavingAtLeastTwoGreaterByFindingSecondMaximum(int[] array) {
+        int first, second;
+        first = second = array[0];
+
+        for (int element : array) {
+            if (element > first) {
+                second = first;
+                first = element;
+            } else if (element > second) {
+                second = element;
+            }
+        }
+
+        int[] result = new int[array.length - 2];
+        int resultPos = 0;
+        for (int element : array) {
+            if (element < second) {
+                result[resultPos++] = element;
+            }
+        }
+        return result;
+    }
 }

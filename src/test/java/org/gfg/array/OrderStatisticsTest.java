@@ -54,4 +54,36 @@ public class OrderStatisticsTest {
         result = OrderStatistics.findThreeLargestElement(array);
         assertArrayEquals(new int[]{34, 13, 12}, result);
     }
+
+    @Test
+    @GFGMethod(date = "25-07-2019", algo = "(method 2) sorting and print first n-2 elements", url = "/find-elements-array-least-two-greater-elements/")
+    public void testFindElementHavingAtLeastTwoGreaterBySorting() {
+        int[] array = {2, 8, 7, 1, 5};
+        int[] result = OrderStatistics.findElementHavingAtLeastTwoGreaterBySorting(array);
+        assertArrayEquals(new int[]{1, 2, 5}, result);
+
+        array = new int[]{7, -2, 3, 4, 9, -1};
+        result = OrderStatistics.findElementHavingAtLeastTwoGreaterBySorting(array);
+        assertArrayEquals(new int[]{-2, -1, 3, 4}, result);
+
+        array = new int[]{2, -6, 3, 5, 1};
+        result = OrderStatistics.findElementHavingAtLeastTwoGreaterBySorting(array);
+        assertArrayEquals(new int[]{-6, 1, 2}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "25-07-2019", algo = "(method 3)find 2nd largest and print less element than that", url = "/find-elements-array-least-two-greater-elements/")
+    public void testFindElementHavingAtLeastTwoGreaterByFindingSecondMaximum() {
+        int[] array = {2, 8, 7, 1, 5};
+        int[] result = OrderStatistics.findElementHavingAtLeastTwoGreaterByFindingSecondMaximum(array);
+        assertArrayEquals(new int[]{2, 1, 5}, result);
+
+        array = new int[]{7, -2, 3, 4, 9, -1};
+        result = OrderStatistics.findElementHavingAtLeastTwoGreaterByFindingSecondMaximum(array);
+        assertArrayEquals(new int[]{-2, 3, 4, -1}, result);
+
+        array = new int[]{2, -6, 3, 5, 1};
+        result = OrderStatistics.findElementHavingAtLeastTwoGreaterByFindingSecondMaximum(array);
+        assertArrayEquals(new int[]{2, -6, 1}, result);
+    }
 }
