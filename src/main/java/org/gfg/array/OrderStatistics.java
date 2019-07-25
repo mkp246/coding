@@ -32,4 +32,32 @@ public class OrderStatistics {
         ArrayRearrange.swapIndex(array, start, end);
         return start;
     }
+
+    public static int findLargestElement(int[] array) {
+        int max = array[0];
+        for (int element : array) {
+            if (element > max) {
+                max = element;
+            }
+        }
+        return max;
+    }
+
+    public static int[] findThreeLargestElement(int[] array) {
+        int first, second, third;
+        first = second = third = array[0];
+        for (int element : array) {
+            if (element > first) {
+                third = second;
+                second = first;
+                first = element;
+            } else if (element > second) {
+                third = second;
+                second = element;
+            } else if (element > third) {
+                third = element;
+            }
+        }
+        return new int[]{first, second, third};
+    }
 }
