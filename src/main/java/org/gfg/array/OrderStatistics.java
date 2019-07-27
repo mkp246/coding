@@ -314,4 +314,41 @@ public class OrderStatistics {
             array[i] = array[i + 1];
         }
     }
+
+    public static int[][] getKMinSumCombinationTwoArrays(int[] array1, int[] array2, int k) {
+        Arrays.sort(array1);
+        Arrays.sort(array2);
+
+        //pair(sum, pair(array1Idx, array2Idx)) // max heap
+        PriorityQueue<Pair<Integer, Pair<Integer, Integer>>> minHeap = new PriorityQueue<>(Comparator.comparing(Pair::getKey));
+        HashSet<Pair<Integer, Integer>> pairs = new HashSet<>();
+
+        minHeap.add(new Pair<>(array1[0] + array2[0], new Pair<>(0, 0)));
+        pairs.add(new Pair<>(0, 0));
+
+        int[][] result = new int[k][2];
+        int resultPos = 0;
+
+        Pair<Integer, Integer> tmpPair;
+        for (int i = 0; i < k; i++) {
+            Pair<Integer, Pair<Integer, Integer>> poll = minHeap.poll();
+            result[resultPos++] = new int[]{array1[poll.getValue().getKey()], array2[poll.getValue().getValue()]};
+
+            if (poll.getValue().getKey() < array1.length - 1) {
+                tmpPair = new Pair<>(poll.getValue().getKey() + 1, poll.getValue().getValue());
+                if (!pairs.contains(tmpPair)) {
+                    minHeap.add(new Pair<>(array1[tmpPair.getKey()] + array2[tmpPair.getValue()], tmpPair));
+                    pairs.add(tmpPair);
+                }
+            }
+            if (poll.getValue().getValue() < array2.length - 1) {
+                tmpPair = new Pair<>(poll.getValue().getKey(), poll.getValue().getValue() + 1);
+                if (!pairs.contains(tmpPair)) {
+                    minHeap.add(new Pair<>(array1[tmpPair.getKey()] + array2[tmpPair.getValue()], tmpPair));
+                    pairs.add(tmpPair);
+                }
+            }
+        }
+        return result;
+    }
 }

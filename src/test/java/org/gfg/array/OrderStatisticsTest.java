@@ -241,4 +241,20 @@ public class OrderStatisticsTest {
         result = OrderStatistics.getNSmallestNumberUsingWithoutExtraSpaceInGivenOrder(array, 5);
         assertArrayEquals(new int[]{1, 3, 4, 2, 0}, result);
     }
+
+    @Test
+    @GFGMethod(date = "28-07-2019", algo = "(method 3)sort both, insert 0,0,sum00 in minHeap, remove top from heap with idx ij, add to result, if not present in set add i+1,j and i,j+1, to heap, repeat k times",
+            url = "/find-k-pairs-smallest-sums-two-arrays/")
+    public void testGetKMinSumCombinationTwoArrays() {
+        int[] array1 = {1, 7, 11};
+        int[] array2 = {2, 4, 6};
+        int[][] result = OrderStatistics.getKMinSumCombinationTwoArrays(array1, array2, 3);
+        assertArrayEquals(new int[][]{{1, 2,}, {1, 4}, {1, 6}}, result);
+
+        array1 = new int[]{1, 3, 11};
+        array2 = new int[]{2, 4, 8};
+        result = OrderStatistics.getKMinSumCombinationTwoArrays(array1, array2, 4);
+        assertArrayEquals(new int[][]{{1, 2}, {3, 2}, {1, 4}, {3, 4}}, result);
+    }
+
 }
