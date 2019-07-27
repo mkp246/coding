@@ -136,4 +136,17 @@ public class OrderStatisticsTest {
         result = OrderStatistics.getMinProductOfKInteger(array, 4);
         assertEquals(1400, result);
     }
+
+    @Test
+    @GFGMethod(date = "27-07-2019", algo = "cumulative sum diff will give range sum, calc all possible sums,put in mean heap only largest k element",
+            url = "/k-th-largest-sum-contiguous-subarray/")
+    public void testGetKthLargestSumContinuousSubarray() {
+        int[] array = {20, -5, -1};
+        int result = OrderStatistics.getKthLargestSumContinuousSubarray(array, 3);
+        assertEquals(14, result);
+
+        array = new int[]{10, -10, 20, -40};
+        result = OrderStatistics.getKthLargestSumContinuousSubarray(array, 6);
+        assertEquals(-10, result);
+    }
 }

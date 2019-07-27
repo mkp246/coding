@@ -1,6 +1,7 @@
 package org.gfg.array;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 public class OrderStatistics {
     public static int getKthSmallestNumberUsingSorting(int[] array, int k) {
@@ -114,5 +115,37 @@ public class OrderStatistics {
             result *= array[i];
         }
         return result;
+    }
+
+    public static int getKthLargestSumContinuousSubarray(int[] array, int k) {
+        //convert to cumulative sum
+        for (int i = 1; i < array.length; i++) {
+            array[i] += array[i - 1];
+        }
+        PriorityQueue<Integer> sums = new PriorityQueue<>();
+        int tmpSum = 0;
+        // for seq starting at 0 exclusive, we need arr[-1]=0
+        for (int i = 0; i < array.length; i++) {
+            tmpSum = array[i];
+            if (sums.size() < k) {
+                sums.add(tmpSum);
+            } else if (sums.peek() < tmpSum) {
+                sums.poll();
+                sums.add(tmpSum);
+            }
+        }
+
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j < array.length; j++) {
+                tmpSum = array[j] - array[i - 1];
+                if (sums.size() < k) {
+                    sums.add(tmpSum);
+                } else if (sums.peek() < tmpSum) {
+                    sums.poll();
+                    sums.add(tmpSum);
+                }
+            }
+        }
+        return sums.peek();
     }
 }
