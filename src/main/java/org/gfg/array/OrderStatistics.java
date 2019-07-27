@@ -188,4 +188,68 @@ public class OrderStatistics {
         }
         return result;
     }
+
+    public static int maxSubArraySumUsingPrefixSum(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            array[i] += array[i - 1];
+        }
+        int minPrefixSum = 0;
+        int maxSubArraySum = Integer.MIN_VALUE;
+        int tmp;
+        for (int i = 0; i < array.length; i++) {
+            tmp = array[i] - minPrefixSum;
+            if (tmp > maxSubArraySum) {
+                maxSubArraySum = tmp;
+            }
+            if (array[i] < minPrefixSum) {
+                minPrefixSum = array[i];
+            }
+        }
+        return maxSubArraySum;
+    }
+
+    public static int[] kMaxSubArraySumUsingPrefixSum(int[] array, int k) {
+        for (int i = 1; i < array.length; i++) {
+            array[i] += array[i - 1];
+        }
+        PriorityQueue<Integer> maxI = new PriorityQueue<>();
+        int[] minI = new int[k];
+
+        minI[0] = 0;
+        int minIPos = 0;// max filled index in minI < k
+
+        int tmp;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j <= minIPos; j++) {
+                tmp = array[i] - minI[j];
+                if (maxI.size() < k) {
+                    maxI.add(tmp);
+                } else if (maxI.peek() < tmp) {
+                    maxI.poll();
+                    maxI.add(tmp);
+                }
+            }
+            if (minIPos < k - 1 || array[i] < minI[minIPos]) {
+                int j = 0;
+                while (array[i] > minI[j] && j <= minIPos) {
+                    j++;
+                }
+
+                for (int l = k - 1; l > j; l--) {
+                    minI[l] = minI[l - 1];
+                }
+                minI[j] = array[i];
+                if (minIPos < k - 1) {
+                    minIPos++;
+                }
+            }
+        }
+
+        int[] result = new int[k];
+        int resultPos = k - 1;
+        while (!maxI.isEmpty()) {
+            result[resultPos--] = maxI.poll();//min heap, smallest first
+        }
+        return result;
+    }
 }

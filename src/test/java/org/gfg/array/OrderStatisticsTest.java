@@ -164,4 +164,30 @@ public class OrderStatisticsTest {
         result = OrderStatistics.getKMaxSumCombinationTwoArrays(array1, array2, 3);
         assertArrayEquals(new int[]{13, 12, 10}, result);
     }
+
+    @Test
+    @GFGMethod(date = "27-07-2019", algo = "alternate to kadane's algorithm,(keep track of min prefix sum till @i)",
+            url = "/maximum-subarray-sum-using-prefix-sum/", tComp = "O(n)")
+    public void testMaxSubArraySumUsingPrefixSum() {
+        int[] array = {-2, -3, 4, -1, -2, 1, 5, -3};
+        int result = OrderStatistics.maxSubArraySumUsingPrefixSum(array);
+        assertEquals(7, result);
+
+        array = new int[]{4, -8, 9, -4, 1, -8, -1, 6};
+        result = OrderStatistics.maxSubArraySumUsingPrefixSum(array);
+        assertEquals(9, result);
+    }
+
+    @Test
+    @GFGMethod(date = "27-07-2019", algo = "Sung Eun Bae and Tadao Takaoka, tracking k min prefix sum",
+            url = "/k-maximum-sum-overlapping-contiguous-sub-arrays/", tComp = "O(n*k)")
+    public void testKMaxSubArraySumUsingPrefixSum() {
+        int[] array = {4, -8, 9, -4, 1, -8, -1, 6};
+        int[] result = OrderStatistics.kMaxSubArraySumUsingPrefixSum(array, 4);
+        assertArrayEquals(new int[]{9, 6, 6, 5}, result);
+
+        array = new int[]{-2, -3, 4, -1, -2, 1, 5, -3};
+        result = OrderStatistics.kMaxSubArraySumUsingPrefixSum(array, 3);
+        assertArrayEquals(new int[]{7, 6, 5}, result);
+    }
 }
