@@ -268,4 +268,50 @@ public class OrderStatistics {
         }
         return result;
     }
+
+    public static int[] getNSmallestNumberUsingSortingAndExtraSpaceInGivenOrder(int[] array, int n) {
+        int[] arrayCopy = new int[array.length];
+        System.arraycopy(array, 0, arrayCopy, 0, array.length);
+        Arrays.sort(arrayCopy);
+        int largestElement = arrayCopy[n - 1];
+
+        int[] result = new int[n];
+        int resultPos = 0;
+        for (int i = 0; resultPos < n && i < array.length; i++) {
+            if (array[i] <= largestElement) {
+                result[resultPos++] = array[i];
+            }
+        }
+        return result;
+    }
+
+    public static int[] getNSmallestNumberUsingWithoutExtraSpaceInGivenOrder(int[] array, int n) {
+        int maxIndexInFirstN = 0;
+        boolean maxIndexInFirstNDirty = true;
+        for (int i = n; i < array.length; i++) {
+            if (maxIndexInFirstNDirty) {
+                maxIndexInFirstN = 0;
+                for (int j = 1; j < n; j++) {
+                    if (array[maxIndexInFirstN] < array[j]) {
+                        maxIndexInFirstN = j;
+                    }
+                }
+                maxIndexInFirstNDirty = false;
+            }
+            if (array[maxIndexInFirstN] > array[i]) {
+                shiftLeftByOne(array, maxIndexInFirstN, n - 1);
+                array[n - 1] = array[i];
+                maxIndexInFirstNDirty = true;
+            }
+        }
+        int[] result = new int[n];
+        System.arraycopy(array, 0, result, 0, n);
+        return result;
+    }
+
+    private static void shiftLeftByOne(int[] array, int start, int end) {
+        for (int i = start; i < end; i++) {
+            array[i] = array[i + 1];
+        }
+    }
 }

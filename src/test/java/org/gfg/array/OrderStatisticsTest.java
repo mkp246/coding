@@ -205,4 +205,40 @@ public class OrderStatisticsTest {
         result = OrderStatistics.kMaxSubArraySumNonOverlappingUsingKadane(array, 3);
         assertArrayEquals(new int[][]{{6, 7, 8}, {0, 2, 6}, {3, 3, 1}}, result);
     }
+
+    @Test
+    @GFGMethod(date = "27-07-2019", desc = "didn't use searching if element in original is present in copy after sort first n element",
+            algo = "make copy, sort copy, find kth smallest number, print number less than or equal to that in original array",
+            url = "/find-n-smallest-element-given-array-order-array/")
+    public void testGetNSmallestNumberUsingSortingAndExtraSpaceInGivenOrder() {
+        int[] array = {4, 2, 6, 1, 5};
+        int[] result = OrderStatistics.getNSmallestNumberUsingSortingAndExtraSpaceInGivenOrder(array, 3);
+        assertArrayEquals(new int[]{4, 2, 1}, result);
+
+        array = new int[]{4, 12, 16, 21, 25};
+        result = OrderStatistics.getNSmallestNumberUsingSortingAndExtraSpaceInGivenOrder(array, 3);
+        assertArrayEquals(new int[]{4, 12, 16}, result);
+
+        array = new int[]{1, 5, 8, 9, 6, 7, 3, 4, 2, 0};
+        result = OrderStatistics.getNSmallestNumberUsingSortingAndExtraSpaceInGivenOrder(array, 5);
+        assertArrayEquals(new int[]{1, 3, 4, 2, 0}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "27-07-2019", desc = "didn't use searching if element in original is present in copy after sort first n element",
+            algo = "assume first n correct, starting n+1 to len if smaller than max in first n, starting max index shift all to left by 1, put element at n",
+            url = "/k-smallest-elements-order-using-o1-extra-space/")
+    public void testGetNSmallestNumberUsingWithoutExtraSpaceInGivenOrder() {
+        int[] array = {4, 2, 6, 1, 5};
+        int[] result = OrderStatistics.getNSmallestNumberUsingWithoutExtraSpaceInGivenOrder(array, 3);
+        assertArrayEquals(new int[]{4, 2, 1}, result);
+
+        array = new int[]{4, 12, 16, 21, 25};
+        result = OrderStatistics.getNSmallestNumberUsingWithoutExtraSpaceInGivenOrder(array, 3);
+        assertArrayEquals(new int[]{4, 12, 16}, result);
+
+        array = new int[]{1, 5, 8, 9, 6, 7, 3, 4, 2, 0};
+        result = OrderStatistics.getNSmallestNumberUsingWithoutExtraSpaceInGivenOrder(array, 5);
+        assertArrayEquals(new int[]{1, 3, 4, 2, 0}, result);
+    }
 }

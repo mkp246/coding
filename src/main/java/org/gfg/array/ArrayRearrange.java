@@ -149,7 +149,7 @@ public class ArrayRearrange {
         }
     }
 
-    private static void rotateRight(int[] array, int start, int end) {
+    public static void rotateRight(int[] array, int start, int end) {
         int temp = array[end];
         for (int i = end; i > start; i--) {
             array[i] = array[i - 1];
