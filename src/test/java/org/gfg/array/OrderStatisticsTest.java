@@ -3,6 +3,7 @@ package org.gfg.array;
 import com.mkp.ALT;
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -189,5 +190,19 @@ public class OrderStatisticsTest {
         array = new int[]{-2, -3, 4, -1, -2, 1, 5, -3};
         result = OrderStatistics.kMaxSubArraySumUsingPrefixSum(array, 3);
         assertArrayEquals(new int[]{7, 6, 5}, result);
+    }
+
+    @Ignore("TODO kadane for all negative number")
+    @Test
+    @GFGMethod(date = "27-07-2019", algo = "run kadane k times each time replace used with -INF",
+            url = "/k-maximum-sums-non-overlapping-contiguous-sub-arrays/", tComp = "O(n*k)")
+    public void testKMaxSubArraySumNonOverlappingUsingKadane() {
+        int[] array = {5, 1, 2, -6, 2, -1, 3, 1};
+        int[][] result = OrderStatistics.kMaxSubArraySumNonOverlappingUsingKadane(array, 2);
+        assertArrayEquals(new int[][]{{0, 2, 8}, {4, 7, 5}}, result);
+
+        array = new int[]{4, 1, 1, -1, -3, -5, 6, 2, -6, -2};
+        result = OrderStatistics.kMaxSubArraySumNonOverlappingUsingKadane(array, 3);
+        assertArrayEquals(new int[][]{{6, 7, 8}, {0, 2, 6}, {3, 3, 1}}, result);
     }
 }

@@ -535,15 +535,16 @@ public class ArrayRearrange {
      */
     public static int[] findLargestSumContinuousSubarray(int[] array) {
         int maxSoFar = 0, maxEndingHere = 0;
-        int start = 0, end = 0;
+        int start = 0, end = 0, tmpStart = 0;
         for (int i = 0; i < array.length; i++) {
             maxEndingHere += array[i]; //in case of all negative(init mSF=mEH=a[0]) take max of maxEndingHere, maxEndingHere+array[i]
             if (maxEndingHere < 0) {
                 maxEndingHere = 0;
-                start = i + 1;
+                tmpStart = i + 1;
             } else if (maxEndingHere > maxSoFar) {
                 maxSoFar = maxEndingHere;
                 end = i;
+                start = tmpStart;
             }
         }
         return new int[]{start, end, maxSoFar};

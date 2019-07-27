@@ -227,6 +227,8 @@ public class OrderStatistics {
                 } else if (maxI.peek() < tmp) {
                     maxI.poll();
                     maxI.add(tmp);
+                } else {
+                    continue; // all subsequent diffs will be lower only
                 }
             }
             if (minIPos < k - 1 || array[i] < minI[minIPos]) {
@@ -249,6 +251,20 @@ public class OrderStatistics {
         int resultPos = k - 1;
         while (!maxI.isEmpty()) {
             result[resultPos--] = maxI.poll();//min heap, smallest first
+        }
+        return result;
+    }
+
+    public static int[][] kMaxSubArraySumNonOverlappingUsingKadane(int[] array, int k) {
+        int[][] result = new int[k][];
+        int resultPos = 0;
+        int[] kadaneResult;
+        for (int i = 0; i < k; i++) {
+            kadaneResult = ArrayRearrange.findLargestSumContinuousSubarray(array);
+            result[resultPos++] = kadaneResult;
+            for (int j = kadaneResult[0]; j <= kadaneResult[1]; j++) {
+                array[j] = Integer.MIN_VALUE;
+            }
         }
         return result;
     }
