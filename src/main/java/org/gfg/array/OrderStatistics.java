@@ -1,6 +1,10 @@
 package org.gfg.array;
 
+import javafx.util.Pair;
+
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.PriorityQueue;
 
 public class OrderStatistics {
@@ -147,5 +151,41 @@ public class OrderStatistics {
             }
         }
         return sums.peek();
+    }
+
+    public static int[] getKMaxSumCombinationTwoArrays(int[] array1, int[] array2, int k) {
+        Arrays.sort(array1);
+        Arrays.sort(array2);
+
+        PriorityQueue<Pair<Integer, Pair<Integer, Integer>>> maxHeap = new PriorityQueue<>(Comparator.comparing(Pair::getKey, Comparator.reverseOrder()));
+        HashSet<Pair<Integer, Integer>> pairs = new HashSet<>();
+
+        maxHeap.add(new Pair<>(array1[array1.length - 1] + array2[array2.length - 1], new Pair<>(array1.length - 1, array2.length - 1)));
+        pairs.add(new Pair<>(array1.length - 1, array2.length - 1));
+
+        int[] result = new int[k];
+        int resultPos = 0;
+        Pair<Integer, Integer> tmpPair;
+        for (int i = 0; i < k; i++) {
+            Pair<Integer, Pair<Integer, Integer>> poll = maxHeap.poll();
+            result[resultPos++] = poll.getKey();
+
+            if (poll.getValue().getKey() > 0) {
+                tmpPair = new Pair<>(poll.getValue().getKey() - 1, poll.getValue().getValue());
+                if (!pairs.contains(tmpPair)) {
+                    maxHeap.add(new Pair<>(array1[tmpPair.getKey()] + array2[tmpPair.getValue()], tmpPair));
+                    pairs.add(tmpPair);
+                }
+            }
+
+            if (poll.getValue().getValue() > 0) {
+                tmpPair = new Pair<>(poll.getValue().getKey(), poll.getValue().getValue() - 1);
+                if (!pairs.contains(tmpPair)) {
+                    maxHeap.add(new Pair<>(array1[tmpPair.getKey()] + array2[tmpPair.getValue()], tmpPair));
+                    pairs.add(tmpPair);
+                }
+            }
+        }
+        return result;
     }
 }

@@ -149,4 +149,19 @@ public class OrderStatisticsTest {
         result = OrderStatistics.getKthLargestSumContinuousSubarray(array, 6);
         assertEquals(-10, result);
     }
+
+    @Test
+    @GFGMethod(date = "27-07-2019", algo = "sort both, insert i,j,sum in maxHeap if i,j not present, iterate for ij in heap with i-1,j and i,j-1, print K from heap",
+            url = "/k-maximum-sum-combinations-two-arrays/")
+    public void testGetKMaxSumCombinationTwoArrays() {
+        int[] array1 = {3, 2};
+        int[] array2 = {1, 4};
+        int[] result = OrderStatistics.getKMaxSumCombinationTwoArrays(array1, array2, 2);
+        assertArrayEquals(new int[]{7, 6}, result);
+
+        array1 = new int[]{4, 2, 5, 1};
+        array2 = new int[]{8, 0, 3, 5};
+        result = OrderStatistics.getKMaxSumCombinationTwoArrays(array1, array2, 3);
+        assertArrayEquals(new int[]{13, 12, 10}, result);
+    }
 }
