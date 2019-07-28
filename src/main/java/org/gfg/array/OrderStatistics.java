@@ -542,4 +542,30 @@ public class OrderStatistics {
         }
         return Math.max(maxIncluding, maxExcluding);
     }
+
+    public static int[] getMaximumAndMinimumUsingMinimumComparison(int[] array) {
+        int max = Integer.MIN_VALUE, min = Integer.MAX_VALUE;
+        int i = 0;
+        if (array.length % 2 == 1) {
+            max = min = array[0];
+            i = 1;
+        }
+        int pairMax, pairMin;
+        for (; i < array.length; i += 2) {
+            if (array[i + 1] > array[i]) {
+                pairMax = array[i + 1];
+                pairMin = array[i];
+            } else {
+                pairMax = array[i];
+                pairMin = array[i + 1];
+            }
+            if (pairMax > max) {
+                max = pairMax;
+            }
+            if (pairMin < min) {
+                min = pairMin;
+            }
+        }
+        return new int[]{max, min};
+    }
 }

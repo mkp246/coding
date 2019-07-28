@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-@GFG(date = "24-07-2019", topic = " array order statistics", url = "/array-data-structure/array-order-statistics/")
+@GFG(date = "24-07-2019", topic = " array order statistics", url = "/array-data-structure/array-order-statistics/", impls = OrderStatistics.class)
 public class OrderStatisticsTest {
 
     @Test
@@ -409,5 +409,30 @@ public class OrderStatisticsTest {
         array = new int[]{5, 5, 10, 40, 50, 35};
         result = OrderStatistics.getMaxSubSequenceSumWithNoAdjacentElement(array);
         assertEquals(80, result);
+    }
+
+    @Test
+    @GFGMethod(date = "28-07-2019", algo = "(method 3)compare in pair", url = "/maximum-and-minimum-in-an-array/", tComp = "O(1.5n)",
+            desc = "(method 1) linear O(2n), (method 2) divide and conquer tournament algorithm O(>= 3n/2 -2)")
+    public void testGetMaximumAndMinimumUsingMinimumComparison() {
+        int[] array = {1000, 11, 445, 1, 330, 3000};
+        int[] result = OrderStatistics.getMaximumAndMinimumUsingMinimumComparison(array);
+        assertArrayEquals(new int[]{3000, 1}, result);
+
+        array = new int[]{5, 5, 10, 100, 10, 5};
+        result = OrderStatistics.getMaximumAndMinimumUsingMinimumComparison(array);
+        assertArrayEquals(new int[]{100, 5}, result);
+
+        array = new int[]{1, 2, 3};
+        result = OrderStatistics.getMaximumAndMinimumUsingMinimumComparison(array);
+        assertArrayEquals(new int[]{3, 1}, result);
+
+        array = new int[]{1, 20, 3};
+        result = OrderStatistics.getMaximumAndMinimumUsingMinimumComparison(array);
+        assertArrayEquals(new int[]{20, 1}, result);
+
+        array = new int[]{5, 5, 10, 40, 50, 35};
+        result = OrderStatistics.getMaximumAndMinimumUsingMinimumComparison(array);
+        assertArrayEquals(new int[]{50, 5}, result);
     }
 }
