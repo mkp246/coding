@@ -257,4 +257,18 @@ public class OrderStatisticsTest {
         assertArrayEquals(new int[][]{{1, 2}, {3, 2}, {1, 4}, {3, 4}}, result);
     }
 
+    @Ignore("TODO")
+    @Test
+    @GFGMethod(date = "28-07-2019",
+            algo = "sort, find min and max diff, count diff pair(using binary search a[i]+mid from i to n) <=mid, if count >k then high=mid, else low = mid+1",
+            url = "/k-th-smallest-absolute-difference-two-elements-array/")
+    public void testGetKthSmallestAbsoluteDifference() {
+        int[] array = {1, 2, 3, 4};
+        int result = OrderStatistics.getKthSmallestAbsoluteDifference(array, 3);
+        assertEquals(1, result);
+
+        array = new int[]{10, 10};
+        result = OrderStatistics.getKthSmallestAbsoluteDifference(array, 1);
+        assertEquals(0, result);
+    }
 }

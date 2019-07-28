@@ -351,4 +351,50 @@ public class OrderStatistics {
         }
         return result;
     }
+
+    public static int getKthSmallestAbsoluteDifference(int[] array, int k) {
+        Arrays.sort(array);
+        int low = array[1] - array[0];
+        for (int i = 1; i < array.length - 1; i++) {
+            low = Math.min(low, array[i + 1] - array[i]);
+        }
+        int high = array[array.length - 1] - array[0];
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (countPairs(array, mid) < k) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        return low;
+    }
+
+    /**
+     * return pair count with diff less of equal to mid using binary search of array[i] + mid
+     *
+     * @param array
+     * @param mid
+     * @return
+     */
+    private static int countPairs(int[] array, int mid) {
+        int result = 0;
+        for (int i = 0; i < array.length; i++) {
+            result += upperBound(array, i, array.length - 1, mid) - (i + 1);
+        }
+        return result;
+    }
+
+    /**
+     * returns position of next higher element than array[start] + mid
+     *
+     * @param array
+     * @param start inclusive
+     * @param end   inclusive
+     * @param mid
+     * @return
+     */
+    private static int upperBound(int[] array, int start, int end, int mid) {
+        return start;
+    }
 }
