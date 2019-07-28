@@ -495,4 +495,51 @@ public class OrderStatistics {
         }
         return secondSmallest;
     }
+
+    public static int findFirstMissingNumberSortedArrayByDiffChecking(int[] array) {
+        if (array[0] != 0) {
+            return 0;
+        } else {
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i + 1] - array[i] != 1) {
+                    return array[i] + 1;
+                }
+            }
+        }
+        return array.length; // all element present
+    }
+
+    public static int findFirstMissingNumberSortedArrayByFindFirstDeviationInIndexAndValue(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != i) {
+                return i;
+            }
+        }
+        return array.length; //all element from 0 n-1 present
+    }
+
+    public static int findFirstMissingNumberSortedArrayByModifiedBinarySearch(int[] array, int start, int end) {
+        int mid;
+        while (start < end) {
+            mid = start + (end - start) / 2;
+            if (array[mid] > mid) {
+                end = mid;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return array[end] != end ? end : end + 1; // inc case it point to end element
+    }
+
+    public static int getMaxSubSequenceSumWithNoAdjacentElement(int[] array) {
+        int maxIncluding = array[0];
+        int maxExcluding = 0;
+        int maxIncludingNew;
+        for (int i = 1; i < array.length; i++) {
+            maxIncludingNew = maxExcluding + array[i];
+            maxExcluding = Math.max(maxIncluding, maxExcluding);
+            maxIncluding = maxIncludingNew;
+        }
+        return Math.max(maxIncluding, maxExcluding);
+    }
 }

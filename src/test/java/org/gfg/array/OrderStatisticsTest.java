@@ -330,4 +330,84 @@ public class OrderStatisticsTest {
         result = OrderStatistics.getSmallestAndSecondSmallestUsingTournamentTree(array);
         assertArrayEquals(new int[]{2, 5}, result);
     }
+
+    @Test
+    @GFGMethod(date = "28-07-2019", algo = "(method 2) if diff greater than 1", url = "/find-the-first-missing-number/")
+    public void testFindFirstMissingNumberSortedArrayByDiffChecking() {
+        int[] array = {0, 1, 2, 6, 9};
+        int result = OrderStatistics.findFirstMissingNumberSortedArrayByDiffChecking(array);
+        assertEquals(3, result);
+
+        array = new int[]{4, 5, 10, 11};
+        result = OrderStatistics.findFirstMissingNumberSortedArrayByDiffChecking(array);
+        assertEquals(0, result);
+
+        array = new int[]{0, 1, 2, 3};
+        result = OrderStatistics.findFirstMissingNumberSortedArrayByDiffChecking(array);
+        assertEquals(4, result);
+
+        array = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 10};
+        result = OrderStatistics.findFirstMissingNumberSortedArrayByDiffChecking(array);
+        assertEquals(8, result);
+    }
+
+    @Test
+    @GFGMethod(date = "28-07-2019", algo = "first deviation in array index and value", url = "/find-the-first-missing-number/")
+    public void testFindFirstMissingNumberSortedArrayByFindFirstDeviationInIndexAndValue() {
+        int[] array = {0, 1, 2, 6, 9};
+        int result = OrderStatistics.findFirstMissingNumberSortedArrayByFindFirstDeviationInIndexAndValue(array);
+        assertEquals(3, result);
+
+        array = new int[]{4, 5, 10, 11};
+        result = OrderStatistics.findFirstMissingNumberSortedArrayByFindFirstDeviationInIndexAndValue(array);
+        assertEquals(0, result);
+
+        array = new int[]{0, 1, 2, 3};
+        result = OrderStatistics.findFirstMissingNumberSortedArrayByFindFirstDeviationInIndexAndValue(array);
+        assertEquals(4, result);
+
+        array = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 10};
+        result = OrderStatistics.findFirstMissingNumberSortedArrayByFindFirstDeviationInIndexAndValue(array);
+        assertEquals(8, result);
+    }
+
+    @Test
+    @GFGMethod(date = "28-07-2019", algo = "(method 3)bin search with condition arr[mid] <> mid", url = "/find-the-first-missing-number/")
+    public void testFindFirstMissingNumberSortedArrayByModifiedBinarySearch() {
+        int[] array = {0, 1, 2, 6, 9};
+        int result = OrderStatistics.findFirstMissingNumberSortedArrayByModifiedBinarySearch(array, 0, array.length - 1);
+        assertEquals(3, result);
+
+        array = new int[]{4, 5, 10, 11};
+        result = OrderStatistics.findFirstMissingNumberSortedArrayByModifiedBinarySearch(array, 0, array.length - 1);
+        assertEquals(0, result);
+
+        array = new int[]{0, 1, 2, 3};
+        result = OrderStatistics.findFirstMissingNumberSortedArrayByModifiedBinarySearch(array, 0, array.length - 1);
+        assertEquals(4, result);
+
+        array = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 10};
+        result = OrderStatistics.findFirstMissingNumberSortedArrayByModifiedBinarySearch(array, 0, array.length - 1);
+        assertEquals(8, result);
+    }
+
+    @Test
+    @GFGMethod(date = "28-07-2019", algo = "DP tabulation, keep track of max incl and excl", url = "/maximum-sum-such-that-no-two-elements-are-adjacent/")
+    public void testGetMaxSubSequenceSumWithNoAdjacentElement() {
+        int[] array = {5, 5, 10, 100, 10, 5};
+        int result = OrderStatistics.getMaxSubSequenceSumWithNoAdjacentElement(array);
+        assertEquals(110, result);
+
+        array = new int[]{1, 2, 3};
+        result = OrderStatistics.getMaxSubSequenceSumWithNoAdjacentElement(array);
+        assertEquals(4, result);
+
+        array = new int[]{1, 20, 3};
+        result = OrderStatistics.getMaxSubSequenceSumWithNoAdjacentElement(array);
+        assertEquals(20, result);
+
+        array = new int[]{5, 5, 10, 40, 50, 35};
+        result = OrderStatistics.getMaxSubSequenceSumWithNoAdjacentElement(array);
+        assertEquals(80, result);
+    }
 }
