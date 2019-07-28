@@ -271,4 +271,63 @@ public class OrderStatisticsTest {
         result = OrderStatistics.getKthSmallestAbsoluteDifference(array, 1);
         assertEquals(0, result);
     }
+
+    @Test
+    @GFGMethod(date = "28-07-2019", algo = "keep track of two largest", url = "/k-th-smallest-absolute-difference-two-elements-array/")
+    public void testGetSecondLargestElement() {
+        int[] array = {12, 35, 1, 10, 34, 1};
+        int result = OrderStatistics.getSecondLargestElement(array);
+        assertEquals(34, result);
+
+        array = new int[]{10, 5, 10};
+        result = OrderStatistics.getSecondLargestElement(array);
+        assertEquals(5, result);
+
+        array = new int[]{10, 10, 10};
+        result = OrderStatistics.getSecondLargestElement(array);
+        assertEquals(Integer.MIN_VALUE, result);
+    }
+
+    @Test
+    @GFGMethod(date = "28-07-2019", algo = "(Method 1)count freq of each using map, put all map ele to list and sort by custom comparator",
+            desc = "(method 2)alternate can use max heap(pq with custom comparator) to store k element",
+            url = "/find-k-numbers-occurrences-given-array/")
+    public void testFindKNumbersWithMostOccurrences() {
+        int[] array = {3, 1, 4, 4, 5, 2, 6, 1};
+        int[] result = OrderStatistics.findKNumbersWithMostOccurrences(array, 2);
+        assertArrayEquals(new int[]{4, 1}, result);
+
+        array = new int[]{7, 10, 11, 5, 2, 5, 5, 7, 11, 8, 9};
+        result = OrderStatistics.findKNumbersWithMostOccurrences(array, 4);
+        assertArrayEquals(new int[]{5, 11, 7, 10}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "28-07-2019", algo = "keep track of 2 smallest, and already used values",
+            url = "/to-find-smallest-and-second-smallest-element-in-an-array/")
+    public void testGetSmallestAndSecondSmallest() {
+        int[] array = {12, 13, 1, 10, 34, 1};
+        int[] result = OrderStatistics.getSmallestAndSecondSmallest(array);
+        assertArrayEquals(new int[]{1, 10}, result);
+
+        array = new int[]{7, 10, 11, 5, 2, 5, 5, 7, 11, 8, 9};
+        result = OrderStatistics.getSmallestAndSecondSmallest(array);
+        assertArrayEquals(new int[]{2, 5}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "28-07-2019", algo = "tournament tree", url = "/second-minimum-element-using-minimum-comparisons/", tComp = "O(n+log(n))")
+    public void testGetSmallestAndSecondSmallestUsingTournamentTree() {
+        int[] array = {12, 13, 1, 10, 34, 1};
+        int[] result = OrderStatistics.getSmallestAndSecondSmallestUsingTournamentTree(array);
+        assertArrayEquals(new int[]{1, 10}, result);
+
+        array = new int[]{61, 6, 100, 9, 10, 12, 17};
+        result = OrderStatistics.getSmallestAndSecondSmallestUsingTournamentTree(array);
+        assertArrayEquals(new int[]{6, 9}, result);
+
+        array = new int[]{7, 10, 11, 5, 2, 5, 5, 7, 11, 8, 9};
+        result = OrderStatistics.getSmallestAndSecondSmallestUsingTournamentTree(array);
+        assertArrayEquals(new int[]{2, 5}, result);
+    }
 }

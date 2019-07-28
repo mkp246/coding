@@ -2,9 +2,13 @@ package org.gfg.array;
 
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.PriorityQueue;
 
 public class OrderStatistics {
@@ -387,6 +391,7 @@ public class OrderStatistics {
 
     /**
      * returns position of next higher element than array[start] + mid
+     * TODO
      *
      * @param array
      * @param start inclusive
@@ -396,5 +401,98 @@ public class OrderStatistics {
      */
     private static int upperBound(int[] array, int start, int end, int mid) {
         return start;
+    }
+
+    public static int getSecondLargestElement(int[] array) {
+        int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
+        for (int element : array) {
+            if (element > first) {
+                second = first;
+                first = element;
+            } else if (element > second && element != first) {
+                second = element;
+            }
+        }
+        return second;
+    }
+
+    public static int[] findKNumbersWithMostOccurrences(int[] array, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int element : array) {
+            map.put(element, 1 + map.getOrDefault(element, 0));
+        }
+        ArrayList<Pair<Integer, Integer>> list = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> element : map.entrySet()) {
+            list.add(new Pair<>(element.getKey(), element.getValue()));
+        }
+        Collections.sort(list, (p2, p1) -> p1.getValue().equals(p2.getValue()) ? p1.getKey() - p2.getKey() : p1.getValue() - p2.getValue());
+
+        int[] result = new int[k];
+        int resultPos = 0;
+        for (int i = 0; i < k; i++) {
+            result[resultPos++] = list.get(i).getKey();
+        }
+        return result;
+    }
+
+    public static int[] getSmallestAndSecondSmallest(int[] array) {
+        int smallest = Integer.MAX_VALUE;
+        int secondSmallest = Integer.MAX_VALUE;
+        for (int element : array) {
+            if (element < smallest) {
+                secondSmallest = smallest;
+                smallest = element;
+            } else if (element < secondSmallest && element != smallest) {
+                secondSmallest = element;
+            }
+        }
+        return new int[]{smallest, secondSmallest};
+    }
+
+    public static int[] getSmallestAndSecondSmallestUsingTournamentTree(int[] array) {
+        ArrayList<Node> list = new ArrayList<>();
+
+        for (int i = 0; i < array.length; i += 2) {
+            Node node1 = new Node(array[i]);
+            if (i + 1 < array.length) {
+                Node node2 = new Node(array[i + 1]);
+                Node parent = new Node(Math.min(node1.data, node2.data), node1, node2);
+                list.add(parent);
+            } else {
+                list.add(node1);
+            }
+        }
+        //find minimum
+        while (list.size() != 1) {
+            int size = list.size();
+            for (int i = 0; i < size / 2; i++) {
+                Node left = list.remove(0);
+                Node right = list.remove(0);
+                list.add(new Node(Math.min(left.data, right.data), left, right));
+            }
+            //odd
+            if ((size & 1) == 1) {
+                list.add(list.remove(0));
+            }
+        }
+        int smallest = list.get(0).data;
+        int secondSmallest = traverseHeightForSecondMax(list.get(0), list.get(0).data, Integer.MAX_VALUE);
+        return new int[]{smallest, secondSmallest};
+    }
+
+    private static int traverseHeightForSecondMax(Node node, int smallest, int secondSmallest) {
+        if (node != null && node.left != null && node.right != null) {
+            if (node.left.data > smallest) {
+                secondSmallest = Math.min(node.left.data, secondSmallest);
+            } else {
+                secondSmallest = traverseHeightForSecondMax(node.left, smallest, secondSmallest);
+            }
+            if (node.right.data > smallest) {
+                secondSmallest = Math.min(node.right.data, secondSmallest);
+            } else {
+                secondSmallest = traverseHeightForSecondMax(node.right, smallest, secondSmallest);
+            }
+        }
+        return secondSmallest;
     }
 }
