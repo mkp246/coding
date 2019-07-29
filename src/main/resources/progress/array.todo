@@ -22,6 +22,6 @@ https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array/ (using
 ===https://www.geeksforgeeks.org/array-data-structure/array-order-statistics/===
 https://www.geeksforgeeks.org/find-k-pairs-smallest-sums-two-arrays/ (method 2)
 https://www.geeksforgeeks.org/k-th-smallest-absolute-difference-two-elements-array/
-https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/ (method 2 self balancing bst)
+https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/ (method 2 self balancing bst, method 4 using max heap)
 
 ======
