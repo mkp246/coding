@@ -495,4 +495,25 @@ public class OrderStatisticsTest {
         result = OrderStatistics.findMaximumIJDifferenceSuchThatElementAtJIsHigherByTrackingOfSmallestToLeftAndHighestToRight(array);
         assertEquals(-1, result);
     }
+
+    @Test
+    @GFGMethod(date = "29-07-2019", algo = "(method 3)deque, and maintaining useful(greater than other to left in window) element of window in deque",
+            url = "/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/")
+    public void testFindSlidingWindowMaximumOfAllSubarrayOfKLength() {
+        int[] array = {1, 2, 3, 1, 4, 5, 2, 3, 6};
+        int[] result = OrderStatistics.testFindSlidingWindowMaximumOfAllSubarrayOfKLength(array, 3);
+        assertArrayEquals(new int[]{3, 3, 4, 5, 5, 5, 6}, result);
+
+        array = new int[]{8, 5, 10, 7, 9, 4, 15, 12, 90, 13};
+        result = OrderStatistics.testFindSlidingWindowMaximumOfAllSubarrayOfKLength(array, 4);
+        assertArrayEquals(new int[]{10, 10, 10, 15, 15, 90, 90}, result);
+
+        array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        result = OrderStatistics.testFindSlidingWindowMaximumOfAllSubarrayOfKLength(array, 3);
+        assertArrayEquals(new int[]{3, 4, 5, 6, 7, 8, 9, 10}, result);
+
+        array = new int[]{12, 1, 78, 90, 57, 89, 56};
+        result = OrderStatistics.testFindSlidingWindowMaximumOfAllSubarrayOfKLength(array, 3);
+        assertArrayEquals(new int[]{78, 90, 90, 90, 89}, result);
+    }
 }

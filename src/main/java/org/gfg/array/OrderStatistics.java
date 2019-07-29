@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -635,5 +637,31 @@ public class OrderStatistics {
             }
         }
         return maxDiff == 0 ? -1 : maxDiff; //can't be zero
+    }
+
+    public static int[] testFindSlidingWindowMaximumOfAllSubarrayOfKLength(int[] array, int k) {
+        Deque<Integer> deque = new LinkedList<>();
+        int[] result = new int[array.length - k + 1];
+        int resultPos = 0;
+
+        for (int i = 0; i < k; i++) {
+            while (!deque.isEmpty() && array[i] >= array[deque.peekLast()]) {
+                deque.removeLast();
+            }
+            deque.addLast(i);
+        }
+        result[resultPos++] = array[deque.peekFirst()];
+
+        for (int i = k; i < array.length; i++) {
+            if (deque.peekFirst() <= i - k) {
+                deque.removeFirst();
+            }
+            while (!deque.isEmpty() && array[i] >= array[deque.peekLast()]) {
+                deque.removeLast();
+            }
+            deque.addLast(i);
+            result[resultPos++] = array[deque.peekFirst()];
+        }
+        return result;
     }
 }
