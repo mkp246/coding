@@ -435,4 +435,22 @@ public class OrderStatisticsTest {
         result = OrderStatistics.getMaximumAndMinimumUsingMinimumComparison(array);
         assertArrayEquals(new int[]{50, 5}, result);
     }
+
+    @Test
+    @GFGMethod(date = "29-07-2019", algo = "(method 2)keep track of max diff, min element to left of current",
+            desc = "(method 2 alt) can keep track of maximum to the right of element,(method 3) diff array between adjacent adn find max sum subarray of diff array",
+            url = "/maximum-difference-between-two-elements/")
+    public void testGetMaximumDiffLargerElementAfterSmaller() {
+        int[] array = {2, 3, 10, 6, 4, 8, 1};
+        int result = OrderStatistics.getMaximumDiffLargerElementAfterSmaller(array);
+        assertEquals(8, result);
+
+        array = new int[]{7, 9, 5, 6, 3, 2};
+        result = OrderStatistics.getMaximumDiffLargerElementAfterSmaller(array);
+        assertEquals(2, result);
+
+        array = new int[]{1, 2, 90, 10, 110};
+        result = OrderStatistics.getMaximumDiffLargerElementAfterSmaller(array);
+        assertEquals(109, result);
+    }
 }

@@ -568,4 +568,20 @@ public class OrderStatistics {
         }
         return new int[]{max, min};
     }
+
+    public static int getMaximumDiffLargerElementAfterSmaller(int[] array) {
+        int maxDiff = Integer.MIN_VALUE;
+        int minElement = array[0];
+        int tempDiff;
+        for (int i = 1; i < array.length; i++) {
+            tempDiff = array[i] - minElement;
+            if (tempDiff > maxDiff) {
+                maxDiff = tempDiff;
+            }
+            if (minElement > array[i]) {
+                minElement = array[i];
+            }
+        }
+        return maxDiff;
+    }
 }
