@@ -664,4 +664,25 @@ public class OrderStatistics {
         }
         return result;
     }
+
+    public static int findMinimumDistanceBetweenTwoNumber(int[] array, int x, int y) {
+        int minDistance = array.length;
+        int lastIdx = -1;
+        int i = 0;
+        for (; i < array.length; i++) {
+            if (array[i] == x || array[i] == y) {
+                lastIdx = i;
+                break;
+            }
+        }
+        for (; i < array.length; i++) {
+            if (array[i] == x || array[i] == y) {
+                if (array[i] != array[lastIdx]) {
+                    minDistance = Math.min(minDistance, i - lastIdx);
+                }
+                lastIdx = i;
+            }
+        }
+        return minDistance;
+    }
 }

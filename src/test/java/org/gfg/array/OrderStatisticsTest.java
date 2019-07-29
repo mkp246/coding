@@ -516,4 +516,25 @@ public class OrderStatisticsTest {
         result = OrderStatistics.testFindSlidingWindowMaximumOfAllSubarrayOfKLength(array, 3);
         assertArrayEquals(new int[]{78, 90, 90, 90, 89}, result);
     }
+
+    @Test
+    @GFGMethod(date = "29-07-2019", algo = "(method 2) if any of x or y found update last idx, if next x/y and different than last, then update min dist if lower diff, update last idx",
+            url = "/find-the-minimum-distance-between-two-numbers/")
+    public void testFindMinimumDistanceBetweenTwoNumber() {
+        int[] array = {1, 2};
+        int result = OrderStatistics.findMinimumDistanceBetweenTwoNumber(array, 1, 2);
+        assertEquals(1, result);
+
+        array = new int[]{3, 4, 5};
+        result = OrderStatistics.findMinimumDistanceBetweenTwoNumber(array, 3, 5);
+        assertEquals(2, result);
+
+        array = new int[]{3, 5, 4, 2, 6, 5, 6, 6, 5, 4, 8, 3};
+        result = OrderStatistics.findMinimumDistanceBetweenTwoNumber(array, 3, 6);
+        assertEquals(4, result);
+
+        array = new int[]{2, 5, 3, 5, 4, 4, 2, 3};
+        result = OrderStatistics.findMinimumDistanceBetweenTwoNumber(array, 3, 2);
+        assertEquals(1, result);
+    }
 }
