@@ -453,4 +453,46 @@ public class OrderStatisticsTest {
         result = OrderStatistics.getMaximumDiffLargerElementAfterSmaller(array);
         assertEquals(109, result);
     }
+
+    @Test
+    @GFGMethod(date = "29-07-2019", algo = "(method 2)sort array, max j-i is when any value's index in sorted array is compared with smallest index among all of lower element",
+            url = "/given-an-array-arr-find-the-maximum-j-i-such-that-arrj-arri/")
+    public void testFindMaximumIJDifferenceSuchThatElementAtJIsHigher() {
+        int[] array = {34, 8, 10, 3, 2, 80, 30, 33, 1};
+        int result = OrderStatistics.findMaximumIJDifferenceSuchThatElementAtJIsHigher(array);
+        assertEquals(6, result);
+
+        array = new int[]{9, 2, 3, 4, 5, 6, 7, 8, 18, 0};
+        result = OrderStatistics.findMaximumIJDifferenceSuchThatElementAtJIsHigher(array);
+        assertEquals(8, result);
+
+        array = new int[]{1, 2, 3, 4, 5, 6};
+        result = OrderStatistics.findMaximumIJDifferenceSuchThatElementAtJIsHigher(array);
+        assertEquals(5, result);
+
+        array = new int[]{6, 5, 4, 3, 2, 1};
+        result = OrderStatistics.findMaximumIJDifferenceSuchThatElementAtJIsHigher(array);
+        assertEquals(-1, result);
+    }
+
+    @Test
+    @GFGMethod(date = "29-07-2019", algo = "(method 3)tracking min to left and max to right(both incl), start traverse at i=0,j=0, if Lmin[i] is higher that Rmax[j] i++, else j++ and update max diff if less than j-i",
+            url = "/given-an-array-arr-find-the-maximum-j-i-such-that-arrj-arri/")
+    public void testFindMaximumIJDifferenceSuchThatElementAtJIsHigherByTrackingOfSmallestToLeftAndHighestToRight() {
+        int[] array = {34, 8, 10, 3, 2, 80, 30, 33, 1};
+        int result = OrderStatistics.findMaximumIJDifferenceSuchThatElementAtJIsHigherByTrackingOfSmallestToLeftAndHighestToRight(array);
+        assertEquals(6, result);
+
+        array = new int[]{9, 2, 3, 4, 5, 6, 7, 8, 18, 0};
+        result = OrderStatistics.findMaximumIJDifferenceSuchThatElementAtJIsHigherByTrackingOfSmallestToLeftAndHighestToRight(array);
+        assertEquals(8, result);
+
+        array = new int[]{1, 2, 3, 4, 5, 6};
+        result = OrderStatistics.findMaximumIJDifferenceSuchThatElementAtJIsHigherByTrackingOfSmallestToLeftAndHighestToRight(array);
+        assertEquals(5, result);
+
+        array = new int[]{6, 5, 4, 3, 2, 1};
+        result = OrderStatistics.findMaximumIJDifferenceSuchThatElementAtJIsHigherByTrackingOfSmallestToLeftAndHighestToRight(array);
+        assertEquals(-1, result);
+    }
 }

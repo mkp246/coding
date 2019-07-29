@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
@@ -583,5 +584,56 @@ public class OrderStatistics {
             }
         }
         return maxDiff;
+    }
+
+    /**
+     * map - track indexes of elements, list to keep track of multiple occurance of an element
+     *
+     * @param array
+     * @return
+     */
+    public static int findMaximumIJDifferenceSuchThatElementAtJIsHigher(int[] array) {
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < array.length; i++) {
+            map.putIfAbsent(array[i], new ArrayList<>());
+            map.get(array[i]).add(i);
+        }
+        Arrays.sort(array);
+        int minIndex = array.length;
+        int maxDiff = -1;
+        for (int element : array) {
+            List<Integer> occurances = map.get(element);
+            if (occurances.get(0) < minIndex) {
+                minIndex = occurances.get(0);
+            }
+            Integer lastOccurance = occurances.get(occurances.size() - 1);
+            maxDiff = Math.max(maxDiff, lastOccurance - minIndex);
+        }
+        return maxDiff == 0 ? -1 : maxDiff;
+    }
+
+    public static int findMaximumIJDifferenceSuchThatElementAtJIsHigherByTrackingOfSmallestToLeftAndHighestToRight(int[] array) {
+        int[] leftMin = new int[array.length];
+        int[] rightMax = new int[array.length];
+
+        leftMin[0] = array[0];
+        for (int i = 1; i < array.length; i++) {
+            leftMin[i] = Math.min(leftMin[i - 1], array[i]);
+        }
+
+        rightMax[array.length - 1] = array[array.length - 1];
+        for (int i = array.length - 2; i >= 0; i--) {
+            rightMax[i] = Math.max(rightMax[i + 1], array[i]);
+        }
+        int i = 0, j = 0, maxDiff = -1;
+        while (i < array.length && j < array.length) {
+            if (leftMin[i] > rightMax[j]) {
+                i++;
+            } else {
+                maxDiff = Math.max(maxDiff, j - i);
+                j++;
+            }
+        }
+        return maxDiff == 0 ? -1 : maxDiff; //can't be zero
     }
 }
