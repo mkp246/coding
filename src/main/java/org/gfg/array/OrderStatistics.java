@@ -685,4 +685,22 @@ public class OrderStatistics {
         }
         return minDistance;
     }
+
+    public static int findMaxElementInFirstIncreasingThenDecreasingArray(int[] array) {
+        int max = 0;
+        boolean maxFound = false;
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                max = array[i];
+                maxFound = true;
+                break;
+            }
+        }
+
+        // means all increasing order only
+        if (!maxFound) {
+            max = array[array.length - 1];
+        }
+        return max;
+    }
 }

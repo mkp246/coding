@@ -49,6 +49,7 @@ public class ArraySearchTest {
     }
 
     @Test
+    @ALT(url = "/find-the-maximum-element-in-an-array-which-is-first-increasing-and-then-decreasing/", desc = "(method 2)Find the maximum element in an array which is first increasing and then decreasing")
     @ALT(url = "/find-minimum-element-in-a-sorted-and-rotated-array")
     @ALT(url = "/find-rotation-count-rotated-sorted-array/")
     @GFGMethod(date = "25-05-2019", algo = "find pivot using binary search in sorted and rotated array")

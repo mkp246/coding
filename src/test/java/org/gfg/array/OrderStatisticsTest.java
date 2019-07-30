@@ -537,4 +537,26 @@ public class OrderStatisticsTest {
         result = OrderStatistics.findMinimumDistanceBetweenTwoNumber(array, 3, 2);
         assertEquals(1, result);
     }
+
+    @Test
+    @GFGMethod(date = "30-07-2019", algo = "(method 1) linear search",
+            url = "/find-the-maximum-element-in-an-array-which-is-first-increasing-and-then-decreasing/")
+    public void testFindMaxElementInFirstIncreasingThenDecreasingArray() {
+        int[] array = {8, 10, 20, 80, 100, 200, 400, 500, 3, 2, 1};
+        int result = OrderStatistics.findMaxElementInFirstIncreasingThenDecreasingArray(array);
+        assertEquals(500, result);
+
+        array = new int[]{1, 3, 50, 10, 9, 7, 6};
+        result = OrderStatistics.findMaxElementInFirstIncreasingThenDecreasingArray(array);
+        assertEquals(50, result);
+
+        array = new int[]{10, 20, 30, 40, 50};
+        result = OrderStatistics.findMaxElementInFirstIncreasingThenDecreasingArray(array);
+        assertEquals(50, result);
+
+        array = new int[]{120, 100, 80, 20, 0};
+        result = OrderStatistics.findMaxElementInFirstIncreasingThenDecreasingArray(array);
+        assertEquals(120, result);
+    }
+
 }
