@@ -579,4 +579,17 @@ public class OrderStatisticsTest {
         result = OrderStatistics.findSmallestPositiveElementMissingInUnsortedArray(array);
         assertEquals(1, result);
     }
+
+    @Test
+    @GFGMethod(date = "31-07-2019", algo = "use quotient to store freq @index=ele, and reminder to store previous",
+            url = "/find-the-maximum-repeating-number-in-ok-time/")
+    public void testFindMaximumRepeatingNumberInPositiveArray() {
+        int[] array = {1, 2, 2, 2, 0, 2, 0, 2, 3, 8, 0, 9, 2, 3};
+        int result = OrderStatistics.findMaximumRepeatingNumberInPositiveArray(array, 10);
+        assertEquals(2, result);
+
+        array = new int[]{2, 3, 3, 5, 3, 4, 1, 7};
+        result = OrderStatistics.findMaximumRepeatingNumberInPositiveArray(array, 8);
+        assertEquals(3, result);
+    }
 }

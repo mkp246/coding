@@ -729,4 +729,19 @@ public class OrderStatistics {
         }
         return smallestMissing;
     }
+
+    public static int findMaximumRepeatingNumberInPositiveArray(int[] array, int allLestThan) {
+        for (int i = 0; i < array.length; i++) {
+            array[array[i] % allLestThan] += allLestThan;
+        }
+
+        int maxIdx = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > array[maxIdx]) {
+                maxIdx = i;
+            }
+        }
+
+        return maxIdx;
+    }
 }
