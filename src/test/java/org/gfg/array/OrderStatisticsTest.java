@@ -559,4 +559,24 @@ public class OrderStatisticsTest {
         assertEquals(120, result);
     }
 
+    @Test
+    @GFGMethod(date = "30-07-2019", algo = "segregate negative to end, mark presence of element by making it negative, return smallest index where ele is positive",
+            url = "/find-the-smallest-positive-number-missing-from-an-unsorted-array/")
+    public void testFindSmallestPositiveElementMissingInUnsortedArray() {
+        int[] array = {2, 3, 7, 6, 8, -1, -10, 15};
+        int result = OrderStatistics.findSmallestPositiveElementMissingInUnsortedArray(array);
+        assertEquals(1, result);
+
+        array = new int[]{2, 3, -7, 6, 8, 1, -10, 15};
+        result = OrderStatistics.findSmallestPositiveElementMissingInUnsortedArray(array);
+        assertEquals(4, result);
+
+        array = new int[]{1, 1, 0, -1, -2};
+        result = OrderStatistics.findSmallestPositiveElementMissingInUnsortedArray(array);
+        assertEquals(2, result);
+
+        array = new int[]{0, 10, 2, -10, -20};
+        result = OrderStatistics.findSmallestPositiveElementMissingInUnsortedArray(array);
+        assertEquals(1, result);
+    }
 }

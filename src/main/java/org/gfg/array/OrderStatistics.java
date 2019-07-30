@@ -703,4 +703,30 @@ public class OrderStatistics {
         }
         return max;
     }
+
+    public static int findSmallestPositiveElementMissingInUnsortedArray(int[] array) {
+        int negPos = -1; //will point to last index where element <= 0
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] <= 0) {
+                ArrayRearrange.swapIndex(array, i, ++negPos);
+            }
+        }
+        for (int i = 0; i <= negPos; i++) {
+            array[i] *= -1;
+        }
+        for (int i = negPos + 1; i < array.length; i++) {
+            int element = Math.abs(array[i]);
+            if (element < array.length && array[element] > 0) {
+                array[element] *= -1;
+            }
+        }
+        int smallestMissing = 0;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > 0) {
+                smallestMissing = i;
+                break;
+            }
+        }
+        return smallestMissing;
+    }
 }
