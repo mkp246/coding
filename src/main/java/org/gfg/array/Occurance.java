@@ -45,7 +45,7 @@ public class Occurance {
         return intListToArray(result);
     }
 
-    private static int[] intListToArray(ArrayList<Integer> result) {
+    public static int[] intListToArray(List<Integer> result) {
         int[] resultArray = new int[result.size()];
         int index = 0;
         for (int number : result) {

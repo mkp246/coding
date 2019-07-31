@@ -1,7 +1,5 @@
 package org.gfg.array;
 
-import javafx.util.Pair;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -743,5 +741,82 @@ public class OrderStatistics {
         }
 
         return maxIdx;
+    }
+
+    public static int[] findElementsWithMoreFrequencyMoreThanNByK(int[] array, int k) {
+        Pair<Integer, Integer>[] pairs = new Pair[k - 1]; //can' be more than k-1 element, pair in (ele,count)
+        for (int i = 0; i < array.length; i++) {
+            boolean found = false;
+            for (int j = 0; j < k - 1; j++) {
+                if (pairs[j] != null && pairs[j].getKey() == array[i]) {
+                    pairs[j].setValue(pairs[j].getValue() + 1);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                for (int j = 0; j < k - 1; j++) {
+                    if (pairs[j] == null) {
+                        pairs[j] = new Pair<>(array[i], 1);
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found) {
+                for (int j = 0; j < k - 1; j++) {
+                    if (pairs[j] != null) {
+                        if (pairs[j].getValue() == 1) {
+                            pairs[j] = null;
+                        } else {
+                            pairs[j].setValue(pairs[j].getValue() - 1);
+                        }
+                    }
+                }
+            }
+        }
+        List<Integer> result = new ArrayList<>();
+        int countShouldBeGreaterThan = array.length / k;
+        for (Pair<Integer, Integer> pair : pairs) {
+            if (pair != null) {
+                int count = 0;
+                for (int element : array) {
+                    if (element == pair.getKey()) {
+                        count++;
+                    }
+                }
+                if (count > countShouldBeGreaterThan) {
+                    result.add(pair.getKey());
+                }
+            }
+        }
+        return Occurance.intListToArray(result);
+    }
+
+    private static class Pair<K, V> {
+        private K key;
+        private V value;
+
+        public Pair(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public K getKey() {
+            return key;
+        }
+
+        public V getValue() {
+            return value;
+        }
+
+        public void setValue(V value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return "Pair{" + "key=" + key + ", value=" + value + '}';
+        }
     }
 }

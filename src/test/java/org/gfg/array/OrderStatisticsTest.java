@@ -592,4 +592,33 @@ public class OrderStatisticsTest {
         result = OrderStatistics.findMaximumRepeatingNumberInPositiveArray(array, 8);
         assertEquals(3, result);
     }
+
+    @Test
+    @GFGMethod(date = "31-07-2019", algo = "keep k-1 candidates at each step if cand list full, dec all cand cond by 1, ignore the element",
+            url = "/given-an-array-of-of-size-n-finds-all-the-elements-that-appear-more-than-nk-times/", tComp = "O(nk)")
+    public void testFindElementsWithMoreFrequencyMoreThanNByK() {
+        int[] array = {3, 1, 2, 2, 1, 2, 3, 3};
+        int[] result = OrderStatistics.findElementsWithMoreFrequencyMoreThanNByK(array, 4);
+        assertArrayEquals(new int[]{3, 2}, result);
+
+        array = new int[]{3, 1, 2, 2, 2, 1, 4, 3, 3};
+        result = OrderStatistics.findElementsWithMoreFrequencyMoreThanNByK(array, 4);
+        assertArrayEquals(new int[]{3, 2}, result);
+
+        array = new int[]{4, 5, 6, 7, 8, 4, 4};
+        result = OrderStatistics.findElementsWithMoreFrequencyMoreThanNByK(array, 3);
+        assertArrayEquals(new int[]{4}, result);
+
+        array = new int[]{4, 2, 2, 7};
+        result = OrderStatistics.findElementsWithMoreFrequencyMoreThanNByK(array, 3);
+        assertArrayEquals(new int[]{2}, result);
+
+        array = new int[]{2, 7, 2};
+        result = OrderStatistics.findElementsWithMoreFrequencyMoreThanNByK(array, 2);
+        assertArrayEquals(new int[]{2}, result);
+
+        array = new int[]{2, 3, 3, 2};
+        result = OrderStatistics.findElementsWithMoreFrequencyMoreThanNByK(array, 3);
+        assertArrayEquals(new int[]{2, 3}, result);
+    }
 }
