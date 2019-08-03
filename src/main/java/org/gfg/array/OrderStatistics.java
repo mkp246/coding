@@ -793,6 +793,26 @@ public class OrderStatistics {
         return Occurance.intListToArray(result);
     }
 
+    public static int[] findClosestSumPairTwoSortedArrays(int[] array1, int[] array2, int x) {
+        int pos1 = 0, pos2 = array2.length - 1;
+        int[] minDiffPair = new int[2];
+        int minDiff = Integer.MAX_VALUE;
+        while (pos1 < array1.length && pos2 >= 0) {
+            if (Math.abs(array1[pos1] + array2[pos2] - x) < minDiff) {
+                minDiffPair[0] = array1[pos1];
+                minDiffPair[1] = array2[pos2];
+                minDiff = Math.abs(minDiffPair[0] + minDiffPair[1] - x);
+            }
+            if (array1[pos1] + array2[pos2] > x) {
+                pos2--;
+            } else {
+                pos1++;
+            }
+        }
+
+        return minDiffPair;
+    }
+
     private static class Pair<K, V> {
         private K key;
         private V value;
@@ -820,7 +840,7 @@ public class OrderStatistics {
         }
     }
 
-    public static int findMaxSumPathAcrossTwoArrays(int[] array1, int[] array2) {
+    public static int findMaxSumPathAcrossTwoSortedArrays(int[] array1, int[] array2) {
         int pos1 = 0, pos2 = 0, sum1 = 0, sum2 = 0, pathSum = 0;
         while (pos1 < array1.length && pos2 < array2.length) {
             if (array1[pos1] == array2[pos2]) {

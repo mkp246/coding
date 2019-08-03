@@ -625,20 +625,41 @@ public class OrderStatisticsTest {
     @Test
     @GFGMethod(date = "03-08-2019", algo = "modified merging, add max sum path from last common point, reset both path sum, repeat",
             url = "/maximum-sum-path-across-two-arrays/")
-    public void testFindMaxSumPathAcrossTwoArrays() {
+    public void testFindMaxSumPathAcrossTwoSortedArrays() {
         int[] array1 = {2, 3, 7, 10, 12};
         int[] array2 = {1, 5, 7, 8};
-        int result = OrderStatistics.findMaxSumPathAcrossTwoArrays(array1, array2);
+        int result = OrderStatistics.findMaxSumPathAcrossTwoSortedArrays(array1, array2);
         assertEquals(35, result);
 
         array1 = new int[]{10, 12};
         array2 = new int[]{5, 7, 8};
-        result = OrderStatistics.findMaxSumPathAcrossTwoArrays(array1, array2);
+        result = OrderStatistics.findMaxSumPathAcrossTwoSortedArrays(array1, array2);
         assertEquals(22, result);
 
         array1 = new int[]{2, 3, 7, 10, 12, 15, 30, 34};
         array2 = new int[]{1, 5, 7, 8, 10, 15, 16, 19};
-        result = OrderStatistics.findMaxSumPathAcrossTwoArrays(array1, array2);
+        result = OrderStatistics.findMaxSumPathAcrossTwoSortedArrays(array1, array2);
         assertEquals(122, result);
+    }
+
+    @Test
+    @GFGMethod(date = "03-08-2019", algo = "start in one from left, other from right, update minAbsDiff and pair at each step if sum > x, right-- else left++",
+            desc = "alt merge both array sorted, keep boolean array to indicate from array1 or 2, find pair sum closest to x, where both element from diff array(use bool array)",
+            url = "/given-two-sorted-arrays-number-x-find-pair-whose-sum-closest-x/")
+    public void testFindClosestSumPairTwoSortedArrays() {
+        int[] array1 = {1, 4, 5, 7};
+        int[] array2 = {10, 20, 30, 40};
+        int[] result = OrderStatistics.findClosestSumPairTwoSortedArrays(array1, array2, 31);
+        assertArrayEquals(new int[]{1, 30}, result);
+
+        array1 = new int[]{1, 4, 5, 7};
+        array2 = new int[]{10, 20, 30, 40};
+        result = OrderStatistics.findClosestSumPairTwoSortedArrays(array1, array2, 50);
+        assertArrayEquals(new int[]{7, 40}, result);
+
+        array1 = new int[]{1, 4, 5, 7};
+        array2 = new int[]{10, 20, 30, 40};
+        result = OrderStatistics.findClosestSumPairTwoSortedArrays(array1, array2, 38);
+        assertArrayEquals(new int[]{7, 30}, result);
     }
 }
