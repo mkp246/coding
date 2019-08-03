@@ -9,7 +9,7 @@ public class ArrayRangeQueryTest {
 
     @Test
     @GFGMethod(date = "03-08-2019", algo = "query square root decomposition (MO's algorithm)",
-            url = "/mos-algorithm-query-square-root-decomposition-set-1-introduction/", tComp = "O((m+n)√n)")
+            url = "/mos-algorithm-query-square-root-decomposition-set-1-introduction/", tComp = "O((m+n)sqrt(n))")
     public void testFindRangeSumUsingMOAlgorithm() {
         int[] array = {1, 1, 2, 1, 3, 4, 5, 2, 8};
         int[][] query = {{0, 4}, {1, 3}, {2, 4}};
