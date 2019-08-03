@@ -621,4 +621,24 @@ public class OrderStatisticsTest {
         result = OrderStatistics.findElementsWithMoreFrequencyMoreThanNByK(array, 3);
         assertArrayEquals(new int[]{2, 3}, result);
     }
+
+    @Test
+    @GFGMethod(date = "03-08-2019", algo = "modified merging, add max sum path from last common point, reset both path sum, repeat",
+            url = "/maximum-sum-path-across-two-arrays/")
+    public void testFindMaxSumPathAcrossTwoArrays() {
+        int[] array1 = {2, 3, 7, 10, 12};
+        int[] array2 = {1, 5, 7, 8};
+        int result = OrderStatistics.findMaxSumPathAcrossTwoArrays(array1, array2);
+        assertEquals(35, result);
+
+        array1 = new int[]{10, 12};
+        array2 = new int[]{5, 7, 8};
+        result = OrderStatistics.findMaxSumPathAcrossTwoArrays(array1, array2);
+        assertEquals(22, result);
+
+        array1 = new int[]{2, 3, 7, 10, 12, 15, 30, 34};
+        array2 = new int[]{1, 5, 7, 8, 10, 15, 16, 19};
+        result = OrderStatistics.findMaxSumPathAcrossTwoArrays(array1, array2);
+        assertEquals(122, result);
+    }
 }

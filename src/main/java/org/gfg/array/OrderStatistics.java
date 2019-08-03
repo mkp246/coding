@@ -819,4 +819,30 @@ public class OrderStatistics {
             return "Pair{" + "key=" + key + ", value=" + value + '}';
         }
     }
+
+    public static int findMaxSumPathAcrossTwoArrays(int[] array1, int[] array2) {
+        int pos1 = 0, pos2 = 0, sum1 = 0, sum2 = 0, pathSum = 0;
+        while (pos1 < array1.length && pos2 < array2.length) {
+            if (array1[pos1] == array2[pos2]) {
+                pathSum += Math.max(sum1, sum2) + array1[pos1];
+                sum1 = sum2 = 0;
+                pos1++;
+                pos2++;
+            } else if (array1[pos1] > array2[pos2]) {
+                sum2 += array2[pos2++];
+            } else {
+                sum1 += array1[pos1++];
+            }
+        }
+        for (int i = pos1; i < array1.length; i++) {
+            sum1 += array1[i];
+        }
+        for (int i = pos2; i < array2.length; i++) {
+            sum2 += array2[i];
+        }
+
+        pathSum += Math.max(sum1, sum2);
+
+        return pathSum;
+    }
 }
