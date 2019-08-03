@@ -273,6 +273,7 @@ public class OrderStatisticsTest {
     }
 
     @Test
+    @ALT(desc = "sum of largest and second largest", url = "/find-the-largest-pair-sum-in-an-unsorted-array/")
     @GFGMethod(date = "28-07-2019", algo = "keep track of two largest", url = "/k-th-smallest-absolute-difference-two-elements-array/")
     public void testGetSecondLargestElement() {
         int[] array = {12, 35, 1, 10, 34, 1};
