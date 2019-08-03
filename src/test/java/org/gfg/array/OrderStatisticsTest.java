@@ -663,4 +663,21 @@ public class OrderStatisticsTest {
         result = OrderStatistics.findClosestSumPairTwoSortedArrays(array1, array2, 38);
         assertArrayEquals(new int[]{7, 30}, result);
     }
+
+    @Test
+    @GFGMethod(date = "03-08-2019", algo = "pop from stack until k<0 and top element is lower than current, push element, print stack.pop in reverse order",
+            url = "/delete-array-elements-which-are-smaller-than-next-or-become-smaller/")
+    public void testDeleteKElementWhichAreSmallerThanNextOrBecomeSmallerUsingStack() {
+        int[] array = {3, 100, 1};
+        int[] result = OrderStatistics.deleteKElementWhichAreSmallerThanNextOrBecomeSmallerUsingStack(array, 1);
+        assertArrayEquals(new int[]{100, 1}, result);
+
+        array = new int[]{20, 10, 25, 30, 40};
+        result = OrderStatistics.deleteKElementWhichAreSmallerThanNextOrBecomeSmallerUsingStack(array, 2);
+        assertArrayEquals(new int[]{25, 30, 40}, result);
+
+        array = new int[]{23, 45, 11, 77, 18};
+        result = OrderStatistics.deleteKElementWhichAreSmallerThanNextOrBecomeSmallerUsingStack(array, 3);
+        assertArrayEquals(new int[]{77, 18}, result);
+    }
 }

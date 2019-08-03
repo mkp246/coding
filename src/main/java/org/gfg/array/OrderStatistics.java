@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Stack;
 
 public class OrderStatistics {
     public static int getKthSmallestNumberUsingSorting(int[] array, int k) {
@@ -811,6 +812,26 @@ public class OrderStatistics {
         }
 
         return minDiffPair;
+    }
+
+    public static int[] deleteKElementWhichAreSmallerThanNextOrBecomeSmallerUsingStack(int[] array, int k) {
+        Stack<Integer> stack = new Stack<>();
+        int[] result = new int[array.length - k];
+        
+        for (int i = 0; i < array.length; i++) {
+            while (k > 0 && !stack.isEmpty() && stack.peek() < array[i]) {
+                stack.pop();
+                k--;
+            }
+            stack.push(array[i]);
+        }
+
+        int resultPos = result.length - 1;
+
+        while (!stack.isEmpty()) {
+            result[resultPos--] = stack.pop();
+        }
+        return result;
     }
 
     private static class Pair<K, V> {
