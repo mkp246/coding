@@ -19,4 +19,13 @@ public class ArrayRangeQueryTest {
         int[][] result = ArrayRangeQuery.findRangeSumUsingMOAlgorithm(array, query);
         assertArrayEquals(new int[][]{{1, 3, 4}, {0, 4, 8}, {2, 4, 6}, {0, 5, 12}, {3, 5, 8}, {4, 6, 12}, {7, 8, 10}, {6, 8, 15}, {8, 8, 8}}, result);
     }
+
+    @Test
+    @GFGMethod(date = "04-08-2019", algo = "keep index in map by element, look for indexes in range for ele",
+            url = "/range-queries-for-frequencies-of-array-elements/")
+    public void testGetFrequencyOfElementInRange() {
+        int[] array = {2, 8, 6, 9, 8, 6, 8, 2, 11};
+        int[] result = ArrayRangeQuery.getFrequencyOfElementInRange(array, new int[][]{{2, 8, 8}, {2, 5, 6}, {2, 4, 9}, {9, 9, 11}});
+        assertArrayEquals(new int[]{3, 1, 1,1}, result);
+    }
 }

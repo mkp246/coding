@@ -1,6 +1,11 @@
 package org.gfg.array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.Vector;
 
 public class ArrayRangeQuery {
 
@@ -36,6 +41,37 @@ public class ArrayRangeQuery {
             result[resultPos++][2] = currSum;
         }
 
+        return result;
+    }
+
+    /**
+     * query format [start,end,element]
+     *
+     * @param array
+     * @param queries
+     * @return
+     */
+    public static int[] getFrequencyOfElementInRange(int[] array, int[][] queries) {
+        HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
+        for (int i = 0; i < array.length; i++) {
+            map.putIfAbsent(array[i], new ArrayList<>());
+            map.get(array[i]).add(i);
+        }
+        int[] result = new int[queries.length];
+        int resultPos = 0;
+        for (int[] query : queries) {
+            ArrayList<Integer> indexes = map.get(query[2]);
+            int start = 0, end = 0;
+            //this loop can be done in O(log(n)) as sorted element
+            while (indexes.get(start) < query[0] - 1) {
+                start++;
+            }
+            end = start;
+            while (end < indexes.size() && indexes.get(end) <= query[1] - 1) {
+                end++;
+            }
+            result[resultPos++] = end - start;
+        }
         return result;
     }
 }
