@@ -15,15 +15,21 @@ wrapper {
 
 test {
     testLogging {
-        events "STARTED", "FAILED", "SKIPPED", "PASSED"
+        //events "STARTED", "FAILED", "SKIPPED", "PASSED"
         exceptionFormat "FULL"
+    }
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println("${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, " +
+                    "${result.failedTestCount} failures, ${result.skippedTestCount} skipped)")
+        }
     }
 }
 
 jacocoTestReport {
     reports {
         html.enabled true
-        xml.enabled true 
+        xml.enabled true
     }
 }
 

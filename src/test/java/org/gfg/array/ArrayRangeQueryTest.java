@@ -5,6 +5,7 @@ import com.mkp.GFGMethod;
 
 import static org.junit.Assert.*;
 
+import org.gfg.array.rangequery.ConstantTimeRangeAddOperation;
 import org.junit.Test;
 
 @GFG(date = "03-08-2019", topic = "array range queries", url = "/array-data-structure/array-range-queries/", impls = ArrayRangeQuery.class)
@@ -26,6 +27,19 @@ public class ArrayRangeQueryTest {
     public void testGetFrequencyOfElementInRange() {
         int[] array = {2, 8, 6, 9, 8, 6, 8, 2, 11};
         int[] result = ArrayRangeQuery.getFrequencyOfElementInRange(array, new int[][]{{2, 8, 8}, {2, 5, 6}, {2, 4, 9}, {9, 9, 11}});
-        assertArrayEquals(new int[]{3, 1, 1,1}, result);
+        assertArrayEquals(new int[]{3, 1, 1, 1}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "05-08-2019", algo = "at start add +ele, at end+1 add -ele, in end do cumulative sum",
+            desc = "(alt) can do lazy updates in segment tree url = /lazy-propagation-in-segment-tree/",
+            url = "/constant-time-range-add-operation-array/")
+    public void testConstantTimeRangeAddOperation() {
+        ConstantTimeRangeAddOperation operation = new ConstantTimeRangeAddOperation(6);
+        operation.add(0, 2, 10);
+        operation.add(1, 5, 100);
+        operation.add(2, 3, 50);
+        int[] result = operation.getArray();
+        assertArrayEquals(new int[]{10, 110, 160, 150, 100, 100}, result);
     }
 }

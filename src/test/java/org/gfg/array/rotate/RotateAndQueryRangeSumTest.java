@@ -1,4 +1,4 @@
-package org.gfg.array;
+package org.gfg.array.rotate;
 
 
 import com.mkp.GFG;

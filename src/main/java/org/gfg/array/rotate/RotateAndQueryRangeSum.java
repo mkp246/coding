@@ -1,4 +1,4 @@
-package org.gfg.array;
+package org.gfg.array.rotate;
 
 public class RotateAndQueryRangeSum {
     private int totalRotation = 0;
