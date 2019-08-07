@@ -2,11 +2,14 @@ package org.gfg.array;
 
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
-
-import static org.junit.Assert.*;
-
 import org.gfg.array.rangequery.ConstantTimeRangeAddOperation;
+import org.gfg.array.rangequery.RangeGCDSparseTable;
+import org.gfg.array.rangequery.RangeMinSparseTable;
+import org.gfg.array.rangequery.SparseTable;
 import org.junit.Test;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 @GFG(date = "03-08-2019", topic = "array range queries", url = "/array-data-structure/array-range-queries/", impls = ArrayRangeQuery.class)
 public class ArrayRangeQueryTest {
@@ -41,5 +44,39 @@ public class ArrayRangeQueryTest {
         operation.add(2, 3, 50);
         int[] result = operation.getArray();
         assertArrayEquals(new int[]{10, 110, 160, 150, 100, 100}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "07-08-2019", algo = "sparse table[i][j] stores min of 2^j element starting from i including",
+            url = "/sparse-table/", impls = RangeMinSparseTable.class)
+    public void testSparseTableMinimumInRange() {
+        int[] array = {7, 2, 3, 0, 5, 10, 3, 12, 18};
+        SparseTable sparseTable = new RangeMinSparseTable(array);
+
+        int result = sparseTable.getQuery(0, 4);
+        assertEquals(0, result);
+
+        result = sparseTable.getQuery(4, 7);
+        assertEquals(3, result);
+
+        result = sparseTable.getQuery(7, 8);
+        assertEquals(12, result);
+    }
+
+    @Test
+    @GFGMethod(date = "07-08-2019", algo = "sparse table[i][j] stores gcd of 2^j element starting from i including",
+            url = "/sparse-table/", impls = RangeGCDSparseTable.class)
+    public void testSparseTableGcdOfRange() {
+        int[] array = {2, 3, 5, 4, 6, 8};
+        SparseTable sparseTable = new RangeGCDSparseTable(array);
+
+        int result = sparseTable.getQuery(0, 2);
+        assertEquals(1, result);
+
+        result = sparseTable.getQuery(3, 5);
+        assertEquals(2, result);
+
+        result = sparseTable.getQuery(2, 3);
+        assertEquals(1, result);
     }
 }
