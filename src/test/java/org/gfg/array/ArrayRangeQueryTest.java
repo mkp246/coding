@@ -5,6 +5,7 @@ import com.mkp.GFGMethod;
 import org.gfg.array.rangequery.ConstantTimeRangeAddOperation;
 import org.gfg.array.rangequery.RangeGCDSparseTable;
 import org.gfg.array.rangequery.RangeMinSparseTable;
+import org.gfg.array.rangequery.SegmentTree;
 import org.gfg.array.rangequery.SparseTable;
 import org.junit.Test;
 
@@ -78,5 +79,20 @@ public class ArrayRangeQueryTest {
 
         result = sparseTable.getQuery(2, 3);
         assertEquals(1, result);
+    }
+
+    @Test
+    @GFGMethod(date = "07-08-2019", algo = "make full binary tree(stored as array), break segment as half, current node has sum of the segment under it",
+            url = "/segment-tree-set-1-sum-of-given-range/", impls = SegmentTree.class)
+    public void testSegmentTreeRangeSum() {
+        int[] array = {1, 3, 5, 7, 9, 11};
+        SegmentTree tree = new SegmentTree(array);
+
+        int result = tree.getQuery(1, 3);
+        assertEquals(15, result);
+
+        tree.updateValue(1, 10);
+        result = tree.getQuery(1, 3);
+        assertEquals(22, result);
     }
 }

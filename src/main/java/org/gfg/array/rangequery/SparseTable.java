@@ -1,5 +1,7 @@
 package org.gfg.array.rangequery;
 
+import org.gfg.array.Util;
+
 import java.util.Arrays;
 
 public abstract class SparseTable {
@@ -11,7 +13,7 @@ public abstract class SparseTable {
 
     private void buildTable(int[] array) {
         int iMax = array.length;
-        int jMax = log2(array.length) + 1;
+        int jMax = Util.log2Floor(array.length) + 1;
         lookup = new int[iMax][jMax];
 
 
@@ -28,13 +30,9 @@ public abstract class SparseTable {
         }
     }
 
-    private int log2(int x) {
-        return 31 - Integer.numberOfLeadingZeros(x);
-    }
-
     public int getQuery(int start, int end) {
         int length = end - start + 1;
-        int j = log2(length);
+        int j = Util.log2Floor(length);
         int c1 = lookup[start][j];
         int c2 = lookup[start + length - (1 << j)][j];
         return getResult(c1, c2);
