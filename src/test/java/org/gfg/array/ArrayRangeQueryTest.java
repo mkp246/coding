@@ -3,6 +3,7 @@ package org.gfg.array;
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
 import org.gfg.array.rangequery.ConstantTimeRangeAddOperation;
+import org.gfg.array.rangequery.OutsideRangeGCD;
 import org.gfg.array.rangequery.RangeGCDSegmentTree;
 import org.gfg.array.rangequery.RangeGCDSparseTable;
 import org.gfg.array.rangequery.RangeLCMSegmentTree;
@@ -150,4 +151,20 @@ public class ArrayRangeQueryTest {
         assertEquals(1, result);
     }
 
+    @Test
+    @GFGMethod(date = "08-08-2019", algo = "keep gcd starting 0/ending at last upto index in new arrays, return gcd of starting[l-1] and ending[r+1]",
+            url = "/queries-gcd-numbers-array-except-elements-given-range/", impls = OutsideRangeGCD.class)
+    public void testOutsideRangeGcdUsingPrefixAndSuffixGCD() {
+        int[] array = {2, 6, 9};
+        OutsideRangeGCD segmentTree = new OutsideRangeGCD(array);
+
+        int result = segmentTree.getQuery(0, 0);
+        assertEquals(3, result);
+
+        result = segmentTree.getQuery(1, 1);
+        assertEquals(1, result);
+
+        result = segmentTree.getQuery(1, 2);
+        assertEquals(2, result);
+    }
 }
