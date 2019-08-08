@@ -2,14 +2,14 @@ package org.gfg.array.rangequery;
 
 import org.gfg.array.Util;
 
-public class SegmentTree {
+public abstract class SegmentTree {
     private int[] tree;
     private int arrayLength;
     private int[] array;
 
-    public SegmentTree(int[] array) {
-        this.array = array;
+    SegmentTree(int[] array) {
         arrayLength = array.length;
+        this.array = array;
         int height = Util.log2Floor(array.length) + 1;
         int maxSize = 2 * (int) Math.pow(2, height) - 1;
         tree = new int[maxSize];
@@ -28,9 +28,7 @@ public class SegmentTree {
         return tree[currentIndex];
     }
 
-    private int getResult(int c1, int c2) {
-        return c1 + c2;
-    }
+    abstract int getResult(int c1, int c2);
 
     public int getQuery(int start, int end) {
         if (start < 0 || end > arrayLength - 1 || start > end) {
@@ -45,7 +43,7 @@ public class SegmentTree {
             return tree[currentIndex];
         } else if (segStart > qEnd || segEnd < qStart) {
             //segment outside range 
-            return 0;
+            return getDefaultOutOfRangeValue();
         } else {
             // segment overlapping range 
             int mid = Util.getMid(segStart, segEnd);
@@ -54,6 +52,8 @@ public class SegmentTree {
             return getResult(c1, c2);
         }
     }
+
+    abstract int getDefaultOutOfRangeValue();
 
     public void updateValue(int index, int value) {
         if (index < 0 || index > arrayLength - 1) {

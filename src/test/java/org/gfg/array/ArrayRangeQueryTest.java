@@ -3,8 +3,10 @@ package org.gfg.array;
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
 import org.gfg.array.rangequery.ConstantTimeRangeAddOperation;
+import org.gfg.array.rangequery.RangeGCDSegmentTree;
 import org.gfg.array.rangequery.RangeGCDSparseTable;
 import org.gfg.array.rangequery.RangeLCMSegmentTree;
+import org.gfg.array.rangequery.RangeMinSegmentTree;
 import org.gfg.array.rangequery.RangeMinSparseTable;
 import org.gfg.array.rangequery.RangeSumSegmentTree;
 import org.gfg.array.rangequery.SparseTable;
@@ -68,7 +70,7 @@ public class ArrayRangeQueryTest {
     @Test
     @GFGMethod(date = "07-08-2019", algo = "sparse table[i][j] stores gcd of 2^j element starting from i including",
             url = "/sparse-table/", impls = RangeGCDSparseTable.class)
-    public void testSparseTableGcdOfRange() {
+    public void testSparseTableRangeGcd() {
         int[] array = {2, 3, 5, 4, 6, 8};
         SparseTable sparseTable = new RangeGCDSparseTable(array);
 
@@ -113,4 +115,39 @@ public class ArrayRangeQueryTest {
         result = tree.getQuery(0, 10);
         assertEquals(78540, result);
     }
+
+    @Test
+    @GFGMethod(date = "07-08-2019", algo = "merge using min, default value +INF",
+            url = "/segment-tree-set-1-range-minimum-query/", impls = RangeMinSegmentTree.class)
+    public void testSegmentTreeMinimumInRange() {
+        int[] array = {7, 2, 3, 0, 5, 10, 3, 12, 18};
+        RangeMinSegmentTree sparseTable = new RangeMinSegmentTree(array);
+
+        int result = sparseTable.getQuery(0, 4);
+        assertEquals(0, result);
+
+        result = sparseTable.getQuery(4, 7);
+        assertEquals(3, result);
+
+        result = sparseTable.getQuery(7, 8);
+        assertEquals(12, result);
+    }
+
+    @Test
+    @GFGMethod(date = "08-08-2019", algo = "merge using gcd, out of range return 0",
+            url = "/gcds-of-a-given-index-ranges-in-an-array/", impls = RangeGCDSegmentTree.class)
+    public void testSegmentTreeRangeGcd() {
+        int[] array = {2, 3, 5, 4, 6, 8};
+        RangeGCDSegmentTree segmentTree = new RangeGCDSegmentTree(array);
+
+        int result = segmentTree.getQuery(0, 2);
+        assertEquals(1, result);
+
+        result = segmentTree.getQuery(3, 5);
+        assertEquals(2, result);
+
+        result = segmentTree.getQuery(2, 3);
+        assertEquals(1, result);
+    }
+
 }
