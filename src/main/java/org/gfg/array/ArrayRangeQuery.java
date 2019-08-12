@@ -74,4 +74,23 @@ public class ArrayRangeQuery {
         }
         return result;
     }
+
+    public static int[] decimalValueOfBinarySubarray(int[] array, int[][] queries) {
+        int multiplier = 2;
+        for (int i = array.length - 2; i >= 0; i--) {
+            array[i] = array[i + 1] + array[i] * multiplier;
+            multiplier <<= 1;
+        }
+
+        int[] result = new int[queries.length]; // query=[l,r]
+        int resultPos = 0;
+        for (int[] query : queries) {
+            if (query[1] != array.length - 1) {
+                result[resultPos++] = (array[query[0]] - array[query[1] + 1]) >> (array.length - 1 - query[1]);
+            } else {
+                result[resultPos++] = array[query[0]];
+            }
+        }
+        return result;
+    }
 }

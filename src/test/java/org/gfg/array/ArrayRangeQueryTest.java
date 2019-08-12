@@ -183,4 +183,15 @@ public class ArrayRangeQueryTest {
         result = bit.getQuery(5);
         assertEquals(18, result);
     }
+
+    @Test
+    @GFGMethod(date = "12-08-2019", algo = "prefix array st. pre[i] has decimal value of element after that including, res will be (pre[l]-pre[r])/2^(len-r-1)",
+            url = "/queries-for-decimal-values-of-subarray-of-a-binary-array/")
+    public void testDecimalValueOfBinarySubarray() {
+        int[] array = {1, 0, 1, 0, 1, 1};
+        int[][] queries = {{2, 4}, {4, 5}};
+
+        int[] result = ArrayRangeQuery.decimalValueOfBinarySubarray(array, queries);
+        assertArrayEquals(new int[]{5, 3}, result);
+    }
 }
