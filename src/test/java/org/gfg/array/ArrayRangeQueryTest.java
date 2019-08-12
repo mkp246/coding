@@ -2,6 +2,7 @@ package org.gfg.array;
 
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
+import org.gfg.array.rangequery.BinaryIndexTree;
 import org.gfg.array.rangequery.ConstantTimeRangeAddOperation;
 import org.gfg.array.rangequery.OutsideRangeGCD;
 import org.gfg.array.rangequery.RangeGCDSegmentTree;
@@ -166,5 +167,20 @@ public class ArrayRangeQueryTest {
 
         result = segmentTree.getQuery(1, 2);
         assertEquals(2, result);
+    }
+
+    @Test
+    @GFGMethod(date = "12-08-2019", algo = "using BIT binary index tree",
+            url = "/binary-indexed-tree-or-fenwick-tree-2/", impls = BinaryIndexTree.class)
+    public void testBinaryIndexTreePrefixSum() {
+        int[] array = {2, 1, 1, 3, 2, 3, 4, 5, 6, 7, 8, 9};
+        BinaryIndexTree bit = new BinaryIndexTree(array);
+
+        int result = bit.getQuery(5);
+        assertEquals(12, result);
+
+        bit.update(3, 6);
+        result = bit.getQuery(5);
+        assertEquals(18, result);
     }
 }
