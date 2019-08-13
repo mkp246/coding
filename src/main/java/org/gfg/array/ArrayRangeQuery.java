@@ -93,4 +93,52 @@ public class ArrayRangeQuery {
         }
         return result;
     }
+
+    public static int[] numberWhoseSumOfXorWithRangeIsMaximum(int[] array, int[][] queries) {
+        int[][] ones = new int[32][array.length];
+        int bitMask = 1;
+        for (int i = 0; i < 32; i++) {
+            if ((array[0] & bitMask) != 0) {
+                ones[i][0] = 1;
+            } else {
+                ones[i][0] = 0;
+            }
+            bitMask <<= 1;
+        }
+        
+        bitMask = 1;
+        for (int i = 0; i < 32; i++) {
+            for (int j = 1; j < array.length; j++) {
+                if ((array[j] & bitMask) != 0) {
+                    ones[i][j] = ones[i][j - 1] + 1;
+                } else {
+                    ones[i][j] = ones[i][j - 1];
+                }
+            }
+            bitMask <<= 1;
+        }
+
+        int[] result = new int[queries.length];
+        int resultPos = 0;
+        for (int[] query : queries) {
+            int number = 0;// holds the number to be xor with
+            bitMask = 1;
+            int numOnes, numZeros;
+            if (query[1] > array.length - 1) {
+                query[1] = array.length - 1;
+            }
+            for (int i = 0; i < 31; i++) {
+                numOnes = ones[i][query[1]] - (query[0] == 0 ? 0 : ones[i][query[0] - 1]);
+                numZeros = query[1] - query[0] + 1 - numOnes;
+                if (numOnes >= numZeros) {
+                    //nothing to do as all bit as unset during initialization
+                } else {
+                    number |= bitMask; //set the bit
+                }
+                bitMask <<= 1;
+            }
+            result[resultPos++] = number;
+        }
+        return result;
+    }
 }
