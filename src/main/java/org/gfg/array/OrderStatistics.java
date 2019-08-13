@@ -817,7 +817,7 @@ public class OrderStatistics {
     public static int[] deleteKElementWhichAreSmallerThanNextOrBecomeSmallerUsingStack(int[] array, int k) {
         Stack<Integer> stack = new Stack<>();
         int[] result = new int[array.length - k];
-        
+
         for (int i = 0; i < array.length; i++) {
             while (k > 0 && !stack.isEmpty() && stack.peek() < array[i]) {
                 stack.pop();
@@ -834,7 +834,7 @@ public class OrderStatistics {
         return result;
     }
 
-    private static class Pair<K, V> {
+    public static class Pair<K, V> {
         private K key;
         private V value;
 

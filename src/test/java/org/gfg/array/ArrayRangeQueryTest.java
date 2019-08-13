@@ -4,6 +4,7 @@ import com.mkp.GFG;
 import com.mkp.GFGMethod;
 import org.gfg.array.rangequery.BinaryIndexTree;
 import org.gfg.array.rangequery.ConstantTimeRangeAddOperation;
+import org.gfg.array.rangequery.MergeSortTreeForRangeOrderStatistics;
 import org.gfg.array.rangequery.OutsideRangeGCD;
 import org.gfg.array.rangequery.RangeGCDSegmentTree;
 import org.gfg.array.rangequery.RangeGCDSparseTable;
@@ -212,5 +213,20 @@ public class ArrayRangeQueryTest {
         queries = new int[][]{{1, 3}, {3, 5}, {2, 4}};
         result = ArrayRangeQuery.numberWhoseSumOfXorWithRangeIsMaximum(array, queries);
         assertArrayEquals(new int[]{2147483629, 2147483645, 2147483645}, result);
+    }
+
+    @Ignore("TODO")
+    @Test
+    @GFGMethod(date = "13-08-2019", algo = "",
+            url = "/merge-sort-tree-for-range-order-statistics/")
+    public void testMergeSortTreeForRangeOrderStatistics() {
+        int[] array = {3, 2, 5, 1, 8, 9};
+        MergeSortTreeForRangeOrderStatistics tree = new MergeSortTreeForRangeOrderStatistics(array);
+
+        int result = tree.query(2, 5, 2);
+        assertEquals(2, result);
+
+        result = tree.query(1, 6, 4);
+        assertEquals(5, result);
     }
 }
