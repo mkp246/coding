@@ -229,4 +229,18 @@ public class ArrayRangeQueryTest {
         result = tree.query(1, 6, 4);
         assertEquals(5, result);
     }
+
+    @Test
+    @GFGMethod(date = "14-08-2019", algo = "xor of group of 4 starting 0 is 0, so can ignore group of 4",
+            url = "/merge-sort-tree-for-range-order-statistics/")
+    public void testRangeXorQueryIfElementIsXorOfPreviousElementAndIndex() {
+        int result = ArrayRangeQuery.rangeXorQueryIfElementIsXorOfPreviousElementAndIndex(2, 4);
+        assertEquals(7, result);
+
+        result = ArrayRangeQuery.rangeXorQueryIfElementIsXorOfPreviousElementAndIndex(2, 8);
+        assertEquals(9, result);
+
+        result = ArrayRangeQuery.rangeXorQueryIfElementIsXorOfPreviousElementAndIndex(5, 9);
+        assertEquals(15, result);
+    }
 }

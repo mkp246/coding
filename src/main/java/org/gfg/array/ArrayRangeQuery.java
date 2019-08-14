@@ -105,7 +105,7 @@ public class ArrayRangeQuery {
             }
             bitMask <<= 1;
         }
-        
+
         bitMask = 1;
         for (int i = 0; i < 32; i++) {
             for (int j = 1; j < array.length; j++) {
@@ -140,5 +140,35 @@ public class ArrayRangeQuery {
             result[resultPos++] = number;
         }
         return result;
+    }
+
+    public static int rangeXorQueryIfElementIsXorOfPreviousElementAndIndex(int left, int right) {
+        return query(right) ^ query(left - 1);
+    }
+
+    private static int query(int x) {
+        if (x == 0) { //zero
+            return 0;
+        } else if (x % 2 != 0) { //odd
+            return xorTillX((x - 1) / 2) * 2 + (((x + 1) / 2) % 2 == 0 ? 0 : 1);
+        } else { //even
+            return xorTillX(x / 2) * 2;
+        }
+    }
+
+    /**
+     * including x starting 0
+     * using fact that group of 4 staring 0, eg (0-3),(4-7) xored is zero
+     *
+     * @param x
+     * @return
+     */
+    private static int xorTillX(int x) {
+        int start = (x / 4) * 4;
+        int answer = 0;
+        for (int i = start; i <= x; i++) {
+            answer ^= i;
+        }
+        return answer;
     }
 }
