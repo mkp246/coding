@@ -16,6 +16,8 @@ import org.gfg.array.rangequery.SparseTable;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -242,5 +244,23 @@ public class ArrayRangeQueryTest {
 
         result = ArrayRangeQuery.rangeXorQueryIfElementIsXorOfPreviousElementAndIndex(5, 9);
         assertEquals(15, result);
+    }
+
+    @Test
+    @GFGMethod(date = "15-08-2019", algo = "", url = "/sieve-of-eratosthenes/",
+            tComp = "O(n*log(log(n))")
+    public void testPrimesUsingSieveOfEratosthenes() {
+        List<Integer> result = ArrayRangeQuery.primesUsingSieveOfEratosthenes(30);
+        assertEquals("[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]", result.toString());
+
+        result = ArrayRangeQuery.primesUsingSieveOfEratosthenes(10);
+        assertEquals("[2, 3, 5, 7]", result.toString());
+
+        result = ArrayRangeQuery.primesUsingSieveOfEratosthenes(20);
+        assertEquals("[2, 3, 5, 7, 11, 13, 17, 19]", result.toString());
+
+
+        result = ArrayRangeQuery.primesUsingSieveOfEratosthenes(50);
+        assertEquals("[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]", result.toString());
     }
 }

@@ -3,9 +3,6 @@ package org.gfg.array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.util.Vector;
 
 public class ArrayRangeQuery {
 
@@ -170,5 +167,29 @@ public class ArrayRangeQuery {
             answer ^= i;
         }
         return answer;
+    }
+
+    public static ArrayList<Integer> primesUsingSieveOfEratosthenes(int max) {
+        boolean[] primes = new boolean[max + 1];
+        Arrays.fill(primes, true);
+
+        int sqrtMax = (int) Math.sqrt(max);
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for (int p = 2; p <= sqrtMax; p++) {
+            if (primes[p]) {
+                for (int i = p * p; i <= max; i += p) {
+                    primes[i] = false;
+                }
+                result.add(p);
+            }
+        }
+        for (int i = sqrtMax + 1; i <= max; i++) {
+            if (primes[i]) {
+                result.add(i);
+            }
+        }
+
+        return result;
     }
 }
