@@ -1,5 +1,6 @@
 package org.gfg.array;
 
+import com.mkp.GFGMethod;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -43,11 +44,32 @@ public class UtilTest {
     }
 
     @Test
+    @GFGMethod(date = "15-08-2019", algo = "extended euclidean", url = "/euclidean-algorithms-basic-and-extended/")
     public void testExtendedEuclidean() {
         int[] result = Util.extendedEuclidean(30, 20);
         assertArrayEquals(new int[]{10, 1, -1}, result);
 
         result = Util.extendedEuclidean(35, 15);
         assertArrayEquals(new int[]{5, 1, -2}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "15-08-2019", algo = "(method 2)extended euclidean", url = "/multiplicative-inverse-under-modulo-m/")
+    public void testModularMultiplicativeInverse() {
+        int inverse = Util.modularMultiplicativeInverse(3, 11);
+        assertEquals(4, inverse);
+
+        inverse = Util.modularMultiplicativeInverse(10, 17);
+        assertEquals(12, inverse);
+    }
+
+    @Test
+    @GFGMethod(date = "15-08-2019", algo = "(method 3)fermat little theorem", url = "/multiplicative-inverse-under-modulo-m/")
+    public void testModularMultiplicativeInverseUsingFermatsLittleTheorem() {
+        int inverse = Util.modularMultiplicativeInverseUsingFermatsLittleTheorem(3, 11);
+        assertEquals(4, inverse);
+
+        inverse = Util.modularMultiplicativeInverseUsingFermatsLittleTheorem(10, 17);
+        assertEquals(12, inverse);
     }
 }
