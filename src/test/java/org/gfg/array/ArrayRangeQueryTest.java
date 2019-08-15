@@ -6,6 +6,7 @@ import org.gfg.array.rangequery.BinaryIndexTree;
 import org.gfg.array.rangequery.ConstantTimeRangeAddOperation;
 import org.gfg.array.rangequery.MergeSortTreeForRangeOrderStatistics;
 import org.gfg.array.rangequery.OutsideRangeGCD;
+import org.gfg.array.rangequery.ProductOfArrayRangeUnderModuloP;
 import org.gfg.array.rangequery.RangeGCDSegmentTree;
 import org.gfg.array.rangequery.RangeGCDSparseTable;
 import org.gfg.array.rangequery.RangeLCMSegmentTree;
@@ -247,7 +248,7 @@ public class ArrayRangeQueryTest {
     }
 
     @Test
-    @GFGMethod(date = "15-08-2019", algo = "", url = "/sieve-of-eratosthenes/",
+    @GFGMethod(date = "15-08-2019", algo = "sieve algorithm", url = "/sieve-of-eratosthenes/",
             tComp = "O(n*log(log(n))")
     public void testPrimesUsingSieveOfEratosthenes() {
         List<Integer> result = ArrayRangeQuery.primesUsingSieveOfEratosthenes(30);
@@ -262,5 +263,26 @@ public class ArrayRangeQueryTest {
 
         result = ArrayRangeQuery.primesUsingSieveOfEratosthenes(50);
         assertEquals("[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]", result.toString());
+    }
+
+    @Test
+    @GFGMethod(date = "15-08-2019", algo = "keep cumulative product and inverse modular cumulative product array",
+            url = "/products-ranges-array/")
+    public void testProductOfArrayRangeUnderModuloP() {
+        int[] array = {1, 2, 3, 4, 5, 6};
+        ProductOfArrayRangeUnderModuloP rangeProduct = new ProductOfArrayRangeUnderModuloP(array, 229);
+        int result = rangeProduct.getQuery(2, 5);
+        assertEquals(120, result);
+
+        result = rangeProduct.getQuery(1, 3);
+        assertEquals(6, result);
+
+        array = new int[]{1, 2, 3, 4, 5, 6};
+        rangeProduct = new ProductOfArrayRangeUnderModuloP(array, 113);
+        result = rangeProduct.getQuery(2, 5);
+        assertEquals(7, result);
+
+        result = rangeProduct.getQuery(1, 3);
+        assertEquals(6, result);
     }
 }

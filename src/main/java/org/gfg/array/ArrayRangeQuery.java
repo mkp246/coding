@@ -189,7 +189,6 @@ public class ArrayRangeQuery {
                 result.add(i);
             }
         }
-
         return result;
     }
 }
