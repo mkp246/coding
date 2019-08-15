@@ -32,7 +32,7 @@ public class Util {
         } else {
             int[] result = extendedEuclidean(b % a, a);
             int y = result[1];  // y=x'
-            int x = result[2] - (b / a) * result[1]; // x = y' - floor(b/a)*a
+            int x = result[2] - (b / a) * result[1]; // x = y' - floor(b/a)*x'
             return new int[]{result[0], x, y};
         }
     }
