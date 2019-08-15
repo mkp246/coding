@@ -2,6 +2,7 @@ package org.gfg.array;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class UtilTest {
@@ -39,5 +40,14 @@ public class UtilTest {
         assertEquals(12, Util.lcm(12, 4));
         assertEquals(0, Util.lcm(0, 1));
         assertEquals(18, Util.lcm(9, 6));
+    }
+
+    @Test
+    public void testExtendedEuclidean() {
+        int[] result = Util.extendedEuclidean(30, 20);
+        assertArrayEquals(new int[]{10, 1, -1}, result);
+
+        result = Util.extendedEuclidean(35, 15);
+        assertArrayEquals(new int[]{5, 1, -2}, result);
     }
 }
