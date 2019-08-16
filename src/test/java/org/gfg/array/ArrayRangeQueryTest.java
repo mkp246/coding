@@ -285,4 +285,18 @@ public class ArrayRangeQueryTest {
         result = rangeProduct.getQuery(1, 3);
         assertEquals(6, result);
     }
+
+    @Test
+    @GFGMethod(date = "16-08-2019", algo = "sort intervals acc to start point, merge into previous if overlapping, else copy to result",
+            url = "/merging-intervals/")
+    public void testMergeOverlappingIntervals() {
+        int[][] intervals = {{1, 3}, {2, 4}, {5, 7}, {6, 8}};
+
+        int[][] result = ArrayRangeQuery.mergeOverlappingIntervals(intervals);
+        assertArrayEquals(new int[][]{{1, 4}, {5, 8}}, result);
+
+        intervals = new int[][]{{6, 8}, {1, 9}, {2, 4}, {4, 7}};
+        result = ArrayRangeQuery.mergeOverlappingIntervals(intervals);
+        assertArrayEquals(new int[][]{{1, 9}}, result);
+    }
 }

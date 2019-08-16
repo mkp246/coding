@@ -2,7 +2,9 @@ package org.gfg.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 
 public class ArrayRangeQuery {
 
@@ -190,5 +192,30 @@ public class ArrayRangeQuery {
             }
         }
         return result;
+    }
+
+    public static int[][] mergeOverlappingIntervals(int[][] intervals) {
+        Arrays.sort(intervals, Comparator.comparing(integers -> integers[0]));
+
+        int mergeInto = 0;
+        List<int[]> result = new ArrayList<>();
+
+        for (int i = 1; i < intervals.length; i++) {
+            // check if current can be merged to interval @mergeInto
+            if (intervals[mergeInto][1] >= intervals[i][0]) {
+                if (intervals[mergeInto][1] < intervals[i][1]) {
+                    intervals[mergeInto][1] = intervals[i][1];
+                }
+            } else {
+                // not merge-able
+                result.add(intervals[mergeInto]);
+                mergeInto = i;
+            }
+        }
+        result.add(intervals[mergeInto]);
+
+        int[][] resultArray = new int[result.size()][2];
+        result.toArray(resultArray);
+        return resultArray;
     }
 }
