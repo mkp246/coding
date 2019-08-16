@@ -14,6 +14,7 @@ import org.gfg.array.rangequery.RangeMinSegmentTree;
 import org.gfg.array.rangequery.RangeMinSparseTable;
 import org.gfg.array.rangequery.RangeSumSegmentTree;
 import org.gfg.array.rangequery.SparseTable;
+import org.gfg.array.rangequery.XorOfGreatestOddDivisorsInRange;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -298,5 +299,22 @@ public class ArrayRangeQueryTest {
         intervals = new int[][]{{6, 8}, {1, 9}, {2, 4}, {4, 7}};
         result = ArrayRangeQuery.mergeOverlappingIntervals(intervals);
         assertArrayEquals(new int[][]{{1, 9}}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "16-08-2019", algo = "calculate prefix array of XOR od greatest odd divisors upto index",
+            url = "/queries-xor-greatest-odd-divisor-range/")
+    public void testXorOfGreatestOddDivisorsInRange() {
+        int[] array = {3, 4, 5};
+        XorOfGreatestOddDivisorsInRange xor = new XorOfGreatestOddDivisorsInRange(array);
+        int result = xor.getQuery(0, 2);
+        assertEquals(7, result);
+        result = xor.getQuery(1, 2);
+        assertEquals(4, result);
+
+        array = new int[]{2, 1, 2};
+        xor = new XorOfGreatestOddDivisorsInRange(array);
+        result = xor.getQuery(0, 2);
+        assertEquals(1, result);
     }
 }
