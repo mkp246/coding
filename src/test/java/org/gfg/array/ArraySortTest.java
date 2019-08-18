@@ -62,4 +62,19 @@ public class ArraySortTest {
         ArraySort.sortArrayAccordingToAbsoluteDiffWithGivenValueUsingSelfBalancingBST(array, 5);
         assertArrayEquals(result, array);
     }
+
+    @Test
+    @GFGMethod(date = "18-08-2019", algo = "move -1=n/a element in last of mnArray, keep to pointer one at n, other at 0, merge in mnArray",
+            url = "/merge-one-array-of-size-n-into-another-one-of-size-mn/")
+    public void testMergeNArrayIntoMPlusNArraySorted() {
+        int[] mNArray = {2, -1, 7, -1, -1, 10, -1};
+        int[] nArray = {5, 8, 12, 14};
+        ArraySort.mergeNArrayIntoMPlusNArraySorted(mNArray, nArray);
+        assertArrayEquals(new int[]{2, 5, 7, 8, 10, 12, 14}, mNArray);
+
+        mNArray = new int[]{2, 8, -1, -1, -1, 13, -1, 15, 20};
+        nArray = new int[]{5, 7, 9, 25};
+        ArraySort.mergeNArrayIntoMPlusNArraySorted(mNArray, nArray);
+        assertArrayEquals(new int[]{2, 5, 7, 8, 9, 13, 15, 20, 25}, mNArray);
+    }
 }

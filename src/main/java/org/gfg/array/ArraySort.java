@@ -52,4 +52,33 @@ public class ArraySort {
             }
         }
     }
+
+    /**
+     * merges both in mNArray, first array only has m valid element
+     * used -1 to indicate invalid element
+     *
+     * @param mNArray
+     * @param nArray
+     */
+    public static void mergeNArrayIntoMPlusNArraySorted(int[] mNArray, int[] nArray) {
+        int pos = mNArray.length - 1;
+        // move all -1 to end, so we can reuse same array for output
+        for (int i = mNArray.length - 1; i >= 0; i--) {
+            if (mNArray[i] != -1) {
+                ArrayRearrange.swapIndex(mNArray, i, pos--);
+            }
+        }
+        int mNPos = nArray.length;
+        int mNLength = mNArray.length;
+        int nPos = 0;
+        int nLength = nArray.length;
+        int resultPos = 0;
+        while (mNPos < mNLength || nPos < nLength) {
+            if (nPos == nLength || (mNPos != mNLength && mNArray[mNPos] < nArray[nPos])) {
+                mNArray[resultPos++] = mNArray[mNPos++];
+            } else {
+                mNArray[resultPos++] = nArray[nPos++];
+            }
+        }
+    }
 }
