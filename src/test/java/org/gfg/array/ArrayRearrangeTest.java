@@ -300,6 +300,7 @@ public class ArrayRearrangeTest {
     }
 
     @Test
+    @ALT(url = "/alternative-sorting/")
     @GFGMethod(date = "17-07-2019",
             algo = "using quotient and reminder to store new and old value respectively",
             desc = "max, min, 2nd max, 2nd min ... sorted array",
@@ -676,7 +677,7 @@ public class ArrayRearrangeTest {
     @GFGMethod(date = "22-07-2019", algo = "using recursion", url = "/generate-all-possible-sorted-arrays-from-alternate-elements-of-two-given-arrays/")
     public void testGenerateAllPossibleSortedArrayFromAlternateElement() {
         class Validator {
-            void validate(List<int[]> result) {
+            private void validate(List<int[]> result) {
                 Assert.assertEquals(7, result.size());
                 Assert.assertArrayEquals(new int[]{10, 20}, result.get(0));
                 Assert.assertArrayEquals(new int[]{10, 20, 25, 30}, result.get(1));
