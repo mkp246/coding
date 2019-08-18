@@ -1,6 +1,9 @@
 package org.gfg.array;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
+import java.util.TreeMap;
 
 public class ArraySort {
 
@@ -30,6 +33,23 @@ public class ArraySort {
         }
         while (!minHeap.isEmpty()) {
             array[resultPos++] = minHeap.poll();
+        }
+    }
+
+    public static void sortArrayAccordingToAbsoluteDiffWithGivenValueUsingSelfBalancingBST(int[] array, int x) {
+        TreeMap<Integer, List<Integer>> map = new TreeMap<>(); // key = abs diff with x, value=list of elements
+        for (int i = 0; i < array.length; i++) {
+            int diff = Math.abs(array[i] - x);
+            if (!map.containsKey(diff)) {
+                map.put(diff, new ArrayList<>());
+            }
+            map.get(diff).add(array[i]);
+        }
+        int resultPos = 0;
+        for (List<Integer> list : map.values()) {
+            for (Integer element : list) {
+                array[resultPos++] = element;
+            }
         }
     }
 }

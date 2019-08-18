@@ -42,4 +42,24 @@ public class ArraySortTest {
         ArraySort.sortKSortedArrayUsingMinHeap(array, 3);
         assertArrayEquals(result, array);
     }
+
+    @Test
+    @GFGMethod(date = "18-08-2019", algo = "using self balancing BST eg. TreeMap<int,int[]> here, k=diff,v=ele with same",
+            url = "/sort-an-array-according-to-absolute-difference-with-given-value/")
+    public void testSortArrayAccordingToAbsoluteDiffWithGivenValueUsingSelfBalancingBST() {
+        int[] array = {10, 5, 3, 9, 2};
+        int[] result = {5, 9, 10, 3, 2};
+        ArraySort.sortArrayAccordingToAbsoluteDiffWithGivenValueUsingSelfBalancingBST(array, 7);
+        assertArrayEquals(result, array);
+
+        array = new int[]{1, 2, 3, 4, 5};
+        result = new int[]{5, 4, 3, 2, 1};
+        ArraySort.sortArrayAccordingToAbsoluteDiffWithGivenValueUsingSelfBalancingBST(array, 6);
+        assertArrayEquals(result, array);
+
+        array = new int[]{2, 6, 8, 3};
+        result = new int[]{6, 3, 2, 8};
+        ArraySort.sortArrayAccordingToAbsoluteDiffWithGivenValueUsingSelfBalancingBST(array, 5);
+        assertArrayEquals(result, array);
+    }
 }
