@@ -90,4 +90,13 @@ public class ArraySortTest {
         ArraySort.segregateZerosOnLeft(array);
         assertArrayEquals(new int[]{0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1}, array);
     }
+
+    @Test
+    @GFGMethod(date = "19-08-2019", algo = "(method 2) by sorting, and traversing two pointer one @0, other @end, moving them closer by moving left if sum is -ve, else right one",
+            url = "/two-elements-whose-sum-is-closest-to-zero/")
+    public void testFindTwoElementsWithSumClosestToZero() {
+        int[] array = {1, 60, -10, 70, -80, 85};
+        int[] result = ArraySort.findTwoElementsWithSumClosestToZero(array);
+        assertArrayEquals(new int[]{-80, 85}, result);
+    }
 }

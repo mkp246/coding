@@ -1,6 +1,7 @@
 package org.gfg.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
@@ -89,5 +90,28 @@ public class ArraySort {
                 ArrayRearrange.swapIndex(array, pos++, i);
             }
         }
+    }
+
+    public static int[] findTwoElementsWithSumClosestToZero(int[] array) {
+        Arrays.sort(array);
+        int left = 0, right = array.length - 1;
+        int leftValue = 0;
+        int rightValue = 0;
+        int minAbsSum = Integer.MAX_VALUE;
+        while (left < right) {
+            int sum = array[left] + array[right];
+            if (Math.abs(sum) < minAbsSum) {
+                leftValue = array[left];
+                rightValue = array[right];
+                minAbsSum = Math.abs(sum);
+            }
+            if (sum > 0) {
+                right--;
+            } else {
+                left++;
+            }
+        }
+
+        return new int[]{leftValue, rightValue};
     }
 }
