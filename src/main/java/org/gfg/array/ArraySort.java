@@ -1,5 +1,7 @@
 package org.gfg.array;
 
+import org.gfg.array.OrderStatistics.Pair;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -138,5 +140,30 @@ public class ArraySort {
             }
         }
         return 0;
+    }
+
+    public static int minSwapsRequiredToSortArray(int[] array) {
+        Pair<Integer, Integer>[] pairs = new Pair[array.length];
+        for (int i = 0; i < array.length; i++) {
+            pairs[i] = new Pair<>(array[i], i);
+        }
+        Arrays.sort(pairs, Comparator.comparing(Pair::getKey));
+
+        int minSwaps = 0;
+        boolean[] visited = new boolean[array.length];
+        for (int i = 0; i < pairs.length; i++) {
+            if (visited[i] || pairs[i].getValue() == i) {
+                continue;
+            }
+            int cycleCount = 0;
+            int j = i;
+            while (!visited[j]) {
+                visited[j] = true;
+                j = pairs[j].getValue();
+                cycleCount++;
+            }
+            minSwaps += (cycleCount - 1);
+        }
+        return minSwaps;
     }
 }

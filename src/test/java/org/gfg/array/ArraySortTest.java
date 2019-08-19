@@ -122,4 +122,21 @@ public class ArraySortTest {
         result = ArraySort.shortestUnorderedSubarrayLength(array);
         assertEquals(0, result);
     }
+
+    @Test
+    @GFGMethod(date = "19-08-2019", algo = "make pair(val,idx) array, sort acc. to val,make bool visited array, sum cycleLength-1 for all cycle",
+            url = "/minimum-number-swaps-required-sort-array/")
+    public void testMinSwapsRequiredToSortArray() {
+        int[] array = {4, 3, 2, 1};
+        int result = ArraySort.minSwapsRequiredToSortArray(array);
+        assertEquals(2, result);
+
+        array = new int[]{1, 5, 4, 3, 2};
+        result = ArraySort.minSwapsRequiredToSortArray(array);
+        assertEquals(2, result);
+
+        array = new int[]{4, 5, 2, 1, 5};
+        result = ArraySort.minSwapsRequiredToSortArray(array);
+        assertEquals(3, result);
+    }
 }
