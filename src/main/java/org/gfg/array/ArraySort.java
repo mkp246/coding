@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
 
+import static org.gfg.array.Occurance.intListToArray;
+
 public class ArraySort {
 
     public static void sortKSortedArrayUsingInsertionSort(int[] array) {
@@ -165,5 +167,50 @@ public class ArraySort {
             minSwaps += (cycleCount - 1);
         }
         return minSwaps;
+    }
+
+    public static int[][] unionAndIntersectionOfTwoSortedArray(int[] array1, int[] array2) {
+        int pos1 = 0, pos2 = 0;
+        int len1 = array1.length, len2 = array2.length;
+
+        ArrayList<Integer> union = new ArrayList<>();
+        ArrayList<Integer> common = new ArrayList<>();
+
+        while (pos1 < len1 && pos2 < len2) {
+            if (array1[pos1] == array2[pos2]) {
+                // handling duplicates
+                if (union.size() == 0 || union.get(union.size() - 1) != array1[pos1]) {
+                    union.add(array1[pos1]); // or array2[pos2]
+                    common.add(array1[pos1]);
+                }
+                pos1++;
+                pos2++;
+            } else if (array1[pos1] < array2[pos2]) {
+                if (union.size() == 0 || union.get(union.size() - 1) != array1[pos1]) {
+                    union.add(array1[pos1]);
+                }
+                pos1++;
+            } else {
+                if (union.size() == 0 || union.get(union.size() - 1) != array2[pos2]) {
+                    union.add(array2[pos2]);
+                }
+                pos2++;
+            }
+        }
+        //put remaining from un exhausted array to union
+        if (pos1 < len1) {
+            for (int i = pos1; i < len1; i++) {
+                if (union.size() == 0 || union.get(union.size() - 1) != array1[i]) {
+                    union.add(array1[i]);
+                }
+            }
+        } else if (pos2 < len2) {
+            for (int i = pos2; i < len2; i++) {
+                if (union.size() == 0 || union.get(union.size() - 1) != array2[i]) {
+                    union.add(array2[i]);
+                }
+            }
+        }
+        return new int[][]{intListToArray(union), intListToArray(common)};
     }
 }

@@ -135,8 +135,35 @@ public class ArraySortTest {
         result = ArraySort.minSwapsRequiredToSortArray(array);
         assertEquals(2, result);
 
-        array = new int[]{4, 5, 2, 1, 5};
+        array = new int[]{14, 15, 12, 11, 15};
         result = ArraySort.minSwapsRequiredToSortArray(array);
         assertEquals(3, result);
+    }
+
+    @Test
+    @GFGMethod(date = "19-08-2019", algo = "keep two pointer one on each,increment smaller element one and put in union if unequal, else put in union and common, increment both pointer",
+            desc = "if length ratio is logarithmic order, then use binary search shorter arr ele in big one ",
+            url = "/union-and-intersection-of-two-sorted-arrays-2/")
+    public void testUnionAndIntersectionOfTwoSortedArray() {
+        int[] array1 = {1, 3, 4, 5, 7};
+        int[] array2 = {2, 3, 5, 6};
+        int[][] result = ArraySort.unionAndIntersectionOfTwoSortedArray(array1, array2);
+        assertArrayEquals(new int[][]{{1, 2, 3, 4, 5, 6, 7}, {3, 5}}, result);
+
+        array1 = new int[]{2, 5, 6};
+        array2 = new int[]{4, 6, 8, 10};
+        result = ArraySort.unionAndIntersectionOfTwoSortedArray(array1, array2);
+        assertArrayEquals(new int[][]{{2, 4, 5, 6, 8, 10}, {6}}, result);
+
+        array1 = new int[]{1, 2, 4, 5, 6};
+        array2 = new int[]{2, 3, 5, 7};
+        result = ArraySort.unionAndIntersectionOfTwoSortedArray(array1, array2);
+        assertArrayEquals(new int[][]{{1, 2, 3, 4, 5, 6, 7}, {2, 5}}, result);
+
+        // with duplicates
+        array1 = new int[]{1, 2, 2, 2, 3};
+        array2 = new int[]{2, 3, 4, 5};
+        result = ArraySort.unionAndIntersectionOfTwoSortedArray(array1, array2);
+        assertArrayEquals(new int[][]{{1, 2, 3, 4, 5}, {2, 3}}, result);
     }
 }
