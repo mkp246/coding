@@ -2,6 +2,7 @@ package org.gfg.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
@@ -92,7 +93,7 @@ public class ArraySort {
         }
     }
 
-    public static int[] findTwoElementsWithSumClosestToZero(int[] array) {
+    public static int[] findTwoElementsWithSumClosestToZeroUsingSorting(int[] array) {
         Arrays.sort(array);
         int left = 0, right = array.length - 1;
         int leftValue = 0;
@@ -113,5 +114,20 @@ public class ArraySort {
         }
 
         return new int[]{leftValue, rightValue};
+    }
+
+    public static int[] findTwoElementsWithSumClosestToZeroUsingSortingUsingAbsoluteSoring(Integer[] array) {
+        Arrays.sort(array, Comparator.comparing(Math::abs));
+        int minIdx = 0;
+        int minAbsValue = Integer.MAX_VALUE;
+
+        for (int i = 0; i < array.length - 1; i++) {
+            int sum = Math.abs(array[i] + array[i + 1]);
+            if (minAbsValue > sum) {
+                minAbsValue = sum;
+                minIdx = i;
+            }
+        }
+        return new int[]{array[minIdx], array[minIdx + 1]};
     }
 }

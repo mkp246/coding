@@ -94,9 +94,18 @@ public class ArraySortTest {
     @Test
     @GFGMethod(date = "19-08-2019", algo = "(method 2) by sorting, and traversing two pointer one @0, other @end, moving them closer by moving left if sum is -ve, else right one",
             url = "/two-elements-whose-sum-is-closest-to-zero/")
-    public void testFindTwoElementsWithSumClosestToZero() {
+    public void testFindTwoElementsWithSumClosestToZeroUsingSoring() {
         int[] array = {1, 60, -10, 70, -80, 85};
-        int[] result = ArraySort.findTwoElementsWithSumClosestToZero(array);
+        int[] result = ArraySort.findTwoElementsWithSumClosestToZeroUsingSorting(array);
+        assertArrayEquals(new int[]{-80, 85}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "19-08-2019", algo = "(method 2) by sorting acc to abs value, and adding adjacent 2 and checking min abs",
+            url = "/two-elements-whose-sum-is-closest-to-zero/")
+    public void testFindTwoElementsWithSumClosestToZeroUsingAbsoluteSoring() {
+        Integer[] array = {1, 60, -10, 70, -80, 85};
+        int[] result = ArraySort.findTwoElementsWithSumClosestToZeroUsingSortingUsingAbsoluteSoring(array);
         assertArrayEquals(new int[]{-80, 85}, result);
     }
 }
