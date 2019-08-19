@@ -62,7 +62,7 @@ public class ArraySort {
      */
     public static void mergeNArrayIntoMPlusNArraySorted(int[] mNArray, int[] nArray) {
         int pos = mNArray.length - 1;
-        // move all -1 to end, so we can reuse same array for output
+        // move all -1 to start, so we can reuse same array for output
         for (int i = mNArray.length - 1; i >= 0; i--) {
             if (mNArray[i] != -1) {
                 ArrayRearrange.swapIndex(mNArray, i, pos--);
@@ -78,6 +78,15 @@ public class ArraySort {
                 mNArray[resultPos++] = mNArray[mNPos++];
             } else {
                 mNArray[resultPos++] = nArray[nPos++];
+            }
+        }
+    }
+
+    public static void segregateZerosOnLeft(int[] array) {
+        int pos = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == 0) {
+                ArrayRearrange.swapIndex(array, pos++, i);
             }
         }
     }

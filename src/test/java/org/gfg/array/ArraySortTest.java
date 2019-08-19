@@ -77,4 +77,17 @@ public class ArraySortTest {
         ArraySort.mergeNArrayIntoMPlusNArraySorted(mNArray, nArray);
         assertArrayEquals(new int[]{2, 5, 7, 8, 9, 13, 15, 20, 25}, mNArray);
     }
+
+    @Test
+    @GFGMethod(date = "19-08-2019", algo = "set pos=0,traverse from start to end, if 0 is found swap with current pos,increment pos",
+            url = "/sort-array-containing-two-types-elements/")
+    public void testSegregateZerosOnLeft() {
+        int[] array = {0, 1, 0, 1, 0, 0, 1, 1, 1, 0};
+        ArraySort.segregateZerosOnLeft(array);
+        assertArrayEquals(new int[]{0, 0, 0, 0, 0, 1, 1, 1, 1, 1}, array);
+
+        array = new int[]{1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1};
+        ArraySort.segregateZerosOnLeft(array);
+        assertArrayEquals(new int[]{0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1}, array);
+    }
 }
