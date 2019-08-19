@@ -130,4 +130,13 @@ public class ArraySort {
         }
         return new int[]{array[minIdx], array[minIdx + 1]};
     }
+
+    public static int shortestUnorderedSubarrayLength(int[] array) {
+        for (int i = 1; i < array.length - 1; i++) {
+            if ((array[i - 1] < array[i] && array[i] > array[i + 1]) || (array[i - 1] > array[i] && array[i] < array[i + 1])) {
+                return 3;
+            }
+        }
+        return 0;
+    }
 }

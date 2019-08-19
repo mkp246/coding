@@ -5,6 +5,7 @@ import com.mkp.GFGMethod;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 @GFG(date = "18-08-2019", topic = "array sorting", url = "/array-data-structure/array-sorting/", impls = ArraySort.class)
 public class ArraySortTest {
@@ -107,5 +108,18 @@ public class ArraySortTest {
         Integer[] array = {1, 60, -10, 70, -80, 85};
         int[] result = ArraySort.findTwoElementsWithSumClosestToZeroUsingSortingUsingAbsoluteSoring(array);
         assertArrayEquals(new int[]{-80, 85}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "19-08-2019", algo = "will be either 0(in case inc, or dec array) or 3",
+            url = "/shortest-un-ordered-subarray/")
+    public void testShortestUnorderedSubarrayLength() {
+        int[] array = {7, 9, 10, 8, 11};
+        int result = ArraySort.shortestUnorderedSubarrayLength(array);
+        assertEquals(3, result);
+
+        array = new int[]{1, 2, 3, 4, 5};
+        result = ArraySort.shortestUnorderedSubarrayLength(array);
+        assertEquals(0, result);
     }
 }
