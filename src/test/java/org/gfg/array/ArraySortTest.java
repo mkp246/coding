@@ -180,4 +180,18 @@ public class ArraySortTest {
         ArraySort.sortArrayOfZerosOnesAndTwos(array);
         assertArrayEquals(result, array);
     }
+
+    @Test
+    @GFGMethod(date = "20-08-2019", algo = "find first dec as start, last dec+1 as end, find min/max between them," +
+            " if higher/lower than min/max exist on left/right (first from start/end), make them start/end respectively, return start,end",
+            url = "/minimum-length-unsorted-subarray-sorting-which-makes-the-complete-array-sorted/")
+    public void testMinLengthUnsortedSubarraySortingWhichMakesArraySorted() {
+        int[] array = {10, 12, 20, 30, 25, 40, 32, 31, 35, 50, 60};
+        int[] result = ArraySort.minLengthUnsortedSubarraySortingWhichMakesArraySorted(array);
+        assertArrayEquals(new int[]{3, 8}, result);
+
+        array = new int[]{0, 1, 15, 25, 6, 7, 30, 40, 50};
+        result = ArraySort.minLengthUnsortedSubarraySortingWhichMakesArraySorted(array);
+        assertArrayEquals(new int[]{2, 5}, result);
+    }
 }

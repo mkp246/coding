@@ -234,4 +234,42 @@ public class ArraySort {
             }
         }
     }
+
+    public static int[] minLengthUnsortedSubarraySortingWhichMakesArraySorted(int[] array) {
+        int start = 0, end = array.length - 1;
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                start = i;
+                break;
+            }
+        }
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (array[i - 1] > array[i]) {
+                end = i;
+                break;
+            }
+        }
+        int min = array[start], max = array[start];
+        for (int i = start + 1; i <= end; i++) {
+            if (array[i] < min) {
+                min = array[i];
+            }
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        for (int i = 0; i < start; i++) {
+            if (array[i] > min) {
+                start = i;
+                break;
+            }
+        }
+        for (int i = array.length - 1; i > end; i--) {
+            if (array[i] < max) {
+                end = i;
+                break;
+            }
+        }
+        return new int[]{start, end};
+    }
 }
