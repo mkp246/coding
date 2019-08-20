@@ -194,4 +194,38 @@ public class ArraySortTest {
         result = ArraySort.minLengthUnsortedSubarraySortingWhichMakesArraySorted(array);
         assertArrayEquals(new int[]{2, 5}, result);
     }
+
+    @Test
+    @GFGMethod(date = "20-08-2019", algo = "sort array, pick idx i<j,foreach pair i,k, count higher ele. than sum(i,j) in arr[j+1]...arr[n] and add to count",
+            url = "/find-number-of-triangles-possible/", tComp = "O(n^2)")
+    public void testCountNumberOfTrianglePossibleUsingThreeNestedLoop() {
+        int[] array = {4, 6, 3, 7};
+        int result = ArraySort.countNumberOfTrianglePossibleUsingThreeNestedLoop(array);
+        assertEquals(3, result);
+
+        array = new int[]{10, 21, 22, 100, 101, 200, 300};
+        result = ArraySort.countNumberOfTrianglePossibleUsingThreeNestedLoop(array);
+        assertEquals(6, result);
+
+        array = new int[]{4, 3, 5, 7, 6};
+        result = ArraySort.countNumberOfTrianglePossibleUsingThreeNestedLoop(array);
+        assertEquals(9, result);
+    }
+
+    @Test
+    @GFGMethod(date = "20-08-2019", algo = "for each triangle with highest as arr[i], keep to pointer l=0,r=i-1,if sum of l,r is higher inc count by r-l and r--, else l++ till l<r",
+            url = "/find-number-of-triangles-possible/")
+    public void testCountNumberOfTrianglePossibleUsingTwoPointerMethod() {
+        int[] array = {4, 6, 3, 7};
+        int result = ArraySort.countNumberOfTrianglePossibleUsingTwoPointerMethod(array);
+        assertEquals(3, result);
+
+        array = new int[]{10, 21, 22, 100, 101, 200, 300};
+        result = ArraySort.countNumberOfTrianglePossibleUsingTwoPointerMethod(array);
+        assertEquals(6, result);
+
+        array = new int[]{4, 3, 5, 7, 6};
+        result = ArraySort.countNumberOfTrianglePossibleUsingTwoPointerMethod(array);
+        assertEquals(9, result);
+    }
 }

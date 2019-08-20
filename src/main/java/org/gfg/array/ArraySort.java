@@ -272,4 +272,44 @@ public class ArraySort {
         }
         return new int[]{start, end};
     }
+
+    public static int countNumberOfTrianglePossibleUsingThreeNestedLoop(int[] array) {
+        Arrays.sort(array);
+        int count = 0;
+        int length = array.length;
+
+        for (int i = 0; i < length; i++) {
+            for (int j = i + 1; j < length; j++) {
+                int sum = array[i] + array[j];
+                for (int k = j + 1; k < length; k++) {
+                    if (sum > array[k]) {
+                        count++;
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+    public static int countNumberOfTrianglePossibleUsingTwoPointerMethod(int[] array) {
+        Arrays.sort(array);
+        int count = 0;
+        int left, right;
+
+        for (int i = array.length - 1; i >= 2; i--) {
+            left = 0;
+            right = i - 1;
+            while (left < right) {
+                if (array[left] + array[right] > array[i]) {
+                    count += (right - left);
+                    right--;
+                } else {
+                    left++;
+                }
+            }
+        }
+        return count;
+    }
 }
