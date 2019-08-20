@@ -166,4 +166,18 @@ public class ArraySortTest {
         result = ArraySort.unionAndIntersectionOfTwoSortedArray(array1, array2);
         assertArrayEquals(new int[][]{{1, 2, 3, 4, 5}, {2, 3}}, result);
     }
+
+    @Test
+    @GFGMethod(date = "20-08-2019", algo = "3 way partitioning", url = "/sort-an-array-of-0s-1s-and-2s/")
+    public void testSortArrayOfZerosOnesAndTwos() {
+        int[] array = {0, 1, 2, 0, 1, 2};
+        int[] result = {0, 0, 1, 1, 2, 2};
+        ArraySort.sortArrayOfZerosOnesAndTwos(array);
+        assertArrayEquals(result, array);
+
+        array = new int[]{0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1};
+        result = new int[]{0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2};
+        ArraySort.sortArrayOfZerosOnesAndTwos(array);
+        assertArrayEquals(result, array);
+    }
 }

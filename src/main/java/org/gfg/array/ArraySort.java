@@ -213,4 +213,25 @@ public class ArraySort {
         }
         return new int[][]{intListToArray(union), intListToArray(common)};
     }
+
+    public static void sortArrayOfZerosOnesAndTwos(int[] array) {
+        int lPos = 0, rPos = array.length - 1;
+        int mid = 0;
+        while (mid <= rPos) {
+            switch (array[mid]) {
+                case 0: {
+                    ArrayRearrange.swapIndex(array, mid++, lPos++);
+                    break;
+                }
+                case 1: {
+                    mid++;
+                    break;
+                }
+                case 2: {
+                    ArrayRearrange.swapIndex(array, mid, rPos--);
+                    break;
+                }
+            }
+        }
+    }
 }
