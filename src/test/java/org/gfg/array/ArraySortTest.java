@@ -286,4 +286,22 @@ public class ArraySortTest {
         result = ArraySort.constructArrayFromItsPairSumArray(pairSum, 5);
         assertArrayEquals(new int[]{8, 7, 5, 3, 2}, result);
     }
+
+    @Test
+    @GFGMethod(date = "21-08-2019", algo = "iterate a2 from last,find correct pos of it in a[1],[if required]shift all element right by 1, move last of a1 at place of elem in a2",
+            url = "/merge-two-sorted-arrays-o1-extra-space/")
+    public void testMergeTwoSortedArrayWithConstantExtraSpace() {
+        int[] array1 = {10};
+        int[] array2 = {2, 3};
+        ArraySort.mergeTwoSortedArrayWithConstantExtraSpace(array1, array2);
+        assertArrayEquals(new int[]{2}, array1);
+        assertArrayEquals(new int[]{3, 10}, array2);
+
+        array1 = new int[]{1, 5, 9, 10, 15, 20};
+        array2 = new int[]{2, 3, 8, 13};
+
+        ArraySort.mergeTwoSortedArrayWithConstantExtraSpace(array1, array2);
+        assertArrayEquals(new int[]{1, 2, 3, 5, 8, 9}, array1);
+        assertArrayEquals(new int[]{10, 13, 15, 20}, array2);
+    }
 }

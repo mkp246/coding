@@ -369,4 +369,24 @@ public class ArraySort {
         }
         return array;
     }
+
+    public static void mergeTwoSortedArrayWithConstantExtraSpace(int[] array1, int[] array2) {
+        int len1 = array1.length;
+        int len2 = array2.length;
+
+        for (int i = len2 - 1; i >= 0; i--) {
+            int j = len1 - 1;
+            int last = array1[j];
+            if (last < array2[i]) {
+                continue; // already sorted
+            }
+
+            while (j >= 1 && array1[j - 1] > array2[i]) {
+                array1[j] = array1[j - 1];
+                j--;
+            }
+            array1[j] = array2[i];
+            array2[i] = last;
+        }
+    }
 }
