@@ -273,4 +273,17 @@ public class ArraySortTest {
         result = ArraySort.printDistinctElementsUsingHashing(array);
         assertArrayEquals(new int[]{10, 5, 3, 4, 6}, result);
     }
+
+    @Test
+    @GFGMethod(date = "21-08-2019", algo = "find a[0] using (p[0]+p[1]-p[len-1])/2, use a[0] to find other using starting elements of pair",
+            url = "/construct-array-pair-sum-array/")
+    public void testConstructArrayFromItsPairSumArray() {
+        int[] pairSum = {14, 9, 10, 11, 12, 7};
+        int[] result = ArraySort.constructArrayFromItsPairSumArray(pairSum, 4);
+        assertArrayEquals(new int[]{6, 8, 3, 4}, result);
+
+        pairSum = new int[]{15, 13, 11, 10, 12, 10, 9, 8, 7, 5};
+        result = ArraySort.constructArrayFromItsPairSumArray(pairSum, 5);
+        assertArrayEquals(new int[]{8, 7, 5, 3, 2}, result);
+    }
 }

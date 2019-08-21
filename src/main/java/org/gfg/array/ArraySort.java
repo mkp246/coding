@@ -359,4 +359,14 @@ public class ArraySort {
         }
         return intListToArray(result);
     }
+
+    public static int[] constructArrayFromItsPairSumArray(int[] pairSum, int length) {
+        int[] array = new int[length]; // pair sum length = n(n-1)/2 where n = array.length
+        // a[0]  =  a[0]+a[1]  + a[0]+a[2]  - (a[1]+a[2])          = 2 a[0]
+        array[0] = (pairSum[0] + pairSum[1] - pairSum[length - 1]) / 2;
+        for (int i = 1; i < length; i++) {
+            array[i] = pairSum[i - 1] - array[0];
+        }
+        return array;
+    }
 }
