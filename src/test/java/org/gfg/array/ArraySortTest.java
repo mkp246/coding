@@ -228,4 +228,19 @@ public class ArraySortTest {
         result = ArraySort.countNumberOfTrianglePossibleUsingTwoPointerMethod(array);
         assertEquals(9, result);
     }
+
+    @Test
+    @GFGMethod(date = "21-08-2019", algo = "look at log(x)/x curve, has max at x=e, which decides condition of y for given x, use table lookup for deviations",
+            url = "/find-number-pairs-xy-yx/")
+    public void testCountXYPairsSuchThatXpowerYGreterThanYpowerX() {
+        int[] array1 = {2, 1, 6};
+        int[] array2 = {1, 5};
+        int result = ArraySort.countXYPairsSuchThatXpowerYGreterThanYpowerX(array1, array2);
+        assertEquals(3, result);
+
+        array1 = new int[]{10, 19, 18};
+        array2 = new int[]{11, 15, 9};
+        result = ArraySort.countXYPairsSuchThatXpowerYGreterThanYpowerX(array1, array2);
+        assertEquals(2, result);
+    }
 }

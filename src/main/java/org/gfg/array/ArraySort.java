@@ -312,4 +312,37 @@ public class ArraySort {
         }
         return count;
     }
+
+    public static int countXYPairsSuchThatXpowerYGreterThanYpowerX(int[] array1, int[] array2) {
+        Arrays.sort(array2);
+        int[] noOfY = new int[5];
+        for (int i = 0; i < array2.length; i++) {
+            if (array2[i] < 5) {
+                noOfY[array2[i]]++;
+            }
+        }
+        int result = 0;
+        for (int i = 0; i < array1.length; i++) {
+            if (array1[i] == 0) {
+                result += 0;
+            } else if (array1[i] == 1) {
+                result += noOfY[0];
+            } else if (array1[i] == 2) {
+                int pos = Arrays.binarySearch(array2, 5);
+                if (pos < 0) {
+                    pos = Math.abs(pos) - 1;
+                }
+                result += (noOfY[0] + noOfY[1] + array2.length - pos);
+            } else if (array1[i] == 3) {
+                result += (array2.length - noOfY[3]);
+            } else if (array1[i] >= 4) {
+                int pos = Arrays.binarySearch(array2, 1 + array1[i]);
+                if (pos < 0) {
+                    pos = Math.abs(pos) - 1;
+                }
+                result += (noOfY[0] + noOfY[1] + array2.length - pos);
+            }
+        }
+        return result;
+    }
 }
