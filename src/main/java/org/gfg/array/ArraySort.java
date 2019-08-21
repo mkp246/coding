@@ -5,6 +5,7 @@ import org.gfg.array.OrderStatistics.Pair;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
@@ -344,5 +345,18 @@ public class ArraySort {
             }
         }
         return result;
+    }
+
+    public static int[] printDistinctElementsUsingHashing(int[] array) {
+        HashSet<Integer> set = new HashSet<>();
+        List<Integer> result = new ArrayList();
+
+        for (int i = 0; i < array.length; i++) {
+            if (!set.contains(array[i])) {
+                set.add(array[i]);
+                result.add(array[i]);
+            }
+        }
+        return intListToArray(result);
     }
 }

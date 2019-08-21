@@ -243,4 +243,34 @@ public class ArraySortTest {
         result = ArraySort.countXYPairsSuchThatXpowerYGreterThanYpowerX(array1, array2);
         assertEquals(2, result);
     }
+
+    @Test
+    @GFGMethod(date = "21-08-2019", algo = "use hash map/set to keep track of already visited elements",
+            url = "/print-distinct-elements-given-integer-array/")
+    public void testPrintDistinctElementsUsingHashing() {
+        int[] array = {10, 5, 3, 4, 3, 5, 6};
+        int[] result = ArraySort.printDistinctElementsUsingHashing(array);
+        assertArrayEquals(new int[]{10, 5, 3, 4, 6}, result);
+
+        array = new int[]{12, 10, 9, 45, 2, 10, 10, 45};
+        result = ArraySort.printDistinctElementsUsingHashing(array);
+        assertArrayEquals(new int[]{12, 10, 9, 45, 2}, result);
+
+        array = new int[]{1, 2, 3, 4, 5};
+        result = ArraySort.printDistinctElementsUsingHashing(array);
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, result);
+
+
+        array = new int[]{1, 1, 1, 1, 1};
+        result = ArraySort.printDistinctElementsUsingHashing(array);
+        assertArrayEquals(new int[]{1}, result);
+
+        array = new int[]{6, 10, 5, 4, 9, 120, 4, 6, 10};
+        result = ArraySort.printDistinctElementsUsingHashing(array);
+        assertArrayEquals(new int[]{6, 10, 5, 4, 9, 120}, result);
+
+        array = new int[]{10, 5, 3, 4, 3, 5, 6};
+        result = ArraySort.printDistinctElementsUsingHashing(array);
+        assertArrayEquals(new int[]{10, 5, 3, 4, 6}, result);
+    }
 }
