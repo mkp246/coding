@@ -324,4 +324,14 @@ public class ArraySortTest {
         result = ArraySort.findProductOfMaxOfFirstAndMinOfSecondArray(array1, array2);
         assertEquals(10, result);
     }
+
+    @Test
+    @GFGMethod(date = "22-08-2019", algo = "find count of max ele in both, return (c1*c2)/(len1*len2)",
+            url = "/product-maximum-first-array-minimum-second/")
+    public void testProbabilityOfRandomPairBeingMaximumWeightedTwoArray() {
+        int[] array1 = {1, 2, 3};
+        int[] array2 = {1, 3, 3};
+        double result = ArraySort.probabilityOfRandomPairBeingMaximumWeightedTwoArray(array1, array2);
+        assertEquals(0.222, result, 0.001);
+    }
 }

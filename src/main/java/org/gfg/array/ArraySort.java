@@ -406,4 +406,23 @@ public class ArraySort {
         }
         return min * max;
     }
+
+    public static double probabilityOfRandomPairBeingMaximumWeightedTwoArray(int[] array1, int[] array2) {
+        int count1 = findMaxCount(array1);
+        int count2 = findMaxCount(array2);
+        return (count1 * count2) / (double) (array1.length * array2.length);
+    }
+
+    private static int findMaxCount(int[] array) {
+        int max = array[0], maxCount = 1;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == max) {
+                maxCount++;
+            } else if (array[i] > max) {
+                max = array[i];
+                maxCount = 1;
+            }
+        }
+        return maxCount;
+    }
 }
