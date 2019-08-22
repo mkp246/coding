@@ -4,6 +4,7 @@ import org.gfg.array.OrderStatistics.Pair;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -424,5 +425,47 @@ public class ArraySort {
             }
         }
         return maxCount;
+    }
+
+    public static int minimumDearragementPresentInAPArray(int[] array) {
+        int[] copy = new int[array.length];
+        System.arraycopy(array, 0, copy, 0, array.length);
+        Arrays.sort(copy);
+
+        int mismatchCount1 = 0;
+        for (int i = 0; i < copy.length; i++) {
+            if (array[i] != copy[i]) {
+                mismatchCount1++;
+            }
+        }
+
+        ArrayRotation.reverseArray(copy, 0, copy.length - 1);
+        int mismatchCount2 = 0;
+        for (int i = 0; i < copy.length; i++) {
+            if (array[i] != copy[i]) {
+                mismatchCount2++;
+            }
+        }
+        return Math.min(mismatchCount1, mismatchCount2);
+    }
+
+    public static int dearragementForMinProductSumTwoArray(int[] array1, int[] array2) {
+        int[] a1Copy = new int[array1.length];
+        int[] a2Copy = new int[array2.length];
+        System.arraycopy(array1, 0, a1Copy, 0, array1.length);
+        System.arraycopy(array2, 0, a2Copy, 0, array2.length);
+
+        Arrays.sort(a1Copy);
+        Arrays.sort(a2Copy);
+        ArrayRearrange.reverseArray(a2Copy, 0, a2Copy.length - 1);
+
+        int result = 0;
+        for (int i = 0; i < array1.length; i++) {
+            int index = Arrays.binarySearch(a1Copy, array1[i]);
+            if (array2[i] != a2Copy[index]) {
+                result++;
+            }
+        }
+        return result;
     }
 }

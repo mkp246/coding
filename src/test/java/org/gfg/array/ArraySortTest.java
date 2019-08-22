@@ -334,4 +334,21 @@ public class ArraySortTest {
         double result = ArraySort.probabilityOfRandomPairBeingMaximumWeightedTwoArray(array1, array2);
         assertEquals(0.222, result, 0.001);
     }
+
+    @Test
+    @GFGMethod(date = "22-08-2019", algo = "make a copy, sort the copy, count deviations at corresponding element in both, reverse the copy repeat, return min of both deviation count",
+            url = "/minimum-de-arrangements-present-array-ap-arithmetic-progression/")
+    public void testMinimumDearragementPresentInAPArray() {
+        int[] array = {8, 6, 10, 4, 2};
+        int result = ArraySort.minimumDearragementPresentInAPArray(array);
+        assertEquals(3, result);
+
+        array = new int[]{5, 10, 15, 25, 20};
+        result = ArraySort.minimumDearragementPresentInAPArray(array);
+        assertEquals(2, result);
+
+        array = new int[]{5, 9, 21, 17, 13};
+        result = ArraySort.minimumDearragementPresentInAPArray(array);
+        assertEquals(2, result);
+    }
 }
