@@ -351,4 +351,24 @@ public class ArraySortTest {
         result = ArraySort.minimumDearragementPresentInAPArray(array);
         assertEquals(2, result);
     }
+
+    @Test
+    @GFGMethod(date = "22-08-2019", algo = "prod sum will be min when one is inc other dec,check if pairs are same after sorting or not",
+            url = "/de-arrangements-for-minimum-product-sum-of-two-arrays/")
+    public void testDearragementForMinProductSumTwoArray() {
+        int[] array1 = {4, 3, 2};
+        int[] array2 = {7, 12, 5};
+        int result = ArraySort.dearragementForMinProductSumTwoArray(array1, array2);
+        assertEquals(3, result);
+
+        array1 = new int[]{4, 3, 2};
+        array2 = new int[]{1, 2, 3};
+        result = ArraySort.dearragementForMinProductSumTwoArray(array1, array2);
+        assertEquals(0, result);
+
+        array1 = new int[]{1, 2, 3, 4};
+        array2 = new int[]{6, 3, 4, 5};
+        result = ArraySort.dearragementForMinProductSumTwoArray(array1, array2);
+        assertEquals(2, result);
+    }
 }
