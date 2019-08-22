@@ -389,4 +389,21 @@ public class ArraySort {
             array2[i] = last;
         }
     }
+
+    public static int findProductOfMaxOfFirstAndMinOfSecondArray(int[] array1, int[] array2) {
+        int max = array1[0];
+        int min = array2[0];
+        for (int i = 1; i < array1.length; i++) {
+            if (array1[i] > max) {
+                max = array1[i];
+            }
+        }
+
+        for (int i = 1; i < array2.length; i++) {
+            if (array2[i] < min) {
+                min = array2[i];
+            }
+        }
+        return min * max;
+    }
 }

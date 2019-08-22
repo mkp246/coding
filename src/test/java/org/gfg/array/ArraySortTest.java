@@ -304,4 +304,24 @@ public class ArraySortTest {
         assertArrayEquals(new int[]{1, 2, 3, 5, 8, 9}, array1);
         assertArrayEquals(new int[]{10, 13, 15, 20}, array2);
     }
+
+    @Test
+    @GFGMethod(date = "22-08-2019", algo = "find max of first, min of second, return product",
+            url = "/product-maximum-first-array-minimum-second/")
+    public void testFindProductOfMaxOfFirstAndMinOfSecondArray() {
+        int[] array1 = {5, 7, 9, 3, 6, 2};
+        int[] array2 = {1, 2, 6, -1, 0, 9};
+        int result = ArraySort.findProductOfMaxOfFirstAndMinOfSecondArray(array1, array2);
+        assertEquals(-9, result);
+
+        array1 = new int[]{1, 4, 2, 3, 10, 2};
+        array2 = new int[]{4, 2, 6, 5, 2, 9};
+        result = ArraySort.findProductOfMaxOfFirstAndMinOfSecondArray(array1, array2);
+        assertEquals(20, result);
+
+        array1 = new int[]{10, 2, 3, 6, 4, 1};
+        array2 = new int[]{5, 1, 4, 2, 6, 9};
+        result = ArraySort.findProductOfMaxOfFirstAndMinOfSecondArray(array1, array2);
+        assertEquals(10, result);
+    }
 }
