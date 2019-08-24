@@ -383,6 +383,23 @@ public class ArraySortTest {
         array = new int[]{4, -5, -3, -2, -1};
         result = ArraySort.maximumOfKSegmentsMinimumInArray(array, 1);
         assertEquals(-5, result);
+
+        array = new int[]{-10, -9, -8, 2, 7, -6, -5};
+        result = ArraySort.maximumOfKSegmentsMinimumInArray(array, 2);
+        assertEquals(-5, result);
+    }
+
+    @Test
+    @GFGMethod(date = "24-08-2019", algo = "k=1 min, k=2 max of first and last, k>=3 max element",
+            url = "/divide-array-k-segments-maximize-maximum-segment-minimums/")
+    public void testMaximumOfKSegmentsMinimumInArray() {
+        int[] array = {1, 2, 3, 6, 5};
+        int result = ArraySort.maximumOfKSegmentsMinimumInArray(array, 2);
+        assertEquals(5, result);
+
+        array = new int[]{4, -5, -3, -2, -1};
+        result = ArraySort.maximumOfKSegmentsMinimumInArray(array, 1);
+        assertEquals(-5, result);
         array = new int[]{-10, -9, -8, 2, 7, -6, -5};
         result = ArraySort.maximumOfKSegmentsMinimumInArray(array, 2);
         assertEquals(-5, result);
