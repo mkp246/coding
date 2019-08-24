@@ -468,4 +468,26 @@ public class ArraySort {
         }
         return result;
     }
+
+    public static int maximumOfKSegmentsMinimumInArray(int[] array, int k) {
+        int result = 0;
+        if (k == 1) {
+            result = array[0];
+            for (int i = 1; i < array.length; i++) {
+                if (result > array[i]) {
+                    result = array[i];
+                }
+            }
+        } else if (k == 2) {
+            result = Math.max(array[0], array[array.length - 1]);
+        } else {
+            result = array[0];
+            for (int i = 1; i < array.length; i++) {
+                if (result < array[i]) {
+                    result = array[i];
+                }
+            }
+        }
+        return result;
+    }
 }
