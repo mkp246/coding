@@ -490,4 +490,44 @@ public class ArraySort {
         }
         return result;
     }
+
+    public static int countWaysToFormMinProductTriplets(int[] array) {
+        Arrays.sort(array);
+        int count = 0;
+        if (array[2] == array[0]) {
+            // all three element same
+            int freq = 3; // freq of min element
+            for (int i = 3; i < array.length; i++) {
+                if (array[i] == array[2]) {
+                    freq++;
+                } else {
+                    break;
+                }
+            }
+            count = freq * (freq - 1) * (freq - 2) / 6; // nC3
+        } else if (array[2] == array[1]) {
+            // last 2 element same
+            int freq = 2; //freq of 2nd element
+            for (int i = 3; i < array.length; i++) {
+                if (array[i] == array[2]) {
+                    freq++;
+                } else {
+                    break;
+                }
+            }
+            count = freq * (freq - 1) / 2; // nC2
+        } else {
+            // all element different or first 2 element same and 2nd different
+            int freq = 1; //freq of 3rd in element
+            for (int i = 3; i < array.length; i++) {
+                if (array[i] == array[2]) {
+                    freq++;
+                } else {
+                    break;
+                }
+            }
+            count = freq; // nC1=n
+        }
+        return count;
+    }
 }

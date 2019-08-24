@@ -390,18 +390,19 @@ public class ArraySortTest {
     }
 
     @Test
-    @GFGMethod(date = "24-08-2019", algo = "k=1 min, k=2 max of first and last, k>=3 max element",
-            url = "/divide-array-k-segments-maximize-maximum-segment-minimums/")
-    public void testMaximumOfKSegmentsMinimumInArray() {
-        int[] array = {1, 2, 3, 6, 5};
-        int result = ArraySort.maximumOfKSegmentsMinimumInArray(array, 2);
-        assertEquals(5, result);
+    @GFGMethod(date = "24-08-2019", algo = "if all same nC3, if last 2 same nc2, if first 2 same or all diff n=nC1, where n is freq of 3rd element in sorted array",
+            url = "/count-ways-form-minimum-product-triplets/")
+    public void testCountWaysToFormMinProductTriplets() {
+        int[] array = {1, 3, 2, 3, 4};
+        int result = ArraySort.countWaysToFormMinProductTriplets(array);
+        assertEquals(2, result);
 
-        array = new int[]{4, -5, -3, -2, -1};
-        result = ArraySort.maximumOfKSegmentsMinimumInArray(array, 1);
-        assertEquals(-5, result);
-        array = new int[]{-10, -9, -8, 2, 7, -6, -5};
-        result = ArraySort.maximumOfKSegmentsMinimumInArray(array, 2);
-        assertEquals(-5, result);
+        array = new int[]{2, 2, 2, 2, 2};
+        result = ArraySort.countWaysToFormMinProductTriplets(array);
+        assertEquals(10, result);
+
+        array = new int[]{1, 3, 3, 1, 3, 2};
+        result = ArraySort.countWaysToFormMinProductTriplets(array);
+        assertEquals(1, result);
     }
 }
