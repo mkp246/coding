@@ -1,5 +1,6 @@
 package org.gfg.array;
 
+import com.mkp.ALT;
 import com.mkp.GFG;
 import com.mkp.GFGMethod;
 import org.junit.Test;
@@ -555,5 +556,19 @@ public class ArraySortTest {
 
         result = ArraySort.countAllDivisorsOfNaturalNumber(125);
         assertEquals(4, result);
+    }
+
+    @Test
+    @ALT(url = "/sort-basis-number-factors-using-stl/")
+    @GFGMethod(date = "25-08-2019", algo = "make pair of ele and num divisors, sort acc to num div in desc reverse order",
+            url = "/sort-elements-basis-number-factors/")
+    public void testSortArrayBasedOnCountOfDivisorsOfElement() {
+        int[] array = {5, 11, 10, 20, 9, 16, 23};
+        ArraySort.sortArrayBasedOnCountOfDivisorsOfElement(array);
+        assertArrayEquals(new int[]{20, 16, 10, 9, 5, 11, 23}, array);
+
+        array = new int[]{104, 210, 315, 166, 441, 180};
+        ArraySort.sortArrayBasedOnCountOfDivisorsOfElement(array);
+        assertArrayEquals(new int[]{180, 210, 315, 441, 104, 166}, array);
     }
 }

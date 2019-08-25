@@ -679,4 +679,21 @@ public class ArraySort {
         }
         return count;
     }
+
+    /**
+     * higher divisor count element first
+     *
+     * @param array
+     */
+    public static void sortArrayBasedOnCountOfDivisorsOfElement(int[] array) {
+        Pair<Integer, Integer>[] pairs = new Pair[array.length];
+        for (int i = 0; i < array.length; i++) {
+            pairs[i] = new Pair<>(array[i], countAllDivisorsOfNaturalNumber(array[i]));
+        }
+        Arrays.sort(pairs, Comparator.comparing(Pair::getValue, Comparator.reverseOrder()));
+
+        for (int i = 0; i < array.length; i++) {
+            array[i] = pairs[i].getKey();
+        }
+    }
 }
