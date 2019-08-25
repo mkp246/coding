@@ -514,4 +514,32 @@ public class ArraySortTest {
         result = ArraySort.maxPartitionIndividuallySortedMakeArraySorted(array);
         assertEquals(4, result);
     }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "iterate i from 1 to sqrt(n), if divisible add n/i and i both if diff, else add only one(perfect square)",
+            url = "/find-divisors-natural-number-set-1/")
+    public void testFindAllDivisorsOfNaturalNumber() {
+        int[] result = ArraySort.findAllDivisorsOfNaturalNumber(10);
+        assertArrayEquals(new int[]{1, 10, 2, 5}, result);
+
+        result = ArraySort.findAllDivisorsOfNaturalNumber(100);
+        assertArrayEquals(new int[]{1, 100, 2, 50, 4, 25, 5, 20, 10}, result);
+
+        result = ArraySort.findAllDivisorsOfNaturalNumber(125);
+        assertArrayEquals(new int[]{1, 125, 5, 25}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "keep separate list of quotient which are in dec order, reverse append to result",
+            url = "find-all-divisors-of-a-natural-number-set-2/")
+    public void testFindAllDivisorsOfNaturalNumberSorted() {
+        int[] result = ArraySort.findAllDivisorsOfNaturalNumberSorted(10);
+        assertArrayEquals(new int[]{1, 2, 5, 10}, result);
+
+        result = ArraySort.findAllDivisorsOfNaturalNumberSorted(100);
+        assertArrayEquals(new int[]{1, 2, 4, 5, 10, 20, 25, 50, 100}, result);
+
+        result = ArraySort.findAllDivisorsOfNaturalNumberSorted(125);
+        assertArrayEquals(new int[]{1, 5, 25, 125}, result);
+    }
 }

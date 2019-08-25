@@ -628,4 +628,40 @@ public class ArraySort {
         }
         return partitions;
     }
+
+    public static int[] findAllDivisorsOfNaturalNumber(int n) {
+        int sqrt = (int) Math.sqrt(n);
+        List<Integer> result = new ArrayList<>();
+        for (int i = 1; i <= sqrt; i++) {
+            if (n % i == 0) {
+                if (n / i == i) {
+                    result.add(i); //perfect square
+                } else {
+                    result.add(i);
+                    result.add(n / i);
+                }
+            }
+        }
+        return intListToArray(result);
+    }
+
+    public static int[] findAllDivisorsOfNaturalNumberSorted(int n) {
+        int sqrt = (int) Math.sqrt(n);
+        List<Integer> result = new ArrayList<>();
+        List<Integer> pending = new ArrayList<>();
+        for (int i = 1; i <= sqrt; i++) {
+            if (n % i == 0) {
+                if (n / i == i) {
+                    result.add(i); //perfect square
+                } else {
+                    result.add(i);
+                    pending.add(n / i);
+                }
+            }
+        }
+        for (int i = pending.size() - 1; i >= 0; i--) {
+            result.add(pending.get(i));
+        }
+        return intListToArray(result);
+    }
 }
