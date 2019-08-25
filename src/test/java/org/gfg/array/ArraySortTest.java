@@ -448,4 +448,17 @@ public class ArraySortTest {
         ArraySort.sortingElementExceptInSubarray(array, 1, 2);
         assertArrayEquals(new int[]{5, 4, 3, 9, 12, 14}, array);
     }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "put ele at k in end, sort from 0 to end-1(leave last ele), from end upto k shift all by one to right, put array[k]=last",
+            url = "/sorting-array-elements-except-one/")
+    public void testSortingElementExceptOne() {
+        int[] array = {10, 4, 11, 7, 6, 20};
+        ArraySort.sortingElementExceptOne(array, 2);
+        assertArrayEquals(new int[]{4, 6, 11, 7, 10, 20}, array);
+
+        array = new int[]{30, 20, 10};
+        ArraySort.sortingElementExceptOne(array, 0);
+        assertArrayEquals(new int[]{30, 10, 20}, array);
+    }
 }

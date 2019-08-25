@@ -561,4 +561,17 @@ public class ArraySort {
         System.arraycopy(toSort, 0, array, 0, start);
         System.arraycopy(toSort, start, array, end + 1, array.length - 1 - end);
     }
+
+    public static void sortingElementExceptOne(int[] array, int k) {
+        ArrayRearrange.swapIndex(array, k, array.length - 1);
+        Arrays.sort(array, 0, array.length - 1);
+
+        int last = array[array.length - 1];
+        int i;
+        for (i = array.length - 1; i > k; i--) {
+            array[i] = array[i - 1];
+
+        }
+        array[i] = last;
+    }
 }
