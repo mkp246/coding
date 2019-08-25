@@ -551,4 +551,14 @@ public class ArraySort {
         }
         return result;
     }
+
+    public static void sortingElementExceptInSubarray(int[] array, int start, int end) {
+        int[] toSort = new int[array.length - (end - start + 1)];
+        System.arraycopy(array, 0, toSort, 0, start);
+        System.arraycopy(array, end + 1, toSort, start, array.length - 1 - end);
+        Arrays.sort(toSort);
+
+        System.arraycopy(toSort, 0, array, 0, start);
+        System.arraycopy(toSort, start, array, end + 1, array.length - 1 - end);
+    }
 }

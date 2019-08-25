@@ -435,4 +435,17 @@ public class ArraySortTest {
         result = ArraySort.checkIfIntervalsCompletelyOverlaps(intervals);
         assertFalse(result);
     }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "copy element except in interval in new array, sort, replace back in old array except the interval",
+            url = "/sorting-array-except-elements-subarray/")
+    public void testSortingElementExceptInSubarray() {
+        int[] array = {10, 4, 11, 7, 6, 20};
+        ArraySort.sortingElementExceptInSubarray(array, 1, 3);
+        assertArrayEquals(new int[]{6, 4, 11, 7, 10, 20}, array);
+
+        array = new int[]{5, 4, 3, 12, 14, 9};
+        ArraySort.sortingElementExceptInSubarray(array, 1, 2);
+        assertArrayEquals(new int[]{5, 4, 3, 9, 12, 14}, array);
+    }
 }
