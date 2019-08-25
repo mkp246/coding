@@ -4,7 +4,6 @@ import org.gfg.array.OrderStatistics.Pair;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -537,6 +536,18 @@ public class ArraySort {
         int result = 0;
         for (int i = 0; i < array1.length; i++) {
             result += Math.abs(array1[i] - array2[i]);
+        }
+        return result;
+    }
+
+    public static boolean checkIfIntervalsCompletelyOverlaps(int[][] intervals) {
+        Arrays.sort(intervals, Comparator.comparing(interval -> interval[0]));
+        boolean result = false;
+        for (int i = 0; i < intervals.length - 1; i++) {
+            if (intervals[i][1] >= intervals[i + 1][1]) {
+                result = true;
+                break;
+            }
         }
         return result;
     }

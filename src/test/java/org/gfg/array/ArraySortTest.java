@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @GFG(date = "18-08-2019", topic = "array sorting", url = "/array-data-structure/array-sorting/", impls = ArraySort.class)
 public class ArraySortTest {
@@ -419,5 +421,18 @@ public class ArraySortTest {
         array2 = new int[]{1, 1, 2};
         result = ArraySort.makingTwoArraySameWithMinimumIncrementDecrement(array1, array2);
         assertEquals(1, result);
+    }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "sort by start point, check if adj are completely overlapping by checking @i[1]>=@i+1[1]",
+            url = "/check-interval-completely-overlaps/")
+    public void testCheckIfIntervalsCompletelyOverlaps() {
+        int[][] intervals = {{1, 3}, {1, 7}, {4, 8}, {2, 5}};
+        boolean result = ArraySort.checkIfIntervalsCompletelyOverlaps(intervals);
+        assertTrue(result);
+
+        intervals = new int[][]{{1, 3}, {7, 9}, {4, 6}, {10, 13}};
+        result = ArraySort.checkIfIntervalsCompletelyOverlaps(intervals);
+        assertFalse(result);
     }
 }
