@@ -730,4 +730,31 @@ public class ArraySort {
         }
         return result;
     }
+
+    public static int[] mergeThreeSortedArray(int[] array1, int[] array2, int[] array3) {
+        int[] result = mergeTwoSortedArray(array1, array2);
+        result = mergeTwoSortedArray(result, array3);
+        return result;
+    }
+
+    public static int[] mergeTwoSortedArray(int[] array1, int[] array2) {
+        int pos1 = 0, pos2 = 0;
+        int len1 = array1.length, len2 = array2.length;
+        int[] result = new int[len1 + len2];
+        int resultPos = 0;
+        while (pos1 < len1 && pos2 < len2) {
+            if (array1[pos1] < array2[pos2]) {
+                result[resultPos++] = array1[pos1++];
+            } else {
+                result[resultPos++] = array2[pos2++];
+            }
+        }
+        while (pos1 < len1) {
+            result[resultPos++] = array1[pos1++];
+        }
+        while (pos2 < len2) {
+            result[resultPos++] = array2[pos2++];
+        }
+        return result;
+    }
 }

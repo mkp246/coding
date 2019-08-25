@@ -605,4 +605,28 @@ public class ArraySortTest {
         result = ArraySort.rankElementsInArray(array);
         assertArrayEquals(new double[]{1.5, 4.0, 6.0, 4.0, 1.5, 7.0, 4.0}, result, 0.01);
     }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "by merging two at a time, and merging third with result of first two",
+            desc = "(alt) can merge 3 at a time, will reduce temp space required,OR merge K sorted array using Min heap",
+            url = "/merge-3-sorted-arrays/")
+    public void testMergeThreeSortedArray() {
+        int[] array1 = {1, 2, 3, 4, 5};
+        int[] array2 = {2, 3, 4};
+        int[] array3 = {4, 5, 6, 7};
+        int[] result = ArraySort.mergeThreeSortedArray(array1, array2, array3);
+        assertArrayEquals(new int[]{1, 2, 2, 3, 3, 4, 4, 4, 5, 5, 6, 7}, result);
+
+        array1 = new int[]{1, 2, 3, 5};
+        array2 = new int[]{6, 7, 8, 9};
+        array3 = new int[]{10, 11, 12};
+        result = ArraySort.mergeThreeSortedArray(array1, array2, array3);
+        assertArrayEquals(new int[]{1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12}, result);
+
+        array1 = new int[]{1, 2, 41, 52, 84};
+        array2 = new int[]{1, 2, 41, 52, 67};
+        array3 = new int[]{1, 2, 41, 52, 67, 85};
+        result = ArraySort.mergeThreeSortedArray(array1, array2, array3);
+        assertArrayEquals(new int[]{1, 1, 1, 2, 2, 2, 41, 41, 41, 52, 52, 52, 67, 67, 84, 85}, result);
+    }
 }
