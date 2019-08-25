@@ -709,4 +709,25 @@ public class ArraySort {
         }
         return intListToArray(result);
     }
+
+    public static double[] rankElementsInArray(int[] array) {
+        TreeMap<Integer, Double> map = new TreeMap<>();
+        for (int i = 0; i < array.length; i++) {
+            map.put(array[i], map.getOrDefault(array[i], (double) 0) + 1);
+        }
+        int rankSum = 0;
+        int totalElement = 0;
+        for (int element : map.keySet()) {
+            double freq = map.get(element);
+            totalElement += freq;
+            int temp = totalElement * (totalElement + 1) / 2;
+            map.put(element, (temp - rankSum) / freq);
+            rankSum = temp;
+        }
+        double[] result = new double[array.length];
+        for (int i = 0; i < array.length; i++) {
+            result[i] = map.get(array[i]);
+        }
+        return result;
+    }
 }

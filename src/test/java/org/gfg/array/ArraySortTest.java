@@ -574,7 +574,7 @@ public class ArraySortTest {
 
     @Test
     @GFGMethod(date = "25-08-2019", algo = "sort in inc order, init cut=@0, if ele>cut then update cut to ele, print len-idx else increase idx",
-            url = " /ropes-left-every-cut/")
+            url = "/ropes-left-every-cut/")
     public void testRopesLeftEveryCut() {
         int[] array = {5, 1, 1, 2, 3, 5};
         int[] result = ArraySort.ropesLeftEveryCut(array);
@@ -583,5 +583,26 @@ public class ArraySortTest {
         array = new int[]{5, 1, 6, 9, 8, 11, 2, 2, 6, 5};
         result = ArraySort.ropesLeftEveryCut(array);
         assertArrayEquals(new int[]{9, 7, 5, 3, 2, 1}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "make freq tree map, starting lowest num in map calc rank of each ele and store back in map, traverse array and set value by looking up rank in map",
+            url = "/rank-elements-array/")
+    public void testRankElementsInArray() {
+        int[] array = {20, 30, 10};
+        double[] result = ArraySort.rankElementsInArray(array);
+        assertArrayEquals(new double[]{2.0, 3.0, 1.0}, result, 0.01);
+
+        array = new int[]{10, 12, 15, 12, 10, 25, 12};
+        result = ArraySort.rankElementsInArray(array);
+        assertArrayEquals(new double[]{1.5, 4.0, 6.0, 4.0, 1.5, 7.0, 4.0}, result, 0.01);
+
+        array = new int[]{1, 2, 5, 2, 1, 60, 3};
+        result = ArraySort.rankElementsInArray(array);
+        assertArrayEquals(new double[]{1.5, 3.5, 6.0, 3.5, 1.5, 7.0, 5.0}, result, 0.01);
+
+        array = new int[]{1, 2, 5, 2, 1, 25, 2};
+        result = ArraySort.rankElementsInArray(array);
+        assertArrayEquals(new double[]{1.5, 4.0, 6.0, 4.0, 1.5, 7.0, 4.0}, result, 0.01);
     }
 }
