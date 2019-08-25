@@ -497,4 +497,21 @@ public class ArraySortTest {
         result = ArraySort.printSortedDistinctElement(array);
         assertArrayEquals(new int[]{1, 2, 3}, result);
     }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "if max so far = current idx then we can make partition at that point",
+            url = "/maximum-number-partitions-can-sorted-individually-make-sorted/")
+    public void testMaxPartitionIndividuallySortedMakeArraySorted() {
+        int[] array = {1, 0, 2, 3, 4};
+        int result = ArraySort.maxPartitionIndividuallySortedMakeArraySorted(array);
+        assertEquals(4, result);
+
+        array = new int[]{2, 1, 0, 3};
+        result = ArraySort.maxPartitionIndividuallySortedMakeArraySorted(array);
+        assertEquals(2, result);
+
+        array = new int[]{2, 1, 0, 3, 4, 5};
+        result = ArraySort.maxPartitionIndividuallySortedMakeArraySorted(array);
+        assertEquals(4, result);
+    }
 }

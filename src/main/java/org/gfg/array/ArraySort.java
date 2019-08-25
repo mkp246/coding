@@ -614,4 +614,18 @@ public class ArraySort {
         }
         return result;
     }
+
+    public static int maxPartitionIndividuallySortedMakeArraySorted(int[] array) {
+        int maxSoFar = array[0];
+        int partitions = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > maxSoFar) {
+                maxSoFar = array[i];
+            }
+            if (maxSoFar == i) {
+                partitions++;
+            }
+        }
+        return partitions;
+    }
 }
