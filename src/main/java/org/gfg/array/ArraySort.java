@@ -530,4 +530,14 @@ public class ArraySort {
         }
         return count;
     }
+
+    public static int makingTwoArraySameWithMinimumIncrementDecrement(int[] array1, int[] array2) {
+        Arrays.sort(array1);
+        Arrays.sort(array2);
+        int result = 0;
+        for (int i = 0; i < array1.length; i++) {
+            result += Math.abs(array1[i] - array2[i]);
+        }
+        return result;
+    }
 }

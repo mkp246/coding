@@ -390,7 +390,7 @@ public class ArraySortTest {
     }
 
     @Test
-    @GFGMethod(date = "24-08-2019", algo = "if all same nC3, if last 2 same nc2, if first 2 same or all diff n=nC1, where n is freq of 3rd element in sorted array",
+    @GFGMethod(date = "24-08-2019", algo = "sort the array check a[3]=a[0] or a[1], if all same nC3, if last 2 same nc2, if first 2 same or all diff n=nC1, where n is freq of 3rd element in sorted array",
             url = "/count-ways-form-minimum-product-triplets/")
     public void testCountWaysToFormMinProductTriplets() {
         int[] array = {1, 3, 2, 3, 4};
@@ -403,6 +403,21 @@ public class ArraySortTest {
 
         array = new int[]{1, 3, 3, 1, 3, 2};
         result = ArraySort.countWaysToFormMinProductTriplets(array);
+        assertEquals(1, result);
+    }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "sort both, sum abs diff between values at idx in both arrays",
+            url = "/making-elements-of-two-arrays-same-with-minimum-incrementdecrement/")
+    public void testMakingTwoArraySameWithMinimumIncrementDecrement() {
+        int[] array1 = {3, 1, 1};
+        int[] array2 = {1, 2, 2};
+        int result = ArraySort.makingTwoArraySameWithMinimumIncrementDecrement(array1, array2);
+        assertEquals(2, result);
+
+        array1 = new int[]{3, 1, 1};
+        array2 = new int[]{1, 1, 2};
+        result = ArraySort.makingTwoArraySameWithMinimumIncrementDecrement(array1, array2);
         assertEquals(1, result);
     }
 }
