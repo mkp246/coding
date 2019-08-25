@@ -696,4 +696,17 @@ public class ArraySort {
             array[i] = pairs[i].getKey();
         }
     }
+
+    public static int[] ropesLeftEveryCut(int[] array) {
+        Arrays.sort(array);
+        int cutLength = array[0];
+        List<Integer> result = new ArrayList<>();
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > cutLength) {
+                cutLength = array[i];
+                result.add(array.length - i);
+            }
+        }
+        return intListToArray(result);
+    }
 }

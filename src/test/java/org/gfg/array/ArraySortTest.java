@@ -571,4 +571,17 @@ public class ArraySortTest {
         ArraySort.sortArrayBasedOnCountOfDivisorsOfElement(array);
         assertArrayEquals(new int[]{180, 210, 315, 441, 104, 166}, array);
     }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "sort in inc order, init cut=@0, if ele>cut then update cut to ele, print len-idx else increase idx",
+            url = " /ropes-left-every-cut/")
+    public void testRopesLeftEveryCut() {
+        int[] array = {5, 1, 1, 2, 3, 5};
+        int[] result = ArraySort.ropesLeftEveryCut(array);
+        assertArrayEquals(new int[]{4, 3, 2}, result);
+
+        array = new int[]{5, 1, 6, 9, 8, 11, 2, 2, 6, 5};
+        result = ArraySort.ropesLeftEveryCut(array);
+        assertArrayEquals(new int[]{9, 7, 5, 3, 2, 1}, result);
+    }
 }
