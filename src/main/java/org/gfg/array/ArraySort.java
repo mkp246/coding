@@ -5,8 +5,10 @@ import org.gfg.array.OrderStatistics.Pair;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
 
@@ -588,5 +590,14 @@ public class ArraySort {
             }
         }
         return swapsRequired;
+    }
+
+    public static void sortArrayInOrderOfElementInOtherArray(Integer[] array, int[] order) {
+        final Map<Integer, Integer> valueToIndexMap = new HashMap<>();
+        for (int i = 0; i < order.length; i++) {
+            valueToIndexMap.put(order[i], i);
+        }
+
+        Arrays.sort(array, Comparator.comparing(valueToIndexMap::get));
     }
 }

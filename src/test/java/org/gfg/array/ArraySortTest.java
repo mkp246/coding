@@ -474,4 +474,14 @@ public class ArraySortTest {
         result = ArraySort.minAdjacentSwapsRequiredToSortBinaryArray(array);
         assertEquals(3, result);
     }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "make map of order ele and index, use custom sort comparator which compares the index of ele lookup in map",
+            url = "/sort-linked-list-order-elements-appearing-array/")
+    public void testSortArrayInOrderOfElementInOtherArray() {
+        Integer[] array = {3, 2, 5, 8, 5, 2, 1};
+        int[] order = {5, 1, 3, 2, 8};
+        ArraySort.sortArrayInOrderOfElementInOtherArray(array, order);
+        assertArrayEquals(new Integer[]{5, 5, 1, 3, 2, 2, 8}, array);
+    }
 }
