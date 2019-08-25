@@ -484,4 +484,17 @@ public class ArraySortTest {
         ArraySort.sortArrayInOrderOfElementInOtherArray(array, order);
         assertArrayEquals(new Integer[]{5, 5, 1, 3, 2, 2, 8}, array);
     }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "use tree set, add all element, covert tree set to array",
+            url = "/print-sorted-distinct-elements-array-c/")
+    public void testPrintSortedDistinctElement() {
+        int[] array = {1, 3, 2, 2, 1};
+        int[] result = ArraySort.printSortedDistinctElement(array);
+        assertArrayEquals(new int[]{1, 2, 3}, result);
+
+        array = new int[]{1, 1, 1, 2, 2, 3};
+        result = ArraySort.printSortedDistinctElement(array);
+        assertArrayEquals(new int[]{1, 2, 3}, result);
+    }
 }

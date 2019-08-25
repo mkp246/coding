@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import static org.gfg.array.Occurance.intListToArray;
 
@@ -599,5 +600,18 @@ public class ArraySort {
         }
 
         Arrays.sort(array, Comparator.comparing(valueToIndexMap::get));
+    }
+
+    public static int[] printSortedDistinctElement(int[] array) {
+        TreeSet<Integer> set = new TreeSet<>();
+        for (int i = 0; i < array.length; i++) {
+            set.add(array[i]);
+        }
+        int[] result = new int[set.size()];
+        int resultPos = 0;
+        for (int element : set) {
+            result[resultPos++] = element;
+        }
+        return result;
     }
 }
