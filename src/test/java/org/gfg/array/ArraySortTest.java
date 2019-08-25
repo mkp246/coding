@@ -531,7 +531,7 @@ public class ArraySortTest {
 
     @Test
     @GFGMethod(date = "25-08-2019", algo = "keep separate list of quotient which are in dec order, reverse append to result",
-            url = "find-all-divisors-of-a-natural-number-set-2/")
+            url = "/find-all-divisors-of-a-natural-number-set-2/")
     public void testFindAllDivisorsOfNaturalNumberSorted() {
         int[] result = ArraySort.findAllDivisorsOfNaturalNumberSorted(10);
         assertArrayEquals(new int[]{1, 2, 5, 10}, result);
@@ -541,5 +541,19 @@ public class ArraySortTest {
 
         result = ArraySort.findAllDivisorsOfNaturalNumberSorted(125);
         assertArrayEquals(new int[]{1, 5, 25, 125}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "from 1 to sqrt(n) if divisible count+=2, if perfect square then in end iteration count+=1",
+            url = "/sort-elements-basis-number-factors/")
+    public void testCountAllDivisorsOfNaturalNumber() {
+        int result = ArraySort.countAllDivisorsOfNaturalNumber(10);
+        assertEquals(4, result);
+
+        result = ArraySort.countAllDivisorsOfNaturalNumber(100);
+        assertEquals(9, result);
+
+        result = ArraySort.countAllDivisorsOfNaturalNumber(125);
+        assertEquals(4, result);
     }
 }

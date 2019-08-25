@@ -664,4 +664,19 @@ public class ArraySort {
         }
         return intListToArray(result);
     }
+
+    public static int countAllDivisorsOfNaturalNumber(int n) {
+        int sqrt = (int) Math.sqrt(n);
+        int count = 0;
+        for (int i = 1; i <= sqrt; i++) {
+            if (n % i == 0) {
+                if (n / i == i) {
+                    count++; //perfect square
+                } else {
+                    count += 2;
+                }
+            }
+        }
+        return count;
+    }
 }
