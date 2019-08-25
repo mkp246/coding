@@ -461,4 +461,17 @@ public class ArraySortTest {
         ArraySort.sortingElementExceptOne(array, 0);
         assertArrayEquals(new int[]{30, 10, 20}, array);
     }
+
+    @Test
+    @GFGMethod(date = "25-08-2019", algo = "count zeros of right side of each 1 and sum",
+            url = "/minimum-swaps-required-sort-binary-array/")
+    public void testMinAdjacentSwapsRequiredToSortBinaryArray() {
+        int[] array = {0, 0, 1, 0, 1, 0, 1, 1};
+        int result = ArraySort.minAdjacentSwapsRequiredToSortBinaryArray(array);
+        assertEquals(3, result);
+
+        array = new int[]{0, 1, 0, 1, 0};
+        result = ArraySort.minAdjacentSwapsRequiredToSortBinaryArray(array);
+        assertEquals(3, result);
+    }
 }

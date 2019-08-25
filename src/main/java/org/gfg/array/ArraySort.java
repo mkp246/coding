@@ -574,4 +574,19 @@ public class ArraySort {
         }
         array[i] = last;
     }
+
+    public static int minAdjacentSwapsRequiredToSortBinaryArray(int[] array) {
+        int[] zerosOnRight = new int[array.length];
+        zerosOnRight[array.length - 1] = (array[array.length - 1] == 0 ? 1 : 0);
+        int swapsRequired = 0;
+        for (int i = array.length - 2; i >= 0; i--) {
+            zerosOnRight[i] = zerosOnRight[i + 1];
+            if (array[i] == 0) {
+                zerosOnRight[i]++;
+            } else {
+                swapsRequired += zerosOnRight[i];
+            }
+        }
+        return swapsRequired;
+    }
 }
