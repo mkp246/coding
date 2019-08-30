@@ -393,7 +393,7 @@ public class ArraySortTest {
     }
 
     @Test
-    @GFGMethod(date = "24-08-2019", algo = "sort the array check a[3]=a[0] or a[1], if all same nC3, if last 2 same nc2, if first 2 same or all diff n=nC1, where n is freq of 3rd element in sorted array",
+    @GFGMethod(date = "24-08-2019", algo = "sort the array check a[2]=a[0] or a[1], if all same nC3, if last 2 same nc2, if first 2 same or all diff n=nC1, where n is freq of 3rd element in sorted array",
             url = "/count-ways-form-minimum-product-triplets/")
     public void testCountWaysToFormMinProductTriplets() {
         int[] array = {1, 3, 2, 3, 4};
@@ -628,5 +628,18 @@ public class ArraySortTest {
         array3 = new int[]{1, 2, 41, 52, 67, 85};
         result = ArraySort.mergeThreeSortedArray(array1, array2, array3);
         assertArrayEquals(new int[]{1, 1, 1, 2, 2, 2, 41, 41, 41, 52, 52, 52, 67, 67, 84, 85}, result);
+    }
+
+    @Test
+    @GFGMethod(date = "28-08-2019", algo = "start from left, subtract k until next element becomes lower or equal",
+            url = "/find-minimum-number-operation-make-array-decreasing/")
+    public void testMinOperationsToMakeArrayDecreasing() {
+        int[] array = {1, 1, 2, 3};
+        int result = ArraySort.minSubtractionOperationsToMakeArrayDecreasing(array, 5);
+        assertEquals(3, result);
+
+        array = new int[]{5, 4, 3, 2, 1};
+        result = ArraySort.minSubtractionOperationsToMakeArrayDecreasing(array, 5);
+        assertEquals(0, result);
     }
 }

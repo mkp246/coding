@@ -757,4 +757,19 @@ public class ArraySort {
         }
         return result;
     }
+
+    public static int minSubtractionOperationsToMakeArrayDecreasing(int[] array, int toSubtract) {
+        int result = 0;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > array[i - 1]) {
+                int n = (array[i] - array[i - 1]) / toSubtract;
+                if ((array[i] - array[i - 1]) % toSubtract != 0) {
+                    n++;
+                }
+                array[i] -= n * toSubtract;
+                result += n;
+            }
+        }
+        return result;
+    }
 }
