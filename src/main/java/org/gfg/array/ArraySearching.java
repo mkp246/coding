@@ -31,4 +31,19 @@ public class ArraySearching {
         }
         return found ? length - 1 : length;
     }
+
+    public static int binarySearchInSortedArray(int[] array, int start, int end, int key) {
+        if (start <= end) {
+            int mid = Util.getMid(start, end);
+            if (array[mid] == key) {
+                return mid;
+            } else if (array[mid] > key) {
+                return binarySearchInSortedArray(array, start, mid - 1, key);
+            } else {
+                return binarySearchInSortedArray(array, mid + 1, end, key);
+            }
+        } else {
+            return -1;
+        }
+    }
 }

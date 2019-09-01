@@ -57,4 +57,24 @@ public class ArraySearchingTest {
         }
         assertEquals("10,50,40,20,", result.toString());
     }
+
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "binary search", url = "/search-insert-and-delete-in-a-sorted-array/")
+    public void testBinarySearchInSortedArray() {
+        int[] array = {5, 6, 7, 8, 9, 10};
+        int result = ArraySearching.binarySearchInSortedArray(array, 0, array.length - 1, 10);
+        assertEquals(5, result);
+
+        result = ArraySearching.binarySearchInSortedArray(array, 0, array.length - 1, 7);
+        assertEquals(2, result);
+
+        result = ArraySearching.binarySearchInSortedArray(array, 0, array.length - 1, 5);
+        assertEquals(2, result);
+
+        result = ArraySearching.binarySearchInSortedArray(array, 0, array.length - 1, 4);
+        assertEquals(2, result);
+        
+        result = ArraySearching.binarySearchInSortedArray(array, 0, array.length - 1, 12);
+        assertEquals(-1, result);
+    }
 }
