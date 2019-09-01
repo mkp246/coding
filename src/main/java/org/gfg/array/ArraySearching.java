@@ -1,5 +1,8 @@
 package org.gfg.array;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ArraySearching {
 
     public static int searchInUnsortedArray(int[] array, int key) {
@@ -69,5 +72,33 @@ public class ArraySearching {
             }
         }
         return -1;
+    }
+
+    public static int[] findCommonInThreeSortedArray(int[] array1, int[] array2, int[] array3) {
+        int len1 = array1.length;
+        int len2 = array2.length;
+        int len3 = array3.length;
+        int pos1, pos2, pos3;
+        pos1 = pos2 = pos3 = 0;
+        List<Integer> result = new ArrayList<>();
+
+        while (pos1 < len1 && pos2 < len2 && pos3 < len3) {
+            if (array1[pos1] == array2[pos2]) {
+                while (array3[pos3] < array1[pos1]) {
+                    pos3++;
+                }
+                if (array3[pos3] == array1[pos1]) {
+                    result.add(array1[pos1]);
+                    pos3++;
+                }
+                pos1++;
+                pos2++;
+            } else if (array1[pos1] > array2[pos2]) {
+                pos2++;
+            } else {
+                pos1++;
+            }
+        }
+        return Occurance.intListToArray(result);
     }
 }

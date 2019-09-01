@@ -4,6 +4,7 @@ import com.mkp.GFG;
 import com.mkp.GFGMethod;
 import org.junit.Test;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 @GFG(date = "01-09-2019", topic = "array searching", url = "/array-data-structure/array-searching/", impls = ArraySearching.class)
@@ -114,5 +115,23 @@ public class ArraySearchingTest {
         array = new int[]{20, 40, 50, 70, 70, 60};
         result = ArraySearching.searchInArrayWhereAdjacentDifferenceIsAtMostK(array, 60, 20);
         assertEquals(5, result);
+    }
+
+
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "find common in first two, check if common is present in tree, if present inc all ptr, else just first two ptr",
+            url = "/find-common-elements-three-sorted-arrays/")
+    public void testFindCommonInThreeSortedArray() {
+        int[] array1 = {1, 5, 10, 20, 40, 80};
+        int[] array2 = {6, 7, 20, 80, 100};
+        int[] array3 = {3, 4, 15, 20, 30, 70, 80, 120};
+        int[] result = ArraySearching.findCommonInThreeSortedArray(array1, array2, array3);
+        assertArrayEquals(new int[]{20, 80}, result);
+
+        array1 = new int[]{1, 5, 5};
+        array2 = new int[]{3, 4, 5, 5, 10};
+        array3 = new int[]{5, 5, 10, 20};
+        result = ArraySearching.findCommonInThreeSortedArray(array1, array2, array3);
+        assertArrayEquals(new int[]{5, 5}, result);
     }
 }
