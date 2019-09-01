@@ -58,4 +58,16 @@ public class ArraySearching {
         }
         return -1;
     }
+
+    public static int searchInArrayWhereAdjacentDifferenceIsAtMostK(int[] array, int key, int maxDiff) {
+        int i = 0;
+        while (i < array.length) {
+            if (array[i] == key) {
+                return i;
+            } else {
+                i += Math.ceil(Math.abs(array[i] - key) / (double) maxDiff);
+            }
+        }
+        return -1;
+    }
 }

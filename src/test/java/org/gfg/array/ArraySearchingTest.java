@@ -99,4 +99,20 @@ public class ArraySearchingTest {
         result = ArraySearching.searchInArrayWhereAdjacentDifferenceIsOne(array, 5);
         assertEquals(4, result);
     }
+
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "jump forward by ceil (abs diff between ele and key)/k, starting from 0",
+            url = "/searching-array-adjacent-differ-k/")
+    public void testSearchInArrayWhereAdjacentDifferenceIsAtMostK() {
+        int[] array = {4, 5, 6, 7, 6};
+        int result = ArraySearching.searchInArrayWhereAdjacentDifferenceIsAtMostK(array, 6, 1);
+        assertEquals(2, result);
+
+        result = ArraySearching.searchInArrayWhereAdjacentDifferenceIsAtMostK(array, 8, 1);
+        assertEquals(-1, result);
+
+        array = new int[]{20, 40, 50, 70, 70, 60};
+        result = ArraySearching.searchInArrayWhereAdjacentDifferenceIsAtMostK(array, 60, 20);
+        assertEquals(5, result);
+    }
 }
