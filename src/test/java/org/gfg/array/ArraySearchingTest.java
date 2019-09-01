@@ -192,4 +192,21 @@ public class ArraySearchingTest {
         result = ArraySearching.testFindOnlyRepetitiveElementInUnsortedArray1ToNUsingXor(array);
         assertEquals(8, result);
     }
+
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "xor all element",
+            url = "/find-element-appears-array-every-element-appears-twice/")
+    public void testFindElementAppearingOnceWhereOtherAppearTwiceUsingXor() {
+        int[] array = {7, 3, 5, 4, 5, 3, 4};
+        int result = ArraySearching.findElementAppearingOnceWhereOtherAppearTwiceUsingXor(array);
+        assertEquals(7, result);
+
+        array = new int[]{2, 3, 5, 4, 5, 3, 4};
+        result = ArraySearching.findElementAppearingOnceWhereOtherAppearTwiceUsingXor(array);
+        assertEquals(2, result);
+
+        array = new int[]{15, 18, 16, 18, 16, 15, 89};
+        result = ArraySearching.findElementAppearingOnceWhereOtherAppearTwiceUsingXor(array);
+        assertEquals(89, result);
+    }
 }

@@ -153,4 +153,12 @@ public class ArraySearching {
         }
         return xor ^ xor1TONMinus1;
     }
+
+    public static int findElementAppearingOnceWhereOtherAppearTwiceUsingXor(int[] array) {
+        int result = 0;
+        for (int element : array) {
+            result ^= element;
+        }
+        return result;
+    }
 }
