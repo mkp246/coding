@@ -1,7 +1,60 @@
 package org.gfg.array;
 
-import static org.junit.Assert.*;
+import com.mkp.GFG;
+import com.mkp.GFGMethod;
+import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
+@GFG(date = "01-09-2019", topic = "array searching", url = "/array-data-structure/array-searching/", impls = ArraySearching.class)
 public class ArraySearchingTest {
 
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "linear search", url = "/search-insert-and-delete-in-an-unsorted-array/")
+    public void testSearchInUnsortedArray() {
+        int[] array = {12, 34, 10, 6, 40};
+        int result = ArraySearching.searchInUnsortedArray(array, 40);
+        assertEquals(4, result);
+
+        result = ArraySearching.searchInUnsortedArray(array, 10);
+        assertEquals(2, result);
+
+        result = ArraySearching.searchInUnsortedArray(array, 9);
+        assertEquals(-1, result);
+    }
+
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "insert in end if cap > total, increment total else error",
+            url = "/search-insert-and-delete-in-an-unsorted-array/")
+    public void testInsertInEndOfArray() {
+        int[] array = new int[20];
+        array[0] = 12;
+        array[1] = 16;
+        array[2] = 20;
+        array[3] = 40;
+        array[4] = 50;
+        array[5] = 70;
+        int capacity = 20;
+        int total = 6;
+        ArraySearching.insertInEndOfArray(array, 26, total, capacity);
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i <= total; i++) {
+            result.append(array[i]).append(",");
+        }
+        assertEquals("12,16,20,40,50,70,26,", result.toString());
+    }
+
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "search key if found shift all the element to left by 1, decrement total count",
+            url = "/search-insert-and-delete-in-an-unsorted-array/")
+    public void testDeleteElementOfArray() {
+        int[] array = {10, 50, 30, 40, 20};
+        int count = ArraySearching.deleteElementOfArray(array, 30, array.length);
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            result.append(array[i]).append(",");
+        }
+        assertEquals("10,50,40,20,", result.toString());
+    }
 }
