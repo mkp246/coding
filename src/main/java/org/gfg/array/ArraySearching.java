@@ -46,4 +46,16 @@ public class ArraySearching {
             return -1;
         }
     }
+
+    public static int searchInArrayWhereAdjacentDifferenceIsOne(int[] array, int key) {
+        int i = 0;
+        while (i < array.length) {
+            if (array[i] == key) {
+                return i;
+            } else {
+                i += Math.abs(array[i] - key);
+            }
+        }
+        return -1;
+    }
 }

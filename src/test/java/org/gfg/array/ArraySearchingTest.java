@@ -73,8 +73,30 @@ public class ArraySearchingTest {
 
         result = ArraySearching.binarySearchInSortedArray(array, 0, array.length - 1, 4);
         assertEquals(2, result);
-        
+
         result = ArraySearching.binarySearchInSortedArray(array, 0, array.length - 1, 12);
         assertEquals(-1, result);
+    }
+
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "jump forward by abs diff between ele and key, starting from 0",
+            url = "/search-an-element-in-an-array-where-difference-between-adjacent-elements-is-1/")
+    public void testSearchInArrayWhereAdjacentDifferenceIsOne() {
+        int[] array = {8, 7, 6, 7, 6, 5, 4, 3, 2, 3, 4, 3};
+        int result = ArraySearching.searchInArrayWhereAdjacentDifferenceIsOne(array, 3);
+        assertEquals(7, result);
+
+        result = ArraySearching.searchInArrayWhereAdjacentDifferenceIsOne(array, 2);
+        assertEquals(8, result);
+
+        result = ArraySearching.searchInArrayWhereAdjacentDifferenceIsOne(array, 4);
+        assertEquals(6, result);
+
+        result = ArraySearching.searchInArrayWhereAdjacentDifferenceIsOne(array, 10);
+        assertEquals(-1, result);
+
+        array = new int[]{1, 2, 3, 4, 5, 4};
+        result = ArraySearching.searchInArrayWhereAdjacentDifferenceIsOne(array, 5);
+        assertEquals(4, result);
     }
 }
