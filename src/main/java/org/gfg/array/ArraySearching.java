@@ -1,6 +1,7 @@
 package org.gfg.array;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class ArraySearching {
@@ -100,5 +101,42 @@ public class ArraySearching {
             }
         }
         return Occurance.intListToArray(result);
+    }
+
+    public static int findElementInInfiniteSortedArray(int[] array, int key) {
+        int start = 0;
+        int end = 1;
+        while (end < array.length) {
+            if (key <= array[end]) {
+                return binarySearchInSortedArray(array, start, end, key);
+            } else {
+                start = end + 1;
+                end *= 2;
+                end = Math.min(end, array.length - 1);
+            }
+        }
+        return -1;
+    }
+
+    public static int findOnlyRepetitiveElementInUnsortedArray1ToNMinus1UsingSumFormula(int[] array) {
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+        int max = array.length - 1;
+        int sum1ToNMinus1 = max * (max + 1) / 2;
+        return sum - sum1ToNMinus1;
+    }
+
+    public static int findOnlyRepetitiveElementInUnsortedArray1ToNMinus1UsingHashing(int[] array) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int element : array) {
+            if (set.contains(element)) {
+                return element;
+            } else {
+                set.add(element);
+            }
+        }
+        return -1;
     }
 }

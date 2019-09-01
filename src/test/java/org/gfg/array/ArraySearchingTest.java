@@ -134,4 +134,43 @@ public class ArraySearchingTest {
         result = ArraySearching.findCommonInThreeSortedArray(array1, array2, array3);
         assertArrayEquals(new int[]{5, 5}, result);
     }
+
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "set start=0, end =1, if key<=@end,bin search else start=end+1, end*=2,repeat",
+            url = "/find-position-element-sorted-array-infinite-numbers/")
+    public void testFindElementInInfiniteSortedArray() {
+        int[] array = {3, 5, 7, 9, 10, 90, 100, 130, 140, 160, 170};
+        int result = ArraySearching.findElementInInfiniteSortedArray(array, 10);
+        assertEquals(4, result);
+    }
+
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "sum all element, subtract ele sum by n*(n*1)/2 formula",
+            url = "/find-repetitive-element-1-n-1/")
+    public void testFindOnlyRepetitiveElementInUnsortedArray1ToNUsingSumFormula() {
+        int[] array = {1, 3, 2, 3, 4};
+        int result = ArraySearching.findOnlyRepetitiveElementInUnsortedArray1ToNMinus1UsingSumFormula(array);
+        assertEquals(3, result);
+
+        array = new int[]{1, 5, 1, 2, 3, 4};
+        result = ArraySearching.findOnlyRepetitiveElementInUnsortedArray1ToNMinus1UsingSumFormula(array);
+        assertEquals(1, result);
+    }
+
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "keep track of visited element in hash set,if set contains ele return ele",
+            url = "/find-repetitive-element-1-n-1/")
+    public void testFindOnlyRepetitiveElementInUnsortedArray1ToNUsingHashing() {
+        int[] array = {1, 3, 2, 3, 4};
+        int result = ArraySearching.findOnlyRepetitiveElementInUnsortedArray1ToNMinus1UsingHashing(array);
+        assertEquals(3, result);
+
+        array = new int[]{1, 5, 1, 2, 3, 4};
+        result = ArraySearching.findOnlyRepetitiveElementInUnsortedArray1ToNMinus1UsingHashing(array);
+        assertEquals(1, result);
+
+        array = new int[]{9, 8, 2, 6, 1, 8, 5, 3, 4, 7};
+        result = ArraySearching.findOnlyRepetitiveElementInUnsortedArray1ToNMinus1UsingHashing(array);
+        assertEquals(8, result);
+    }
 }
