@@ -173,4 +173,23 @@ public class ArraySearchingTest {
         result = ArraySearching.findOnlyRepetitiveElementInUnsortedArray1ToNMinus1UsingHashing(array);
         assertEquals(8, result);
     }
+
+
+    @Test
+    @GFGMethod(date = "01-09-2019", algo = "xor all ele, xor 1 to N-1, xor both",
+            desc = "(alt) make ele @value -ve to mark the presence, where already neg return that element",
+            url = "/find-repetitive-element-1-n-1/")
+    public void testFindOnlyRepetitiveElementInUnsortedArray1ToNUsingXor() {
+        int[] array = {1, 3, 2, 3, 4};
+        int result = ArraySearching.testFindOnlyRepetitiveElementInUnsortedArray1ToNUsingXor(array);
+        assertEquals(3, result);
+
+        array = new int[]{1, 5, 1, 2, 3, 4};
+        result = ArraySearching.testFindOnlyRepetitiveElementInUnsortedArray1ToNUsingXor(array);
+        assertEquals(1, result);
+
+        array = new int[]{9, 8, 2, 6, 1, 8, 5, 3, 4, 7};
+        result = ArraySearching.testFindOnlyRepetitiveElementInUnsortedArray1ToNUsingXor(array);
+        assertEquals(8, result);
+    }
 }

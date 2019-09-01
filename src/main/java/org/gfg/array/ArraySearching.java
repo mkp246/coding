@@ -139,4 +139,18 @@ public class ArraySearching {
         }
         return -1;
     }
+
+    public static int testFindOnlyRepetitiveElementInUnsortedArray1ToNUsingXor(int[] array) {
+        int xor = 0;
+        for (int element : array) {
+            xor ^= element;
+        }
+        int max = array.length - 1;
+        int elementToXor = (max + 1) % 4;
+        int xor1TONMinus1 = 0;
+        for (int i = 0; i < elementToXor; i++) {
+            xor1TONMinus1 ^= max--;
+        }
+        return xor ^ xor1TONMinus1;
+    }
 }
