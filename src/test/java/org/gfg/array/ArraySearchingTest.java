@@ -380,4 +380,26 @@ public class ArraySearchingTest {
         int[] result = ArraySearching.findTwoNonRepeatingElementInArray(array);
         assertArrayEquals(new int[]{7, 9}, result);
     }
+
+    @Test
+    @GFGMethod(date = "03-09-2019", algo = "xor all, divide ele in 2 group one which has last set bit in all xor bit set, other not set",
+            desc = "same as find two non repeating element in array where others appear twice",
+            url = "/find-the-two-numbers-with-odd-occurences-in-an-unsorted-array/")
+    public void testFindTwoOddOccuranceElementInUnsortedArray() {
+        int[] array = {12, 23, 34, 12, 12, 23, 12, 45};
+        int[] result = ArraySearching.findTwoOddOccuranceElementInUnsortedArray(array);
+        assertArrayEquals(new int[]{45, 34}, result);
+
+        array = new int[]{4, 4, 100, 5000, 4, 4, 4, 4, 100, 100};
+        result = ArraySearching.findTwoOddOccuranceElementInUnsortedArray(array);
+        assertArrayEquals(new int[]{100, 5000}, result);
+
+        array = new int[]{10, 20};
+        result = ArraySearching.findTwoOddOccuranceElementInUnsortedArray(array);
+        assertArrayEquals(new int[]{10, 20}, result);
+
+        array = new int[]{4, 2, 4, 5, 2, 3, 3, 1};
+        result = ArraySearching.findTwoOddOccuranceElementInUnsortedArray(array);
+        assertArrayEquals(new int[]{5, 1}, result);
+    }
 }

@@ -377,4 +377,8 @@ public class ArraySearching {
         }
         return new int[]{x, y};
     }
+
+    public static int[] findTwoOddOccuranceElementInUnsortedArray(int[] array) {
+        return findTwoNonRepeatingElementInArray(array);
+    }
 }
