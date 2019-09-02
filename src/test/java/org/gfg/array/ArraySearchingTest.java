@@ -402,4 +402,15 @@ public class ArraySearchingTest {
         result = ArraySearching.findTwoOddOccuranceElementInUnsortedArray(array);
         assertArrayEquals(new int[]{5, 1}, result);
     }
+
+    @Test
+    @GFGMethod(date = "03-09-2019", algo = "xor all then xor 1 to n given x^y, divide all ele in 2 group" +
+            " one with last set bit same as in x^y, other not set, xor them separately, run again with num 1 to N",
+            desc = "(alt) can make ele -ve @val to mark the presence of ele @i=val, when already -ve that is repeated",
+            url = "/find-the-two-numbers-with-odd-occurences-in-an-unsorted-array/")
+    public void testFindTwoRepeatingElementInUnsortedArray() {
+        int[] array = {4, 2, 4, 5, 2, 3, 1};
+        int[] result = ArraySearching.findTwoRepeatingElementInUnsortedArray(array);
+        assertArrayEquals(new int[]{2, 4}, result);
+    }
 }

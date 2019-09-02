@@ -147,12 +147,24 @@ public class ArraySearching {
             xor ^= element;
         }
         int max = array.length - 1;
-        int elementToXor = (max + 1) % 4;
-        int xor1TONMinus1 = 0;
-        for (int i = 0; i < elementToXor; i++) {
-            xor1TONMinus1 ^= max--;
-        }
+        int xor1TONMinus1 = xorTillX(max);
         return xor ^ xor1TONMinus1;
+    }
+
+    /**
+     * xor from 0 ... number inclusive
+     * using the property set of 4 consecutive number xored = 0 if first is divisible by 4
+     *
+     * @param number
+     * @return
+     */
+    public static int xorTillX(int number) {
+        int elementToXor = (number + 1) % 4;
+        int xor = 0;
+        for (int i = 0; i < elementToXor; i++) {
+            xor ^= number--;
+        }
+        return xor;
     }
 
     public static int findElementAppearingOnceWhereOtherAppearTwiceUsingXor(int[] array) {
@@ -380,5 +392,35 @@ public class ArraySearching {
 
     public static int[] findTwoOddOccuranceElementInUnsortedArray(int[] array) {
         return findTwoNonRepeatingElementInArray(array);
+    }
+
+    public static int[] findTwoRepeatingElementInUnsortedArray(int[] array) {
+        int max = array.length - 2;
+        int xor1ToN = xorTillX(max);
+        int xorAll = 0;
+        for (int element : array) {
+            xorAll ^= element;
+        }
+        int xXorY = xorAll ^ xor1ToN;
+        int lastBitSet = xXorY & -xXorY;
+        int x = 0;  //last set bit same as xor
+        int y = 0;
+
+        for (int element : array) {
+            if ((element & lastBitSet) != 0) {
+                x ^= element;
+            } else {
+                y ^= element;
+            }
+        }
+
+        for (int i = 1; i <= max; i++) {
+            if ((i & lastBitSet) != 0) {
+                x ^= i;
+            } else {
+                y ^= i;
+            }
+        }
+        return new int[]{x, y};
     }
 }
