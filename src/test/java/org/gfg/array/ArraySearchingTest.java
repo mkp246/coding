@@ -370,4 +370,14 @@ public class ArraySearchingTest {
         result = ArraySearching.findAPeakIndexInArray(array);
         assertEquals(0, result);
     }
+
+    @Test
+    @GFGMethod(date = "02-09-2019", algo = "xor all, divide ele in 2 group one which has last set bit in all xor bit set, other not set",
+            desc = "each element appears twice except 2 element",
+            url = "/find-two-non-repeating-elements-in-an-array-of-repeating-elements/")
+    public void testFindTwoNonRepeatingElementInArray() {
+        int[] array = {2, 4, 7, 9, 2, 4};
+        int[] result = ArraySearching.findTwoNonRepeatingElementInArray(array);
+        assertArrayEquals(new int[]{7, 9}, result);
+    }
 }

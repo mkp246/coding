@@ -359,4 +359,22 @@ public class ArraySearching {
         }
         return -1;
     }
+
+    public static int[] findTwoNonRepeatingElementInArray(int[] array) {
+        int xor = 0;
+        for (int element : array) {
+            xor ^= element;
+        }
+        int lastBitSet = xor & -xor;
+        int x = 0; // last set bit same as xor last set bit
+        int y = 0; // last set bit opposite of xor last set bit
+        for (int element : array) {
+            if ((element & lastBitSet) != 0) {
+                x ^= element;
+            } else {
+                y ^= element;
+            }
+        }
+        return new int[]{x, y};
+    }
 }
