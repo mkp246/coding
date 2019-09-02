@@ -273,6 +273,7 @@ public class ArraySearching {
 
     /**
      * return majority ele with count more than length/2, else returns -1
+     * using moore's voting algorithm
      *
      * @param array
      * @return
@@ -301,6 +302,35 @@ public class ArraySearching {
         }
         if (count > array.length / 2) {
             return maxElement;
+        } else {
+            return -1;
+        }
+    }
+
+    public static boolean checkForMajorityOfElementInSortedArray(int[] array, int key) {
+        int idx = findFirstIndexInSortedArray(array, key);
+        if (idx == -1) {
+            return false;
+        } else if (array[idx] == array[idx + array.length / 2]) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static int findFirstIndexInSortedArray(int[] array, int key) {
+        int left = 0;
+        int right = array.length - 1;
+        while (left < right) {
+            int mid = Util.getMid(left, right);
+            if (array[mid] >= key) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        if (array[left] == key) {
+            return left;
         } else {
             return -1;
         }

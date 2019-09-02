@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @GFG(date = "01-09-2019", topic = "array searching", url = "/array-data-structure/array-searching/", impls = ArraySearching.class)
 public class ArraySearchingTest {
@@ -321,5 +323,30 @@ public class ArraySearchingTest {
         array = new int[]{1, 3, 3, 1, 2};
         result = ArraySearching.findMajorityElementInArray(array);
         assertEquals(-1, result);
+    }
+
+    @Test
+    @GFGMethod(date = "02-09-2019", algo = "use bin search to find 1st occurance, check if @len/2+idx is same",
+            url = "/check-for-majority-element-in-a-sorted-array/")
+    public void testCheckForMajorityOfElementInSortedArray() {
+        int[] array = {1, 2, 3, 3, 3, 3, 10};
+        boolean result = ArraySearching.checkForMajorityOfElementInSortedArray(array, 3);
+        assertTrue(result);
+
+        array = new int[]{1, 1, 2, 4, 4, 4, 6, 6};
+        result = ArraySearching.checkForMajorityOfElementInSortedArray(array, 4);
+        assertFalse(result);
+
+        array = new int[]{1, 1, 1, 2, 2};
+        result = ArraySearching.checkForMajorityOfElementInSortedArray(array, 1);
+        assertTrue(result);
+
+        array = new int[]{1, 2, 3, 4, 4, 4, 4};
+        result = ArraySearching.checkForMajorityOfElementInSortedArray(array, 4);
+        assertTrue(result);
+        
+        array = new int[]{1, 2, 3, 4, 4, 4, 4};
+        result = ArraySearching.checkForMajorityOfElementInSortedArray(array, 5);
+        assertFalse(result);
     }
 }
