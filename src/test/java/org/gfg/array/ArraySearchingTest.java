@@ -272,4 +272,14 @@ public class ArraySearchingTest {
         result = ArraySearching.findMaxEquilibriumIndexWithConstantExtraSpace(array);
         assertEquals(-1, result);
     }
+
+    @Test
+    @GFGMethod(date = "02-09-2019", algo = "keep track of max so far on right of element,traverse from right",
+            desc = "ele is called leader if it greater than all element on its right",
+            url = "/leaders-in-an-array/")
+    public void testFindLeaders() {
+        int[] array = {16, 17, 4, 3, 5, 2};
+        int[] result = ArraySearching.findLeaders(array);
+        assertArrayEquals(new int[]{2, 5, 17}, result);
+    }
 }

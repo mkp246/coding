@@ -237,4 +237,17 @@ public class ArraySearching {
     public static int findMaxEquilibriumIndexWithConstantExtraSpace(int[] array) {
         return findMaxEquilibriumSumAndIdxWithConstantExtraSpace(array)[0];
     }
+
+    public static int[] findLeaders(int[] array) {
+        int maxSoFar = Integer.MIN_VALUE;
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (array[i] > maxSoFar) {
+                maxSoFar = array[i];
+                result.add(maxSoFar);
+            }
+        }
+        return Occurance.intListToArray(result);
+    }
 }
