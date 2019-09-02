@@ -209,4 +209,19 @@ public class ArraySearchingTest {
         result = ArraySearching.findElementAppearingOnceWhereOtherAppearTwiceUsingXor(array);
         assertEquals(89, result);
     }
+
+    @Test
+    @GFGMethod(date = "02-09-2019", algo = "kadane algorithm, if element is present in exclude list reset sum to 0 in addition to when sum goes -ve",
+            url = "/maximum-subarray-sum-excluding-certain-elements/")
+    public void testMaxSubarraySumExcludingCertainElement() {
+        int[] array = {1, 7, -10, 6, 2};
+        int[] exclude = {5, 6, 7, 1};
+        int result = ArraySearching.maxSubarraySumExcludingCertainElement(array, exclude);
+        assertEquals(2, result);
+
+        array = new int[]{3, 4, 5, -4, 6};
+        exclude = new int[]{1, 8, 5};
+        result = ArraySearching.maxSubarraySumExcludingCertainElement(array, exclude);
+        assertEquals(7, result);
+    }
 }

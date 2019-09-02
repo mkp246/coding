@@ -1,6 +1,7 @@
 package org.gfg.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -160,5 +161,22 @@ public class ArraySearching {
             result ^= element;
         }
         return result;
+    }
+
+    public static int maxSubarraySumExcludingCertainElement(int[] array, int[] exclude) {
+        Arrays.sort(exclude);
+        int maxSum = 0;
+        int maxSumSoFar = 0;
+        for (int i = 0; i < array.length; i++) {
+            maxSumSoFar += array[i];
+            if (binarySearchInSortedArray(exclude, 0, exclude.length - 1, array[i]) != -1) {
+                maxSumSoFar = 0;
+            } else if (maxSumSoFar < 0) {
+                maxSumSoFar = 0;
+            } else if (maxSumSoFar > maxSum) {
+                maxSum = maxSumSoFar;
+            }
+        }
+        return maxSum;
     }
 }
