@@ -224,4 +224,18 @@ public class ArraySearchingTest {
         result = ArraySearching.maxSubarraySumExcludingCertainElement(array, exclude);
         assertEquals(7, result);
     }
+
+    @Test
+    @GFGMethod(date = "02-09-2019", algo = "make prefix and suffix sum array,compare both, out of all equal value return max",
+            desc = "at index i if prefix sum 0 to i is equal to suffix sum i to end, called equilibrium",
+            url = "/maximum-equlibrium-sum-array/")
+    public void testFindMaxEquilibriumSum() {
+        int[] array = {-1, 2, 3, 0, 3, 2, -1};
+        int result = ArraySearching.findMaxEquilibriumSum(array);
+        assertEquals(4, result);
+
+        array = new int[]{-2, 5, 3, 1, 2, 6, -4, 2};
+        result = ArraySearching.findMaxEquilibriumSum(array);
+        assertEquals(7, result);
+    }
 }

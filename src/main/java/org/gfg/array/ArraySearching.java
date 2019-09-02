@@ -179,4 +179,29 @@ public class ArraySearching {
         }
         return maxSum;
     }
+
+    public static int findMaxEquilibriumSum(int[] array) {
+        int length = array.length;
+
+        int[] suffixSum = new int[length];
+        suffixSum[length - 1] = array[length - 1];
+
+        for (int i = length - 2; i >= 0; i--) {
+            suffixSum[i] = suffixSum[i + 1] + array[i];
+        }
+        // convert array to prefix sum
+        for (int i = 1; i < length; i++) {
+            array[i] += array[i - 1];
+        }
+
+        int maxSum = Integer.MIN_VALUE;
+        for (int i = 0; i < length; i++) {
+            if (array[i] == suffixSum[i]) {
+                if (array[i] > maxSum) {
+                    maxSum = array[i];
+                }
+            }
+        }
+        return maxSum;
+    }
 }
