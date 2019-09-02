@@ -344,9 +344,30 @@ public class ArraySearchingTest {
         array = new int[]{1, 2, 3, 4, 4, 4, 4};
         result = ArraySearching.checkForMajorityOfElementInSortedArray(array, 4);
         assertTrue(result);
-        
+
         array = new int[]{1, 2, 3, 4, 4, 4, 4};
         result = ArraySearching.checkForMajorityOfElementInSortedArray(array, 5);
         assertFalse(result);
+    }
+
+    @Test
+    @GFGMethod(date = "02-09-2019", algo = "use binary search modified",
+            url = "/find-a-peak-in-a-given-array/")
+    public void testFindAPeakIndexInArray() {
+        int[] array = {5, 10, 20, 15};
+        int result = ArraySearching.findAPeakIndexInArray(array);
+        assertEquals(2, result);
+
+        array = new int[]{10, 20, 15, 2, 23, 90, 67};
+        result = ArraySearching.findAPeakIndexInArray(array);
+        assertEquals(1, result);
+
+        array = new int[]{10, 20, 30, 40, 50};
+        result = ArraySearching.findAPeakIndexInArray(array);
+        assertEquals(4, result);
+
+        array = new int[]{100, 80, 60, 50, 20};
+        result = ArraySearching.findAPeakIndexInArray(array);
+        assertEquals(0, result);
     }
 }

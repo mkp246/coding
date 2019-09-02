@@ -335,4 +335,28 @@ public class ArraySearching {
             return -1;
         }
     }
+
+    public static int findAPeakIndexInArray(int[] array) {
+        int start = 0;
+        int end = array.length - 1;
+        while (start < end) {
+            int mid = Util.getMid(start, end);
+            if (mid == 0) {
+                end = 0;
+                continue;
+            }
+
+            if (array[mid - 1] <= array[mid] && array[mid] >= array[mid + 1]) {
+                return mid;
+            } else if (array[mid - 1] > array[mid]) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        if ((start == 0 && array[start] >= array[start + 1]) || (start == array.length - 1 && array[start - 1] <= array[start])) {
+            return start;
+        }
+        return -1;
+    }
 }
