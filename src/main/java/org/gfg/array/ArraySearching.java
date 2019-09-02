@@ -206,21 +206,35 @@ public class ArraySearching {
     }
 
     public static int findMaxEquilibriumSumWithConstantExtraSpace(int[] array) {
+        return findMaxEquilibriumSumAndIdxWithConstantExtraSpace(array)[1];
+    }
+
+    /**
+     * @param array
+     * @return index, value as array
+     */
+    public static int[] findMaxEquilibriumSumAndIdxWithConstantExtraSpace(int[] array) {
         int sum = 0;
         for (int element : array) {
             sum += element;
         }
 
         int maxSum = 0;
+        int maxIdx = -1;
         int prefixSum = 0;
         int suffixSum;
-        for (int element : array) {
+        for (int i = 0; i < array.length; i++) {
             suffixSum = sum - prefixSum;
-            prefixSum += element;
+            prefixSum += array[i];
             if (prefixSum == suffixSum && prefixSum > maxSum) {
                 maxSum = prefixSum;
+                maxIdx = i;
             }
         }
-        return maxSum;
+        return new int[]{maxIdx, maxSum};
+    }
+
+    public static int findMaxEquilibriumIndexWithConstantExtraSpace(int[] array) {
+        return findMaxEquilibriumSumAndIdxWithConstantExtraSpace(array)[0];
     }
 }

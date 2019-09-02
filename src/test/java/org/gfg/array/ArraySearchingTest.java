@@ -70,10 +70,10 @@ public class ArraySearchingTest {
         assertEquals(2, result);
 
         result = ArraySearching.binarySearchInSortedArray(array, 0, array.length - 1, 5);
-        assertEquals(2, result);
+        assertEquals(0, result);
 
         result = ArraySearching.binarySearchInSortedArray(array, 0, array.length - 1, 4);
-        assertEquals(2, result);
+        assertEquals(-1, result);
 
         result = ArraySearching.binarySearchInSortedArray(array, 0, array.length - 1, 12);
         assertEquals(-1, result);
@@ -250,5 +250,26 @@ public class ArraySearchingTest {
         array = new int[]{-2, 5, 3, 1, 2, 6, -4, 2};
         result = ArraySearching.findMaxEquilibriumSumWithConstantExtraSpace(array);
         assertEquals(7, result);
+    }
+
+    @Test
+    @GFGMethod(date = "02-09-2019", algo = "calculate array sum,from this calculate prefix and suffix sum",
+            url = "/equilibrium-index-of-an-array/")
+    public void testFindMaxEquilibriumIndexWithConstantExtraSpace() {
+        int[] array = {-1, 2, 3, 0, 3, 2, -1};
+        int result = ArraySearching.findMaxEquilibriumIndexWithConstantExtraSpace(array);
+        assertEquals(3, result);
+
+        array = new int[]{-2, 5, 3, 1, 2, 6, -4, 2};
+        result = ArraySearching.findMaxEquilibriumIndexWithConstantExtraSpace(array);
+        assertEquals(3, result);
+
+        array = new int[]{-7, 1, 5, 2, -4, 3, 0};
+        result = ArraySearching.findMaxEquilibriumIndexWithConstantExtraSpace(array);
+        assertEquals(3, result);
+
+        array = new int[]{-1, 2, 3};
+        result = ArraySearching.findMaxEquilibriumIndexWithConstantExtraSpace(array);
+        assertEquals(-1, result);
     }
 }
