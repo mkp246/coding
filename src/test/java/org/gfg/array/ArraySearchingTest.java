@@ -238,4 +238,17 @@ public class ArraySearchingTest {
         result = ArraySearching.findMaxEquilibriumSum(array);
         assertEquals(7, result);
     }
+
+    @Test
+    @GFGMethod(date = "02-09-2019", algo = "calculate array sum,from this cal prefix and suffix sum",
+            url = "/maximum-equlibrium-sum-array/")
+    public void testFindMaxEquilibriumSumWithConstantExtraSpace() {
+        int[] array = {-1, 2, 3, 0, 3, 2, -1};
+        int result = ArraySearching.findMaxEquilibriumSumWithConstantExtraSpace(array);
+        assertEquals(4, result);
+
+        array = new int[]{-2, 5, 3, 1, 2, 6, -4, 2};
+        result = ArraySearching.findMaxEquilibriumSumWithConstantExtraSpace(array);
+        assertEquals(7, result);
+    }
 }

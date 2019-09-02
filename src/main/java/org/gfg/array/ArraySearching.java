@@ -204,4 +204,23 @@ public class ArraySearching {
         }
         return maxSum;
     }
+
+    public static int findMaxEquilibriumSumWithConstantExtraSpace(int[] array) {
+        int sum = 0;
+        for (int element : array) {
+            sum += element;
+        }
+
+        int maxSum = 0;
+        int prefixSum = 0;
+        int suffixSum;
+        for (int element : array) {
+            suffixSum = sum - prefixSum;
+            prefixSum += element;
+            if (prefixSum == suffixSum && prefixSum > maxSum) {
+                maxSum = prefixSum;
+            }
+        }
+        return maxSum;
+    }
 }
