@@ -270,4 +270,39 @@ public class ArraySearching {
         }
         return -1;
     }
+
+    /**
+     * return majority ele with count more than length/2, else returns -1
+     *
+     * @param array
+     * @return
+     */
+    public static int findMajorityElementInArray(int[] array) {
+        int maxElement = array[0];
+        int maxCount = 1;
+
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] == maxElement) {
+                maxCount++;
+            } else {
+                if (maxCount == 0) {
+                    maxElement = array[i];
+                    maxCount++;
+                } else {
+                    maxCount--;
+                }
+            }
+        }
+        int count = 0;
+        for (int element : array) {
+            if (element == maxElement) {
+                count++;
+            }
+        }
+        if (count > array.length / 2) {
+            return maxElement;
+        } else {
+            return -1;
+        }
+    }
 }

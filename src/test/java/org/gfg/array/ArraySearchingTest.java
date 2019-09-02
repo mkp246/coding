@@ -304,4 +304,22 @@ public class ArraySearchingTest {
         result = ArraySearching.findCeilingIndexInSortedArray(array, 3);
         assertEquals(2, result);
     }
+
+    @Test
+    @GFGMethod(date = "02-09-2019", algo = "moore's voting algorithm",
+            desc = "if element appears more than len/2 times",
+            url = "/majority-element/")
+    public void testFindMajorityElementInArray() {
+        int[] array = {3, 3, 4, 2, 4, 4, 2, 4, 4};
+        int result = ArraySearching.findMajorityElementInArray(array);
+        assertEquals(4, result);
+
+        array = new int[]{3, 3, 4, 2, 4, 4, 2, 4};
+        result = ArraySearching.findMajorityElementInArray(array);
+        assertEquals(-1, result);
+
+        array = new int[]{1, 3, 3, 1, 2};
+        result = ArraySearching.findMajorityElementInArray(array);
+        assertEquals(-1, result);
+    }
 }
