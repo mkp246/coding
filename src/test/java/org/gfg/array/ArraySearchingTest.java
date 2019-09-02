@@ -282,4 +282,26 @@ public class ArraySearchingTest {
         int[] result = ArraySearching.findLeaders(array);
         assertArrayEquals(new int[]{2, 5, 17}, result);
     }
+
+    @Test
+    @GFGMethod(date = "02-09-2019", algo = "use binary search",
+            desc = "smallest ele in array which is greater than given key",
+            url = "/ceiling-in-a-sorted-array/")
+    public void testFindCeilingIdxInSortedArray() {
+        int[] array = {1, 2, 8, 10, 10, 12, 19};
+        int result = ArraySearching.findCeilingIndexInSortedArray(array, 0);
+        assertEquals(0, result);
+
+        result = ArraySearching.findCeilingIndexInSortedArray(array, 1);
+        assertEquals(0, result);
+
+        result = ArraySearching.findCeilingIndexInSortedArray(array, 5);
+        assertEquals(2, result);
+
+        result = ArraySearching.findCeilingIndexInSortedArray(array, 20);
+        assertEquals(-1, result);
+
+        result = ArraySearching.findCeilingIndexInSortedArray(array, 3);
+        assertEquals(2, result);
+    }
 }

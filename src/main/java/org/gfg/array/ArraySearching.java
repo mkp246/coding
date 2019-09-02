@@ -250,4 +250,24 @@ public class ArraySearching {
         }
         return Occurance.intListToArray(result);
     }
+
+    public static int findCeilingIndexInSortedArray(int[] array, int key) {
+        int left = 0;
+        int right = array.length - 1;
+        while (left <= right) {
+            if (array[left] >= key) {
+                return left;
+            } else if (array[right] < key) {
+                return -1;
+            } else {
+                int mid = Util.getMid(left, right);
+                if (array[mid] < key) {
+                    left = mid + 1;
+                } else {
+                    right = mid;
+                }
+            }
+        }
+        return -1;
+    }
 }
